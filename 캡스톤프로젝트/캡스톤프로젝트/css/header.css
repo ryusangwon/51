@@ -1,0 +1,33 @@
+.header{
+    height: 60px;
+    background-color: #ffffff;
+    padding-top: 20px;
+}
+.header-menu-login {
+    position: absolute;
+    left : 80%;
+    display: inline-block;
+}
+.logo{
+    width: 200;
+    font-size: 20px;
+    color: #000000;
+    display: inline-block;
+}
+.menu{
+    position: absolute;
+    left: 50%;
+    display: inline-block;
+}
+
+.menu1{
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.menu2{
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
