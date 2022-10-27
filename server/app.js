@@ -3,6 +3,7 @@ const http = require('http');
 
 var app = express();
 const port = 3000;
+let hostname = "localhost";
 
 app.use(express.json());
 
@@ -18,7 +19,7 @@ app.post('/signup', (req, res) => {
     res.send
 })
 
-app.listen(app.get('port'), () => {
-    console.log(`App running at http://${hostname}:${port}/`);
+app.listen(port, () => {
+    console.log(`App running at http://$localhost:${port}/`);
 });
 
