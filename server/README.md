@@ -2,5 +2,5 @@
 
 connect slack
 
-modify by Jeong
+modify by Jeong hi
 and Ryu
