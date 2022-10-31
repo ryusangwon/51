@@ -9,3 +9,7 @@ function menu1_click() {
 function menu2_click() {
   location.href="rcm_board.html";
 }
+
+function menu3_click() {
+  location.href="mypage.html";
+}
