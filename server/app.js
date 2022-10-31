@@ -1,14 +1,27 @@
-var express = require("express");
+var express = require('express');
 const http = require('http');
+const path = require('path');
+// const mysql = require('mysql')
+// const connection = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: '0000',
+//     database: '51-mysql'
+// })
+
+// connection.connect();
+// connection.query('SELECT * from ')
 
 var app = express();
 const port = 3000;
-let hostname = "localhost";
+// let hostname = "localhost";
 
-app.use(express.json());
+// app.use(express.json());
+
+app.set('port', process.env.PORT || 3000);
 
 app.get('/', (req, res) => {
-    res.send('hello, express')
+    res.sendFile(path.join(__dirname, '../client/header.html'))
 })
 
 app.get("/user/:id", (req, res) => {
@@ -19,7 +32,7 @@ app.post('/signup', (req, res) => {
     res.send
 })
 
-app.listen(port, () => {
+app.listen(app.get('port'), () => {
     console.log(`App running at http://$localhost:${port}/`);
 });
 
