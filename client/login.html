@@ -4,20 +4,22 @@
         <meta charset="UTF-8">
         <title>로그인</title>
         <script src="/js/includeHTML.js"></script>
-        <link rel="stylesheet" href="css/login.css">
-        <script src="js/login.js"></script>
+        <link rel="stylesheet" type="text/css" href="./css/login.css">
     </head>
 
     <body>
+        <article>
         <header include-html="/header.html"></header>
-        <div class="login-form">
-            <form action="javascript:login();">
-                <input type="text" id="id" class="text-field" placeholder="아이디"></input>
-                <input type="text" id="password" class="text-field" placeholder="비밀번호"></input>
-                <input type="submit" value="로그인" class="submit-btn">
+        <div class="login-wrapper">
+            <div class="login_logo">고속도롤</div>
+            <form class="login_form">
+                <input id="LOGIN_ID" class = "login_text" type="text" name="id" placeholder="아이디">
+                <input id="LOGIN_PW" class = "login_text" type="password" name="id" placeholder="비밀번호">
+                <button id="LOGIN_BTN" class = "login_btn" type="button" disabled>로그인</button>
             </form>
         </div>
-
+        </article> 
+        <script src="./js/login.js" defer=""></script>
     </body>
 
 
