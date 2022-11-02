@@ -22,16 +22,17 @@ module.exports = class Lecture extends Sequelize.Model {
             start_time: {
                 type: 'TIMESTAMPS',
                 allowNull: true,
-                defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+                // defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
             }
         }, {
             sequelize,
             timestamps: false,
-            modelName: 51,
-            tableName: lecture,
+            modelName: 'Lecture',
+            tableName: 'lectures',
             paranoid: false,
             charset: 'utf8',
             collate: 'utf8_general_ci',
-        })
+        });
     }
-}
+    static associate(db) {}
+};

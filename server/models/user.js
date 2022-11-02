@@ -28,11 +28,12 @@ module.exports = class User extends Sequelize.Model {
         }, {
             sequelize,
             timestamps: false,
-            modelName: 51,
-            tableName: user,
+            modelName: 'User',
+            tableName: 'users',
             paranoid: false,
             charset: 'utf8',
             collate: 'utf8_general_ci',
-        })
+        });
     }
-}
+    static associate(db) {}
+};

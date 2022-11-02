@@ -22,11 +22,12 @@ module.exports = class Game extends Sequelize.Model {
         }, {
             sequelize,
             timestamps: false,
-            modelName: 51,
-            tableName: game,
+            modelName: 'Game',
+            tableName: 'games',
             paranoid: false,
             charset: 'utf8',
             collate: 'utf8_general_ci',
-        })
+        });
     }
-}
+    static associate(db) {}
+};

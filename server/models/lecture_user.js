@@ -14,11 +14,12 @@ module.exports = class Lecture_user extends Sequelize.Model {
         }, {
             sequelize,
             timestamps: false,
-            modelName: 51,
-            tableName: lecture_user,
+            modelName: 'Lecture_user',
+            tableName: 'lecture_users',
             paranoid: false,
             charset: 'utf8',
             collate: 'utf8_general_ci',
-        })
+        });
     }
-}
+    static associate(db) {}
+};

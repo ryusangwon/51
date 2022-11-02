@@ -14,16 +14,17 @@ module.exports = class Review_star extends Sequelize.Model {
             create_date: {
                 type: 'TIMESTAMPS',
                 allowNull: true,
-                defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+                // defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
             },
         }, {
             sequelize,
             timestamps: false,
-            modelName: 51,
-            tableName: review_star,
+            modelName: 'Review_star',
+            tableName: 'review_stars',
             paranoid: false,
             charset: 'utf8',
             collate: 'utf8_general_ci',
-        })
+        });
     }
-}
+    static associate(db) {}
+};

@@ -8,16 +8,16 @@
   },
   "test": {
     "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
+    "password": "0000",
+    "database": "nodejs",
+    "host": "146.56.135.121",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "password": "0000",
+    "database": "nodejs",
+    "host": "146.56.135.121",
     "dialect": "mysql"
   }
 }

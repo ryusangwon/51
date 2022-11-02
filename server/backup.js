@@ -1,4 +1,5 @@
 const express = require('express');
+const http = require('http');
 const path = require('path');
 const morgan = require('morgan');
 const nunjucks = require('nunjucks');
@@ -6,12 +7,16 @@ const nunjucks = require('nunjucks');
 const { sequelize } = require('./models');
 
 const app = express();
+const port = 3000;
+let hostname = "localhost";
+
 app.set('port', process.env.PORT || 3001);
 app.set('view engine', 'html');
 nunjucks.configure('views', {
     express: app,
     watch: true,
 });
+
 sequelize.sync({force: false}).then(() => {
     console.log('Database connected successfully');
 }).catch((err) => {
@@ -36,7 +41,19 @@ app.use((err, req, res, next) => {
     res.render('error');
 });
 
+// app.get('/', (req, res) => {
+//     res.sendFile(path.join(__dirname, '../client/header.html'))
+// });
+
+// app.get("/user/:id", (req, res) => {
+// 	res.send(`User id is ${req.params.id}`); // Or res.send('User id is ' + req.params.id);
+// });
+
+// app.post('/signup', (req, res) => {
+//     res.send
+// })
+
 app.listen(app.get('port'), () => {
-    console.log(app.get('port'), 'running');
+    console.log(`App running at http://$localhost:${port}/`);
 });
 

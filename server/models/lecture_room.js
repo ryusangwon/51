@@ -18,11 +18,12 @@ module.exports = class Lecture_room extends Sequelize.Model {
         }, {
             sequelize,
             timestamps: false,
-            modelName: 51,
-            tableName: lecture_room,
+            modelName: 'Lecture_room',
+            tableName: 'lecture_rooms',
             paranoid: false,
             charset: 'utf8',
             collate: 'utf8_general_ci',
-        })
+        });
     }
-}
+    static associate(db) {}
+};
