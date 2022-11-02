@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-// const User = require('./user');
+const User = require('./user');
 // const Game = require('./game');
 // const Lecture = require('./lecture');
 // const Lecture_room = require('./lecture_room');
@@ -16,7 +16,7 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
 
 db.sequelize = sequelize;
 
-// db.User = User;
+db.User = User;
 // db.Game = Game;
 // db.Lecture = Lecture;
 // db.Lecture_room = Lecture_room;
@@ -25,7 +25,7 @@ db.sequelize = sequelize;
 // db.Rmc = Rmc;
 // db.Rmc_board = Rmc_board;
 
-// User.init(sequelize)
+User.init(sequelize)
 // // User.associate(db);
 
 // Game.init(sequelize)
