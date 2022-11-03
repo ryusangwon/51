@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>서버 테스트</title>
+    <style>
+      table { border: 1px solid black; border-collapse: collapse; }
+      table th, table td { border: 1px solid black; }
+    </style>
+  </head>
+  <body>
+    <div>
+      <form id="user-form">
+        <fieldset>
+          <legend>사용자 등록</legend>
+          <div><input id="username" type="text" placeholder="이름"></div>
+          <div><input id="age" type="number" placeholder="나이"></div>
+          <div><input id="mento" type="checkbox"><label for="mento">멘토 여부</label></div>
+          <button type="submit">등록</button>
+        </fieldset>
+      </form>
+    </div>
+    <br>
+    <table id="user-list">
+      <thead>
+      <tr>
+        <th>닉네임</th>
+        <th>비밀번호</th>
+        <th>email</th>
+        <th>멘토여부</th>
+        <th>아이디</th>
+      </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <tr>
+          <td>{{user.name}}</td>
+          <td>{{user.password}}</td>
+          <td>{{user.email}}</td>
+          <td>{{ '멘토' if user.mento else '멘티'}}</td>
+          <td>{{user.game_id}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br>
+    <br>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/sequelize.js"></script>
+  </body>
+</html>
