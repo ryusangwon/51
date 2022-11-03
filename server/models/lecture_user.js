@@ -15,7 +15,7 @@ module.exports = class Lecture_user extends Sequelize.Model {
             sequelize,
             timestamps: false,
             modelName: 'Lecture_user',
-            tableName: 'lecture_users',
+            tableName: 'lecture_user',
             paranoid: false,
             charset: 'utf8',
             collate: 'utf8_general_ci',

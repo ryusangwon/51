@@ -20,7 +20,7 @@ module.exports = class Review_star extends Sequelize.Model {
             sequelize,
             timestamps: false,
             modelName: 'Review_star',
-            tableName: 'review_stars',
+            tableName: 'review_star',
             paranoid: false,
             charset: 'utf8',
             collate: 'utf8_general_ci',

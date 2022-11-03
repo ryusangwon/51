@@ -23,7 +23,7 @@ module.exports = class Game extends Sequelize.Model {
             sequelize,
             timestamps: false,
             modelName: 'Game',
-            tableName: 'games',
+            tableName: 'game',
             paranoid: false,
             charset: 'utf8',
             collate: 'utf8_general_ci',

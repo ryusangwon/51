@@ -2,21 +2,21 @@
   "development": {
     "username": "root",
     "password": "0000",
-    "database": "mysql",
+    "database": "lol",
     "host": "146.56.135.121",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": "0000",
-    "database": "nodejs",
+    "database": "mysql",
     "host": "146.56.135.121",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
     "password": "0000",
-    "database": "nodejs",
+    "database": "mysql",
     "host": "146.56.135.121",
     "dialect": "mysql"
   }

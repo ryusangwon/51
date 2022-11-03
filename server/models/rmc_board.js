@@ -24,7 +24,7 @@ module.exports = class Rmc_board extends Sequelize.Model {
             sequelize,
             timestamps: false,
             modelName: 'Rmc_board',
-            tableName: 'rmc_boards',
+            tableName: 'rmc_board',
             paranoid: false,
             charset: 'utf8',
             collate: 'utf8_general_ci',
