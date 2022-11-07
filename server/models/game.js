@@ -3,6 +3,16 @@ const Sequelize = require('sequelize');
 module.exports = class Game extends Sequelize.Model {
     static init(sequelize){
         return super.init({
+            id: {
+                type: Sequelize.INTEGER,
+                primaryKey: true,
+                allowNull: false,
+                autoIncrement: true,
+            },
+            gid: {
+                type: Sequelize.STRING(45),
+                allowNull: true,
+            },
             tier: {
                 type: Sequelize.STRING(45),
                 allowNull: true,

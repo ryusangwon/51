@@ -1,4 +1,4 @@
-document.getElementById('').addEventListener('submit', async(e) => {
+document.getElementById('id').addEventListener('submit', async(e) => {
     e.preventDefault();
     const name = e.target.username.value;
     const password = e.target.age.value;
@@ -6,6 +6,9 @@ document.getElementById('').addEventListener('submit', async(e) => {
     const mento = e.target.mento.checked;
     const game_id = e.target.game_id.value;
 
+    if(!id){
+        return alert('no id');
+    }
     if(!name){
         return alert('no name');
     }
@@ -15,4 +18,9 @@ document.getElementById('').addEventListener('submit', async(e) => {
     if(!email){
         return alert('no email');
     }
-})
+
+    try{
+        await axios.post('/users', {name, age, married});
+        getUser();
+    } catch(err)
+}) 

@@ -4,4 +4,4 @@ function signup() {
   var name = document.getElementById("name").value;
   
   alert("아이디:" + id + ", 비밀번호: " + pwd+ ", 이름: " + name);
-}
+} 

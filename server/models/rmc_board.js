@@ -3,8 +3,14 @@ const Sequelize = require('sequelize');
 module.exports = class Rmc_board extends Sequelize.Model {
     static init(sequelize){
         return super.init({
+            id: {
+                type: Sequelize.INTEGER,
+                primaryKey: true,
+                allowNull: false,
+                autoIncrement: true,
+            },
             rmc_id: {
-                type: Sequelize.STRING(45),
+                type: Sequelize.INTEGER,
                 allowNull: true,
             },
             comment: {
@@ -16,9 +22,9 @@ module.exports = class Rmc_board extends Sequelize.Model {
                 allowNull: true,
             },
             create_date: {
-                type: 'TIMESTAMPS',
+                type: Sequelize.DATE,
                 allowNull: true,
-                // defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+                defaultValue: Sequelize.NOW,
             },
         }, {
             sequelize,

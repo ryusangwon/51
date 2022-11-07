@@ -3,6 +3,12 @@ const Sequelize = require('sequelize');
 module.exports = class Lecture extends Sequelize.Model {
     static init(sequelize){
         return super.init({
+            id: {
+                type: Sequelize.INTEGER,
+                primaryKey: true,
+                allowNull: false,
+                autoIncrement: true,
+            },
             user_id: {
                 type: Sequelize.STRING(20),
                 allowNull: true,
@@ -20,9 +26,9 @@ module.exports = class Lecture extends Sequelize.Model {
                 allowNull: true,
             },
             start_time: {
-                type: 'TIMESTAMPS',
+                type: Sequelize.DATE,
                 allowNull: true,
-                // defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+                defaultValue: Sequelize.NOW,
             }
         }, {
             sequelize,
