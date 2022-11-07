@@ -20,7 +20,7 @@ const Header = () => {
           <div className="header_menu_rmc" onClick={()=>navigate("/rmc")}>
             롤문철게시판
           </div>
-          <div className="header_menu_mypage" onClick={()=>navigate("/mypage")}>
+          <div className="header_menu_mypage" onClick={()=>navigate("/mypage_course_list")}>
             마이페이지
           </div>
         </div>
