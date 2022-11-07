@@ -1,39 +1,58 @@
-var express = require('express');
-const http = require('http');
+const express = require('express');
 const path = require('path');
-// const mysql = require('mysql')
-// const connection = mysql.createConnection({
-//     host: 'localhost',
-//     user: 'root',
-//     password: '0000',
-//     database: '51-mysql'
-// })
+const morgan = require('morgan');
+const nunjucks = require('nunjucks');
+const session = require('express-session');
+const { sequelize } = require('./models');
 
-// connection.connect();
-// connection.query('SELECT * from ')
+const indexRouter = require('./routes');
+const userRouter = require('./routes/user');
 
-var app = express();
-const port = 3000;
-// let hostname = "localhost";
+const app = express();
+app.set('port', process.env.PORT || 3001);
+app.set('view engine', 'html');
 
-// app.use(express.json());
-
-app.set('port', process.env.PORT || 3000);
-
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/header.html'))
-})
-
-app.get("/user/:id", (req, res) => {
-	res.send(`User id is ${req.params.id}`); // Or res.send('User id is ' + req.params.id);
+nunjucks.configure('views', {
+    express: app,
+    watch: true,
 });
 
+sequelize.sync({force: false}).then(() => {
+    console.log('Database connected successfully');
+}).catch((err) => {
+    console.error(err);
+});
+
+app.use(morgan('dev'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json()); // json parsing
+app.use(express.urlencoded({ extended: true})); // form parsing
+
+app.use('/', indexRouter);
+app.use('/user', userRouter);
+
+app.get('/', (req, res) => {
+    req.session.id = 'id';
+    res.sendFile(path.join(__dirname, '/views/index.html'));
+});
+
+app.use((req, res, next) => {
+    res.send('404!');
+});
+
+<<<<<<< HEAD
 app.post('/signup', (req, res) => {
     res.send
 
     
 })
+=======
+app.use((err, req, res, next) => {
+    console.error(err);
+    res.send('error in server!');
+});
+>>>>>>> 8a7cc85c2cf860897a50b45b501b43e600f86491
 
 app.listen(app.get('port'), () => {
-    console.log(`App running at http://$localhost:${port}/`);
+    console.log(app.get('port'), 'running');
 });

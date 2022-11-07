@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "0000",
+    "database": "lol",
+    "host": "146.56.135.121",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "0000",
+    "database": "lol",
+    "host": "146.56.135.121",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "0000",
+    "database": "lol",
+    "host": "146.56.135.121",
+    "dialect": "mysql"
+  }
+}

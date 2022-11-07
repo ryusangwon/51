@@ -2,32 +2,25 @@
     height: 60px;
     background-color: #ffffff;
     padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-.header-menu-login {
-    position: absolute;
-    left : 80%;
-    display: inline-block;
+.container{
+    width: 980px;
+    margin: 0 auto;
+    padding: 5px;
 }
 .logo{
-    width: 200;
+    float: left;
     font-size: 20px;
+    font-weight: bold;
     color: #000000;
-    display: inline-block;
 }
-.menu{
-    position: absolute;
-    left: 50%;
-    display: inline-block;
+.menu-item{
+    float: left;
+    margin-right: 10px;
+    padding: 8px;
+    font-size: 15px;
+    color: #000000;
 }
-
-.menu1{
-    display: inline-block;
-    margin-left: 20px;
-    margin-right: 20px;
-}
-.menu2{
-    display: inline-block;
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
