@@ -10,6 +10,7 @@
     "cross-env": "^7.0.3",
     "express-session": "^1.17.3",
     "morgan": "^1.10.0",
+    "node-module": "^2.0.0",
     "nunjucks": "^3.2.3",
     "opentok-react": "^0.11.0",
     "react": "^18.2.0",
