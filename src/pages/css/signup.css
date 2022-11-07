@@ -1,0 +1,30 @@
+.signup-form{
+    position: absolute;
+    width: 300px;
+    border: 0;
+    border-radius: 5px;
+    background-color: #ffffff;
+    padding: 20px;
+    left: calc(50% - 150px);
+    top: 250px;
+}
+
+.text-field {
+    font-size: 14px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+}
+
+.submit-btn {
+    color : #ffffff;
+    font-size: 14px;
+    background-color: #333333;
+    margin-bottom: 30px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+}

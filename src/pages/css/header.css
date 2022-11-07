@@ -1,0 +1,51 @@
+.App-header{
+  background-color: #000000;
+  color: #FFFFFF;
+  height: 80px;
+  padding-top: 30px;
+}
+
+.header_logo{
+  display: inline-block;
+  margin-left: 30px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.header_menu_div{
+  display: inline-block;
+  margin-left: 40%;
+}
+
+.header_menu_lecture{
+  display: inline-block;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.header_menu_rmc{
+  display: inline-block;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.header_menu_mypage{
+  display: inline-block;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.header_login_div{
+  display: inline-block;
+  margin-left: 10%;
+}
+.header_login{
+  display: inline-block;
+  margin-right: 20px;
+  cursor: pointer;
+
+}
+.header_memberjoin{
+  display: inline-block;
+  cursor: pointer;
+}
