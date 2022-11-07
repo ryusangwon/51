@@ -30,9 +30,10 @@ app.get("/user/:id", (req, res) => {
 
 app.post('/signup', (req, res) => {
     res.send
+
+    
 })
 
 app.listen(app.get('port'), () => {
     console.log(`App running at http://$localhost:${port}/`);
 });
-

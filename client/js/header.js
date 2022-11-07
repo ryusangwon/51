@@ -1,15 +1,18 @@
-function logo_click() {
-  location.href="header.html";
-}
+window.onload = function(){
 
-function menu1_click() {
-  location.href="lecture_find.html";
-}
+  function logo_click() {
+    location.href="./header.html";
+  }
 
-function menu2_click() {
-  location.href="rcm_board.html";
-}
+  function menu1_click() {
+    location.href="./lecture_find.html";
+  }
 
-function menu3_click() {
-  location.href="mypage.html";
+  function menu2_click() {
+    location.href="./rcm_board.html";
+  }
+
+  function menu3_click() {
+    location.href="./mypage.html";
+  }
 }

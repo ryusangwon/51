@@ -35,3 +35,7 @@ function includeHTML(callback) {
   }, 0);
   */
 }
+
+window.onload = function(){
+
+}

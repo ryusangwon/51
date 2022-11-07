@@ -3,31 +3,36 @@
     <head>
         <link rel="stylesheet" href="css/header.css">
         <script src='http://code.jquery.com/jquery-latest.min.js'></script>
-        <script src="js/header.js"></script>
+        <script type="text/javascript" src="./js/header.js"></script>
     </head>
+
+    <script>
+      document.cookie = "user=John";
+    </script>
+
 
     <body>
         <div id="header">
             <div class="container">
                <div class = "header">
                     <div class="logo" onclick="logo_click()">
-                        고속도롤
+                      <a href="./index.html">고속도롤</a>
                     </div>
-        
+
                     <div class="menu">
                         <div class="menu1" onclick="menu1_click();">
-                            강의찾기
+                            <a href="./lecture_find.html">강의찾기</a>
                         </div>
                         <div class="menu2" onclick="menu2_click();">
-                            롤문철게시판
+                          <a href="./rcm_board.html">롤문철게시판</a>
                         </div>
                         <div class="menu2" onclick="menu3_click();">
-                            마이페이지
+                          <a href="./mypage.html">마이페이지</a>
                         </div>
                     </div>
                     <div class="header-menu-login">
-                        <a href="login.html">로그인</a>
-                        <a href="signup.html">회원가입</a>
+                        <a href="./login.html">로그인</a>
+                        <a href="./signup.html">회원가입</a>
                     </div>
                </div>
             </div>
