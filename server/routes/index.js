@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.get('/', async (req, res, next) => {
     try{
+        console.log("[HOMEPAGE]");
         res.send('Hello, Express');
     } catch(err){
         console.error(err);

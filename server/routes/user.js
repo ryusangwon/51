@@ -3,9 +3,29 @@ const User = require("../models/user");
 
 const router = express.Router();
 
+router.get('/', async (req, res, next) => {
+    try{
+        console.log("[USER]");
+        res.send('Hello, User');
+    } catch(err){
+        console.error(err);
+        next(err);
+    }
+});
+
 router.route('/signup')
+.get(async (req, res, next) => {
+    try{
+        console.log("[SIGNUP]");
+        res.send('Hello, Signup');
+    } catch(err){
+        console.error(err);
+        next(err);
+    }
+})
 .post(async (req, res, next) => {
     try{
+        console.log("[SIGNUP]");
         const user = await User.create({
             id: req.body.id,
             name: req.body.name,

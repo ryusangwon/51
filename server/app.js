@@ -7,6 +7,7 @@ const { sequelize } = require('./models');
 
 const indexRouter = require('./routes');
 const userRouter = require('./routes/user');
+const gameRouter = require('./routes/game');
 
 const app = express();
 app.set('port', process.env.PORT || 3001);
@@ -30,9 +31,10 @@ app.use(express.urlencoded({ extended: true})); // form parsing
 
 app.use('/', indexRouter);
 app.use('/user', userRouter);
+app.use('/game', gameRouter);
 
 app.get('/', (req, res) => {
-    req.session.id = 'id';
+    // req.session.id = 'id';
     res.sendFile(path.join(__dirname, '/views/index.html'));
 });
 
