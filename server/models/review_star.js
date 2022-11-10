@@ -24,7 +24,7 @@ module.exports = class Review_star extends Sequelize.Model {
             },
         }, {
             sequelize,
-            timestamps: false,
+            timestamps: true,
             modelName: 'Review_star',
             tableName: 'review_star',
             paranoid: false,
