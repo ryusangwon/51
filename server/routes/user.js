@@ -37,7 +37,7 @@ router.post('/signup', async (req, res, next) => {
 })
 
 
-router.post('/login', isNotLoggedIn, (res, req, next) => {
+router.post('/login', isNotLoggedIn, (req, res, next) => {
     passport.authenticate('local', (authError, user, info) => {
         if (authError) {
             console.error(authError);
@@ -56,7 +56,7 @@ router.post('/login', isNotLoggedIn, (res, req, next) => {
     })(req, res, next);
 });
 
-//router.post('/login', async (res, req, next) => {
+//router.post('/login', async (req, res, next) => {
 //    const {id, password} = req.body;
 //    const logUser = await User.findOne({where: {id}});
 //    if (logUser){
