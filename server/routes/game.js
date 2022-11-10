@@ -23,12 +23,12 @@ router.route('/getlolid')
 .get(async (req, res, next) => {
     try{
         console.log("[GETDATABYSUMMONERNAME]");
-        let name = "hide on bush";
+//        let name = "hide on bush";
+        let name = req.body.name;
         let encodedName = urlencode(name);
         console.log(encodedName);
-        // let name = req.body.name;
-        // let url = `https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/{encodedName}?api_key={key}`;
-        let url = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/hide%20on%20bush?api_key=RGAPI-2f9a6903-4d27-4e07-b279-294d43b8b705";
+        let url = `https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/{encodedName}?api_key={key}`;
+//        let url = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/hide%20on%20bush?api_key=RGAPI-2f9a6903-4d27-4e07-b279-294d43b8b705";
         const summonerIdData = await axios.get(url);
         let summonerId = summonerIdData["data"]["id"];
         console.log(summonerId);

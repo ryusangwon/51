@@ -15,7 +15,7 @@ router.get('/', async (req, res, next) => {
         })
     }
 
-    res.send('mento done');
+    return res.redirect('/');
 });
 
 module.exports = router;

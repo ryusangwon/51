@@ -5,6 +5,7 @@ const nunjucks = require('nunjucks');
 const session = require('express-session');
 const dotenv = require('dotenv');
 const passport = require('passport');
+const cors = require('cors');
 
 const { sequelize } = require('./models');
 const passportConfig = require('./passport');
@@ -45,6 +46,7 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/user', userRouter);
