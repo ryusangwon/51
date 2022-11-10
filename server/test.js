@@ -1,5 +1,7 @@
 // multer로 동영상 올릴 수 있음
 
+const urlencode = require("urlencode");
+
 // const { User } = require('./models');
 // User.create({
 //   lid: 'testid1',
@@ -11,3 +13,5 @@
 // })
 
 // User.findAll({});
+
+console.log(urlencode('hide on bush'));

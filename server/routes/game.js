@@ -2,6 +2,8 @@ const { urlencoded } = require("express");
 const express = require("express");
 const Game = require("../models/game");
 const axios = require('axios');
+const urlencode = require("urlencode");
+
 const router = express.Router();
 
 const api_key = "RGAPI-2f9a6903-4d27-4e07-b279-294d43b8b705";
@@ -22,9 +24,10 @@ router.route('/getlolid')
     try{
         console.log("[GETDATABYSUMMONERNAME]");
         let name = "hide on bush";
-        // console.log(urlencode(name));
+        let encodedName = urlencode(name);
+        console.log(encodedName);
         // let name = req.body.name;
-        // let url = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + urlencode(name)+"?api_key="+key;
+        // let url = `https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/{encodedName}?api_key={key}`;
         let url = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/hide%20on%20bush?api_key=RGAPI-2f9a6903-4d27-4e07-b279-294d43b8b705";
         const summonerIdData = await axios.get(url);
         let summonerId = summonerIdData["data"]["id"];
