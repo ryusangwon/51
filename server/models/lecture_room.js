@@ -23,7 +23,7 @@ module.exports = class Lecture_room extends Sequelize.Model {
             },
         }, {
             sequelize,
-            timestamps: false,
+            timestamps: true,
             modelName: 'Lecture_room',
             tableName: 'lecture_room',
             paranoid: false,

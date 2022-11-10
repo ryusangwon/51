@@ -39,7 +39,7 @@ module.exports = class Game extends Sequelize.Model {
             }
         }, {
             sequelize,
-            timestamps: false,
+            timestamps: true,
             modelName: 'Game',
             tableName: 'game',
             paranoid: false,

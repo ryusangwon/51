@@ -24,10 +24,10 @@ router.put('/update', async (req, res, next) => {
     let content = req.params.body.content;
 
     Rmc.update({
-        title: title;
-        content: content;
+        title: title,
+        content: content,
     }), {
-        where: {id: id};
+        where: {id: id},
     }
     res.send('update done');
 });

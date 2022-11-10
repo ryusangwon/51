@@ -3,13 +3,19 @@ const path = require('path');
 const morgan = require('morgan');
 const nunjucks = require('nunjucks');
 const session = require('express-session');
+const dotenv = require('dotenv');
+const passport = require('passport');
+
 const { sequelize } = require('./models');
+const passportConfig = require('./passport');
 
 const indexRouter = require('./routes');
 const userRouter = require('./routes/user');
 const gameRouter = require('./routes/game');
 
+dotenv.config();
 const app = express();
+passportConfig();
 app.set('port', process.env.PORT || 3001);
 app.set('view engine', 'html');
 
@@ -28,6 +34,17 @@ app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json()); // json parsing
 app.use(express.urlencoded({ extended: true})); // form parsing
+app.use(session({
+    resave: false,
+    saveUninitialized: false,
+    secret: process.env.COOKIE_SECRET,
+    cookie: {
+        httpOnly: true,
+        secure: false,
+    }
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/user', userRouter);
