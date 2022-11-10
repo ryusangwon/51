@@ -3,6 +3,7 @@ const path = require('path');
 const morgan = require('morgan');
 const nunjucks = require('nunjucks');
 const session = require('express-session');
+const dotenv = require('dotenv');
 const passport = require('passport');
 
 const { sequelize } = require('./models');
@@ -12,6 +13,7 @@ const indexRouter = require('./routes');
 const userRouter = require('./routes/user');
 const gameRouter = require('./routes/game');
 
+dotenv.config();
 const app = express();
 passportConfig();
 app.set('port', process.env.PORT || 3001);
@@ -35,6 +37,7 @@ app.use(express.urlencoded({ extended: true})); // form parsing
 app.use(session({
     resave: false,
     saveUninitialized: false,
+    secret: process.env.COOKIE_SECRET,
     cookie: {
         httpOnly: true,
         secure: false,

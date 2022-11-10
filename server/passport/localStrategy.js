@@ -1,7 +1,7 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
-const User = require('../models.user');
+const User = require('../models/user');
 
 module.exports = () => {
     passport.use(new LocalStrategy({
@@ -22,6 +22,9 @@ module.exports = () => {
             } else{
                 done(null, false, {message: '가입되지 않은 회원'});
             }
+        } catch (error) {
+            console.error(error);
+            done(error);
         }
-    }))
+    }));
 }

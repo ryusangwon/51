@@ -7,12 +7,12 @@ router.get('/', async (req, res, next) => {
     let mento = req.params.body.mento;
     let mento_id = req.params.body.id;
 
-    if (mento.mento = false){
+    if (mento.mento === false){
         User.update({
-            mento: true;
-        }), {
-            where: {id: mento_id};
-        }
+            mento: true,
+        }, {
+            where: {id: mento_id},
+        })
     }
 
     res.send('mento done');
