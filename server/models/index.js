@@ -1,12 +1,12 @@
 const Sequelize = require('sequelize');
 const User = require('./user');
 const Game = require('./game');
-// const Lecture = require('./lecture');
-// const Lecture_room = require('./lecture_room');
-// const Lecture_user = require('./lecture_user');
-// const Review_star = require('./review_star');
-// const Rmc = require('./rmc');
-// const Rmc_board = require('./rmc_board');
+const Lecture = require('./lecture');
+const Lecture_room = require('./lecture_room');
+const Lecture_user = require('./lecture_user');
+const Review_star = require('./review_star');
+const Rmc = require('./rmc');
+const Rmc_board = require('./rmc_board');
 
 const env = process.env.NODE_ENV || 'development';
 const config = require('../config/config')[env];

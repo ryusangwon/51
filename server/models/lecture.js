@@ -17,10 +17,6 @@ module.exports = class Lecture extends Sequelize.Model {
                 type: Sequelize.BLOB,
                 allowNull: true,
             },
-            room_id: {
-                type: Sequelize.INTEGER,
-                allowNull: true,
-            },
             price: {
                 type: Sequelize.INTEGER,
                 allowNull: true,
@@ -40,5 +36,9 @@ module.exports = class Lecture extends Sequelize.Model {
             collate: 'utf8_general_ci',
         });
     }
-    static associate(db) {}
+    static associate(db) {
+        db.Lecture.hasMany(db.Lecture_room, { foreignKey: 'lecture_id', sourceKey: 'id'});
+        db.Lecture.hasMany(db.Lecture_user, { foreignkey: 'lecture_id', sourceKey: 'id'});
+        db.Lecutre.belongsTo(db.User, {foreignKey: 'user_id', targetKey: 'id'});
+    }
 };

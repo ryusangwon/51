@@ -27,5 +27,8 @@ module.exports = class Lecture_user extends Sequelize.Model {
             collate: 'utf8_general_ci',
         });
     }
-    static associate(db) {}
+    static associate(db) {
+        db.Lecture_user.belongsTo(db.Lecture, {foreignKey:'lecture_id', targetKey: 'id'});
+        db.Lecture_user.belongsTo(db.User, {foreignKey: 'user_id', targetKey: 'id'});
+    }
 };
