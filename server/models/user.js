@@ -30,10 +30,11 @@ module.exports = class User extends Sequelize.Model {
             game_id: {
                 type: Sequelize.INTEGER,
                 allowNull: true,
+                defaultValue: 1,
             },
         }, {
             sequelize,
-            timestamps: false,
+            timestamps: true,
             modelName: 'User',
             tableName: 'user',
             paranoid: false,
