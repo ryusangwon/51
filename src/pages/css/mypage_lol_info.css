@@ -32,13 +32,25 @@
     font-size: 15px;
     color: #000000;
 }
+.summoner_name{
+    width: 100%;
+    padding: 5px 5px;
+}
 .lol_info_name{
     font-size: 20px;
     font-weight: bold;
 }
+.estimateRequestTierSelect{
+    width: 100%;
+    padding: 5px 5px;
+}
 .option{
     list-style: none;
     padding-left:0px;
+}
+.position_list{
+    width: 100%;
+    padding: 5px 5px;
 }
 .champion_search_list{
     position: absolute;
