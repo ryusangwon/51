@@ -1,10 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './css/header.css';
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
     let navigate = useNavigate();
 
+    const [login_flag, setLogin_flag] = useState(false);
+
+  
+    
+    const rendering = () => {
+      const result = [];
+      
+      if(!sessionStorage.getItem('login-token')){
+
+        result.push(
+          <div className="header_login_div">
+            <div className="header_login" onClick={()=>navigate("/login")}>
+              로그인
+            </div>
+            <div className="header_memberjoin" onClick={()=>navigate("/signup")}>
+              회원가입
+            </div>
+          </div>
+          );
+      }else{
+        result.push(
+          <div className="header_login_div">
+            <div className="header_login" onClick={() => logout_btn()}>
+              로그아웃
+            </div>
+          </div>
+          );
+      }
+      
+      return result;
+  
+    };
+
+
+    const logout_btn = () => {
+      sessionStorage.setItem('login-token', '');
+      setLogin_flag(false);
+      navigate("/");
+    }
 
     return (
         <div className="App-header">
@@ -25,14 +64,7 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="header_login_div">
-          <div className="header_login" onClick={()=>navigate("/login")}>
-            로그인
-          </div>
-          <div className="header_memberjoin" onClick={()=>navigate("/signup")}>
-            회원가입
-          </div>
-        </div>
+        {rendering()}
 
       </div>
     );

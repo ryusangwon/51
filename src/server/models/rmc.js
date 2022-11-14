@@ -32,7 +32,7 @@ module.exports = class Rmc extends Sequelize.Model {
             },
         }, {
             sequelize,
-            timestamps: false,
+            timestamps: true,
             modelName: 'Rmc',
             tableName: 'rmc',
             paranoid: false,
@@ -40,5 +40,8 @@ module.exports = class Rmc extends Sequelize.Model {
             collate: 'utf8_general_ci',
         });
     }
-    static associate(db) {}
+    static associate(db) {
+        db.Rmc.hasMany(db.Rmc_board, {foreignKey: 'rmc_id', sourceKey: 'id'});
+        db.Rmc.belongsTo(db.User, {foreignKey: 'writer_id', targetKey: 'id'});
+    }
 };

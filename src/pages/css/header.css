@@ -2,19 +2,21 @@
   background-color: #000000;
   color: #FFFFFF;
   height: 80px;
-  padding-top: 30px;
 }
 
 .header_logo{
-  display: inline-block;
-  margin-left: 30px;
+  position: absolute;
+    top: 18px;
+    left: 18px;
     font-size: 30px;
     cursor: pointer;
 }
 
 .header_menu_div{
-  display: inline-block;
-  margin-left: 40%;
+  
+    position: absolute;
+    top: 30px;
+    left: 50%;
 }
 
 .header_menu_lecture{
@@ -36,8 +38,9 @@
 }
 
 .header_login_div{
-  display: inline-block;
-  margin-left: 10%;
+    position: absolute;
+    top: 30px;
+    left: 85%;
 }
 .header_login{
   display: inline-block;

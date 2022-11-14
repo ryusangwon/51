@@ -34,23 +34,40 @@
 }
 .learning_box{
     display: block;
-    width: 680px;
-    padding: 50px;
+    width: 100%;
     border: 30px;
-    margin-left: auto;
-    margin-right: auto;
     border-radius: 5px;
     background-color: #e9e9e9;
     color: rgba(20, 20, 20, 0.788);
 }
+
+.learned{
+    margin-top: 50px;;
+}
+
 .learned_box{
     display: block;
-    width: 680px;
-    padding: 50px;
-    border: 30px;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 5px;
+    min-height: 30px;
+    width: 100%;
     background-color: #e9e9e9;
     color: rgba(20, 20, 20, 0.788);
+}
+
+.learning_table{
+    width: 100%;
+}
+
+.learning_table_num_td{
+}
+
+.learning_table_title_td{
+
+}
+
+.learning_table_date_td{
+
+}
+
+.learning_table_button{
+
 }

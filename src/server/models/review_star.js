@@ -24,7 +24,7 @@ module.exports = class Review_star extends Sequelize.Model {
             },
         }, {
             sequelize,
-            timestamps: false,
+            timestamps: true,
             modelName: 'Review_star',
             tableName: 'review_star',
             paranoid: false,
@@ -32,5 +32,7 @@ module.exports = class Review_star extends Sequelize.Model {
             collate: 'utf8_general_ci',
         });
     }
-    static associate(db) {}
+    static associate(db) {
+        db.Review_star.belongsTo(db.User, {foreignKey:'mento_id', targetKey: 'id'});
+    }
 };

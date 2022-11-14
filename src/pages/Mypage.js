@@ -1,16 +1,47 @@
 import React, { useEffect } from 'react';
 import Header from './Header';
-import Mypage_course_list from './Mypage_course_list';
-import Mypage_lol_info from './Mypage_lol_info';
-import Mypage_regist_mentor from './Mypage_regist_mentor';
+import './css/mypage.css';
+
 
 const Mypage = () => {
   
     return (
-      <div>
+      <div className="height_100_class">
         <Header/>
 
-        <Mypage_course_list/>
+        <div className="mypage_back">
+          <div className="mypage_side">
+            <div>
+              계정이름
+            </div>
+            <div>
+              수강내역
+            </div>
+            <div>
+              멘토 등록
+            </div>
+            <div>
+              lol 정보
+            </div>
+          </div>
+
+          <div className="mypage_content">
+            <div>
+              계정이름
+            </div>
+            <div>
+              수강내역
+            </div>
+            <div>
+              멘토 등록
+            </div>
+            <div>
+              lol 정보
+            </div>
+          </div>
+        </div>
+
+        
       </div>
       
     );

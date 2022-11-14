@@ -9,20 +9,28 @@ module.exports = class Game extends Sequelize.Model {
                 allowNull: false,
                 autoIncrement: true,
             },
-            gid: {
+            summonerName: {
                 type: Sequelize.STRING(45),
                 allowNull: true,
             },
             tier: {
-                type: Sequelize.STRING(45),
+                type: Sequelize.STRING(20),
+                allowNull: true,
+            },
+            rank: {
+                type: Sequelize.STRING(5),
+                allowNull: true,
+            },
+            win: {
+                type: Sequelize.INTEGER,
+                allowNull: true,
+            },
+            loss: {
+                type: Sequelize.INTEGER,
                 allowNull: true,
             },
             champion: {
                 type: Sequelize.STRING(45),
-                allowNull: true,
-            },
-            win_rate: {
-                type: Sequelize.DOUBLE,
                 allowNull: true,
             },
             position: {
@@ -31,7 +39,7 @@ module.exports = class Game extends Sequelize.Model {
             }
         }, {
             sequelize,
-            timestamps: false,
+            timestamps: true,
             modelName: 'Game',
             tableName: 'game',
             paranoid: false,
@@ -39,5 +47,7 @@ module.exports = class Game extends Sequelize.Model {
             collate: 'utf8_general_ci',
         });
     }
-    static associate(db) {}
+    static associate(db) {
+        db.Game.belongsTo(db.User, {foreignKey: 'game_id', targetKey: 'id'});
+    }
 };

@@ -8,6 +8,7 @@ import Camera from './pages/Camera';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Lecture from './pages/Lecture';
+import Lecture_regist from './pages/Lecture_regist';
 import Rmc from './pages/Rmc';
 
 
@@ -21,6 +22,8 @@ const App = () => {
       <Route path="/mypage_regist_mentor" element={<Mypage_regist_mentor />} />
 
       <Route path="/lecture" element={<Lecture />}/>
+      <Route path="/lecture_regist" element={<Lecture_regist />}/>
+
       <Route path="/rmc" element={<Rmc />}/>
       <Route path="/mypage" element={<Mypage />}/>
 

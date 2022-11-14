@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Header from './Header';
 import './css/lecture.css';
-import { useNavigate } from "react-router-dom";
 
 
-const Lecture = () => {
-  let navigate = useNavigate();
+const Lecture_regist = () => {
 
   const [search, setSearch] = useState('');
 
@@ -51,7 +49,7 @@ const Lecture = () => {
           </div>
 
           <div className="lecture_regist_btn_div">
-            <button className = "lecture_regist_btn" type="button" onClick={()=>navigate("/lecture_regist")}>강의등록</button>
+            <button className = "lecture_regist_btn" type="button" onClick={() => regist_btn()}>강의등록</button>
           </div>
 
 
@@ -67,4 +65,4 @@ const Lecture = () => {
     );
   }
 
-  export default Lecture;
+  export default Lecture_regist;
