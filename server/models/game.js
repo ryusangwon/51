@@ -14,6 +14,10 @@ module.exports = class Game extends Sequelize.Model {
                 allowNull: true,
                 unique: true,
             },
+            encryptedSummonerId: {
+                type: Sequelize.STRING(45),
+                allowNull: true,
+            },
             tier: {
                 type: Sequelize.STRING(20),
                 allowNull: true,
