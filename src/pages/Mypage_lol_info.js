@@ -1,7 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './Header';
 import './css/mypage_lol_info.css';
 import { useNavigate } from "react-router-dom";
+
+/*const [search, setSearch] = useState("");
+const onChange = (e) => {
+    setSearch(e.target.value)
+}
+
+const filterTitle = movies.filter((p) => {
+    return p.title.toLocaleLowerCase(" ","").includes(search.toLocaleLowerCase().replace(" ",""))
+})*/
 
 const Mypage = () => {
   let navigate = useNavigate();
@@ -279,6 +288,7 @@ const Mypage = () => {
                                         </div>
                                         <div className="list" id="list29">
                                             <input type="checkbox" className="champion" id="퀸"/><div className="champion_text">퀸</div>
+                                            <input type="checkbox" className="champion" id="크산테"/><div className="champion_text">크산테</div>
                                             <input type="checkbox" className="champion" id="클레드"/><div className="champion_text">클레드</div>
                                             <input type="checkbox" className="champion" id="키아나"/><div className="champion_text">키아나</div>
                                             <input type="checkbox" className="champion" id="킨드레드"/><div className="champion_text">킨드레드</div>
