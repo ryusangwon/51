@@ -21,11 +21,11 @@ module.exports = class Lecture extends Sequelize.Model {
                 type: Sequelize.INTEGER,
                 allowNull: true,
             },
-            start_time: {
-                type: Sequelize.DATE,
-                allowNull: true,
-                defaultValue: Sequelize.NOW,
-            }
+//            start_time: {
+//                type: Sequelize.DATE,
+//                allowNull: true,
+//                defaultValue: Sequelize.NOW,
+//            }
         }, {
             sequelize,
             timestamps: true,

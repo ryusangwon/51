@@ -12,6 +12,7 @@ module.exports = class Game extends Sequelize.Model {
             summonerName: {
                 type: Sequelize.STRING(45),
                 allowNull: true,
+                unique: true,
             },
             tier: {
                 type: Sequelize.STRING(20),
@@ -39,7 +40,7 @@ module.exports = class Game extends Sequelize.Model {
             }
         }, {
             sequelize,
-            timestamps: true,
+            timestamps: false,
             modelName: 'Game',
             tableName: 'game',
             paranoid: false,

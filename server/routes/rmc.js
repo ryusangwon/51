@@ -26,9 +26,9 @@ router.put('/update', async (req, res, next) => {
     Rmc.update({
         title: title,
         content: content,
-    }), {
+    }, {
         where: {id: id},
-    }
+    });
     res.send('update done');
 });
 
