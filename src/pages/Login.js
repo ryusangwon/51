@@ -18,9 +18,10 @@ const Login = () => {
       password : pw,
 
     }).then((result)=>{
-      console.log(result);
-      console.log(result.data);
-      /*
+      
+      //console.log(result);
+      //console.log(result.data);
+      
       if(result.data.length != 0){
         sessionStorage.setItem('login-token', id);
 
@@ -28,7 +29,7 @@ const Login = () => {
       }else{
         alert('로그인 실패');
       }
-      */
+      
     })
     
   }
