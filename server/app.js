@@ -21,29 +21,34 @@ app.set('port', process.env.PORT || 3001);
 app.set('view engine', 'html');
 
 nunjucks.configure('views', {
-    express: app,
-    watch: true,
+  express: app,
+  watch: true,
 });
 
-sequelize.sync({force: false}).then(() => {
+sequelize
+  .sync({ force: false })
+  .then(() => {
     console.log('Database connected successfully');
-}).catch((err) => {
+  })
+  .catch((err) => {
     console.error(err);
-});
+  });
 
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json()); // json parsing
-app.use(express.urlencoded({ extended: true})); // form parsing
-app.use(session({
+app.use(express.urlencoded({ extended: true })); // form parsing
+app.use(
+  session({
     resave: false,
     saveUninitialized: false,
     secret: process.env.COOKIE_SECRET,
     cookie: {
-        httpOnly: true,
-        secure: false,
-    }
-}));
+      httpOnly: true,
+      secure: false,
+    },
+  })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors());
@@ -53,20 +58,19 @@ app.use('/user', userRouter);
 app.use('/game', gameRouter);
 
 app.get('/', (req, res) => {
-    // req.session.id = 'id';
-    res.sendFile(path.join(__dirname, '/views/index.html'));
+  // req.session.id = 'id';
+  res.sendFile(path.join(__dirname, '/views/index.html'));
 });
 
 app.use((req, res, next) => {
-    res.send('404!');
+  res.send('404!');
 });
 
 app.use((err, req, res, next) => {
-    console.error(err);
-    res.send('error in server!');
+  console.error(err);
+  res.send('error in server!');
 });
 
 app.listen(app.get('port'), () => {
-    console.log(app.get('port'), 'running');
+  console.log(app.get('port'), 'running');
 });
-
