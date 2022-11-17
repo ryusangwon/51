@@ -1,37 +1,46 @@
 import React, { useEffect, useState } from 'react';
 import Header from './Header';
-import './css/lecture.css';
+//import './css/lecture.css';
+import './css/lecture_regist.css';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 
 const Lecture_regist = () => {
 
-  const [search, setSearch] = useState('');
+  const [lecture_title, setLecture_title] = useState('');
+  const [lecture_duration, setLecture_duration] = useState('');
+  const [lecture_price, setLecture_price] = useState('');
+  const [lecture_date, setLecture_date] = useState('');
+  const [lecture_info, setLecture_info] = useState('');
+  const [mento_info, setMento_info] = useState('');
+  const [startDate, setStartDate] = useState(new Date());
 
   const rendering = () => {
-    const result = [];
-    for (let i = 0; i < 8; i++) {
-      result.push(
-    <div class="box-init box">
-      <img className="box_init_img"></img>
-
-      <div className="box_init_div_id">
-        아이디 / 티어
-      </div>
-      <div className="box_init_div_title">
-        강의제목 테스트
-      </div>
-      <div className="box_init_div_time">
-        100분 3000point
-      </div>
-    </div>
-    );
-    }
-    return result;
+    
 
   };
 
-  const search_btn = () => {
-    alert(search);
+  const send_btn = () => {
+
+    console.log(lecture_title);
+    console.log(lecture_price);
+    console.log(lecture_date);
+    console.log(lecture_info);
+    console.log(mento_info);
+
+    /*
+    axios.post('http://localhost:3001/lecture/new', {
+      user_id : sessionStorage.getItem('login-token'),
+      description : ,
+      room_id : ,
+      price : ,
+
+      }).then((result)=>{
+        console.log(result);
+      })
+    */
+      
   }
 
   const regist_btn = () => {
@@ -42,25 +51,69 @@ const Lecture_regist = () => {
       <div className="height_100_class">
         <Header/>
 
-        <div className="lecture_background">
-          <div className="lecture_search_div">
-            <input className = "lecture_search_input" type="text" name="search" placeholder="검색" onChange={(event) => setSearch(event.target.value)}/>
-            <button className = "lecture_search_btn" type="button" onClick={() => search_btn()}>검색</button>
-          </div>
+        <div className="login-wrapper">
+            <div className="regist_form">
+                <div>
+                  강의제목
+                </div>
+                <input id="LOGIN_ID" className = "long_text" type="text" name="id" onChange={(event) => setLecture_title(event.target.value)}/>
+                
+                
+                <div>
+                  <div className="short_inline_div1">
+                    <div>
+                      강의날짜
+                    </div>
+                    
+                    <div>
+                    <DatePicker className="short_text"
+                      selected={startDate}
+                     locale="ko"
+                     dateFormat="yyyy년 MM월 dd일 HH:mm:ss"
+                     startDate={new Date()}
+                     onChange={(date) => setStartDate(date)}
+                     showTimeSelect 
+                     timeFormat="HH:mm"
+                     timeIntervals={10} 
+                     timeCaption="time"
+                      ></DatePicker>
 
-          <div className="lecture_regist_btn_div">
-            <button className = "lecture_regist_btn" type="button" onClick={() => regist_btn()}>강의등록</button>
-          </div>
+                  </div>
+
+                  </div>
+                  
+                  <div className="short_inline_div2">
+                    <div>
+                      가격
+                    </div>
+                    <input id="LOGIN_ID" className = "short_text" type="text" name="id" onChange={(event) => setLecture_price(event.target.value)}/>
+                  </div>
+                </div>
+                
+                
+                
+                <div>
+                  강의설명
+                </div>
+                <textarea className="regist_textarea" cols="100" rows="11"
+                    onChange={(e) => setLecture_info(e.target.value) }>
+                  </textarea>
 
 
-          <div class="lecture_grid-init grid">
-            {rendering()}
-          </div>
+                <div>
+                  멘토정보
+                </div>
+                <textarea className="regist_textarea" cols="100" rows="11"
+                    onChange={(e) => setMento_info(e.target.value) }>
+                  </textarea>
 
-
+              
+                
+                <button id="LOGIN_BTN" className = "login_btn" type="button" onClick={() => send_btn()}>강의등록</button>
+            </div>
         </div>
-
       </div>
+
       
     );
   }

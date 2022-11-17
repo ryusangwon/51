@@ -17,11 +17,11 @@ module.exports = class Review_star extends Sequelize.Model {
                 type: Sequelize.STRING(45),
                 allowNull: true,
             },
-            create_date: {
-                type: Sequelize.DATE,
-                allowNull: true,
-                defaultValue: Sequelize.NOW,
-            },
+//            create_date: {
+//                type: Sequelize.DATE,
+//                allowNull: true,
+//                defaultValue: Sequelize.NOW,
+//            },
         }, {
             sequelize,
             timestamps: true,

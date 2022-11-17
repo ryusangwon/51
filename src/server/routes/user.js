@@ -1,7 +1,7 @@
 const express = require("express");
 const passport = require('passport');
 const User = require("../models/user");
-const {isLoggedIn, isNowLoggedIn, isNotLoggedIn} = require('./middlewares');
+const {isLoggedIn, isNotLoggedIn} = require('./middlewares');
 const router = express.Router();
 
 router.get('/', async (req, res, next) => {
@@ -12,7 +12,7 @@ router.get('/', async (req, res, next) => {
         console.error(err);
         next(err);
     }
-});
+}); 
 
 router.post('/signup', async (req, res, next) => {
     const {id, name, password, email, mento} = req.body;
@@ -35,7 +35,6 @@ router.post('/signup', async (req, res, next) => {
         next(err);
     }
 })
-
 
 router.post('/login', isNotLoggedIn, (req, res, next) => {
     passport.authenticate('local', (authError, user, info) => {
