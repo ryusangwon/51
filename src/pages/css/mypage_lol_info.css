@@ -35,14 +35,16 @@
 .summoner_name{
     width: 100%;
     padding: 5px 5px;
+    border : 2px solid;
 }
 .lol_info_name{
     font-size: 20px;
     font-weight: bold;
 }
-.estimateRequestTierSelect{
+.tierselect{
     width: 100%;
     padding: 5px 5px;
+    border : 2px solid;
 }
 .option{
     list-style: none;
@@ -51,6 +53,7 @@
 .position_list{
     width: 100%;
     padding: 5px 5px;
+    border : 2px solid;
 }
 .champion_search_list{
     position: absolute;
@@ -59,6 +62,8 @@
     margin-top: 5px;
     border-radius: 6px;
     border : 2px solid;
+    overflow-y: scroll;
+    height: 390px;
 }
 .list{
     display: flex;

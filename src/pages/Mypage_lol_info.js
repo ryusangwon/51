@@ -12,30 +12,32 @@ const filterTitle = movies.filter((p) => {
     return p.title.toLocaleLowerCase(" ","").includes(search.toLocaleLowerCase().replace(" ",""))
 })*/
 
-const Mypage = () => {
+const Mypage_lol_info = () => {
   let navigate = useNavigate();
   
     return (
-      <div>
+        <div className="height_100_class">
         <Header/>
         
-        <div className="mypage_background">
-            <section className="mypage_container">
-                <aside className="sidebar">
-                    <div className="sidebar_userinfo">
-                        <div className="user_name">
-                            <span className="name">계정이름</span>
-                        </div>
-                    </div>
-                    <div className="sidebar_usermenu">
-                        <ul className="menu_list">
-                            <li className="item" data-page="course_list" onClick={()=>navigate("/mypage_course_list")}>수강 내역</li>
-                            <li className="item" data-page="regist_mentor" onClick={()=>navigate("/mypage_regist_mentor")}>멘토 등록</li>
-                            <li className="item" data-page="lol_info" onClick={()=>navigate("/mypage_lol_info")}>lol 정보</li>
-                        </ul>
-                    </div>
-                </aside>
-                <div className="main_common">
+        <div className="mypage_back">
+            <div className="mypage_side">
+            <div className="mypage_side_account">
+              Tester
+            </div>
+            <div className="mypage_side_divide">
+
+            </div>
+            <div className="mypage_side_menu" onClick={()=>navigate("/mypage_course_list")}>
+              수강내역
+            </div>
+            <div className="mypage_side_menu" onClick={()=>navigate("/mypage_regist_mentor")}>
+              멘토 등록
+            </div>
+            <div className="mypage_side_menu" onClick={()=>navigate("/mypage_lol_info")}>
+              lol 정보
+            </div>
+          </div>
+                <div className="mypage_content">
                     <div className="mypage_lol_info">
                         <div className="manage">
                             <div className="lol">
@@ -44,7 +46,7 @@ const Mypage = () => {
                                     <input className="summoner_name" type="text" placeholder="소환사명"/>
                                     <div className="info_wrapper">
                                         <div className="lol_info_name">등급</div>
-                                        <select className="estimateRequestTierSelect">
+                                        <select className="tierselect">
                                             <option value="i4">아이언IV</option>
                                             <option value="i3">아이언III</option>
                                             <option value="i2">아이언II</option>
@@ -325,11 +327,10 @@ const Mypage = () => {
                         </div>
                     </div>
                 </div>
-            </section>
         </div>
       </div>
       
     );
   }
 
-  export default Mypage;
+  export default Mypage_lol_info;
