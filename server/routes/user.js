@@ -12,7 +12,7 @@ router.get('/', async (req, res, next) => {
         console.error(err);
         next(err);
     }
-});
+}); 
 
 router.post('/signup', async (req, res, next) => {
     const {id, name, password, email, mento} = req.body;
