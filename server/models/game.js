@@ -34,10 +34,6 @@ module.exports = class Game extends Sequelize.Model {
                 type: Sequelize.INTEGER,
                 allowNull: true,
             },
-            champion: {
-                type: Sequelize.STRING(45),
-                allowNull: true,
-            },
             position: {
                 type: Sequelize.STRING(45),
                 allowNull: true,

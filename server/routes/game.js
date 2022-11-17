@@ -79,10 +79,38 @@ router.get('/getChampion', async (req, res) => {
         const championData = await axios.get(url);
         let champion = JSON.parse(JSON.stringify(champions));
         console.log(summonerName, "'s champion list");
+        champList = [];
         for (let i = 0; i < 5; i++){
             console.log(champion[0][championData['data'][i]['championId'].toString()]);
+            champList.push(champion[0][championData['data'][i]['championId'].toString()]);
+            // 여기서
         }
-        res.send("DONE");
+        console.log(champList);
+
+        return res.send(champList);
+//        res.send("DONE");
+
+    } catch (err) {
+        console.error(err);
+        next(err);
+    }
+})
+
+router.get('/saveChampion', async (req, res) => {
+    try{
+        console.log('[SAVECHAMPION]');
+        id = req.body.id;
+        champList = req.body.champList;
+
+        console.log(champList);
+        for (let i=0; i < 3; i++){
+            await game_champ.create({
+                id: id,
+                champion: champList[i],
+            });
+        }
+
+        return res.send("DONE");
 
     } catch (err) {
         console.error(err);

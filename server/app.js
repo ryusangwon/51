@@ -13,13 +13,15 @@ const passportConfig = require('./passport');
 const indexRouter = require('./routes');
 const userRouter = require('./routes/user');
 const gameRouter = require('./routes/game');
+const mentoRouter = require('./routes/mento');
+const lectureRouter = require('./routes/lecture');
+const lectureRoomRouter = require('./routes/lecture_room');
 
 dotenv.config();
 const app = express();
 passportConfig();
 app.set('port', process.env.PORT || 3001);
 app.set('view engine', 'html');
-
 nunjucks.configure('views', {
     express: app,
     watch: true,
@@ -51,6 +53,7 @@ app.use(cors());
 app.use('/', indexRouter);
 app.use('/user', userRouter);
 app.use('/game', gameRouter);
+app.use('/mento', mentoRouter);
 
 app.get('/', (req, res) => {
     // req.session.id = 'id';
