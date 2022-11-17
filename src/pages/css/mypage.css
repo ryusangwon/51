@@ -21,8 +21,8 @@
 
 .mypage_content{
     position: absolute;
-    width: calc(100% - 400px);
-    height: calc(100% - 300px);
+    width: 800px;
+    height: 600px;
     background-color: #FFFFFF;
     box-shadow: 0 0 10px 1px rgb(0 0 0 / 5%);  
     border-radius: 12px;
