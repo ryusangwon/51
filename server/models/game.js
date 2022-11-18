@@ -52,7 +52,7 @@ module.exports = class Game extends Sequelize.Model {
     );
   }
   static associate(db) {
-    db.Game.belongsTo(db.User, { foreignKey: 'game_id', targetKey: 'id' });
+    db.Game.hasOne(db.User, { foreignKey: 'game_id', targetKey: 'id' });
     db.Game.hasMany(db.Game_champ, { foreignKey: 'game_id', sourceKey: 'id' });
   }
 };
