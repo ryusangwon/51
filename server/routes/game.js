@@ -23,8 +23,8 @@ router.get('/', async (req, res, next) => {
 router.get('/getData', async (req, res, next) => {
     try{
         console.log("[GETDATABYSUMMONERNAME]");
-        let name = "hide on bush";
-//        const {name} = req.body.name;
+//        let name = "hide on bush";
+        const {name} = req.body.name;
         let encodedName = urlencode(name);
         console.log(encodedName);
         let url = `https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/${encodedName}?api_key=${api_key}`;
@@ -81,12 +81,9 @@ router.get('/getChampion', async (req, res) => {
         for (let i = 0; i < 5; i++){
             console.log(champion[0][championData['data'][i]['championId'].toString()]);
             champList.push(champion[0][championData['data'][i]['championId'].toString()]);
-            // 여기서
         }
         console.log(champList);
-
         return res.send(champList);
-//        res.send("DONE");
 
     } catch (err) {
         console.error(err);

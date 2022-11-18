@@ -55,36 +55,11 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
     })(req, res, next);
 });
 
-//router.post('/login', async (req, res, next) => {
-//    const {id, password} = req.body;
-//    const logUser = await User.findOne({where: {id}});
-//    if (logUser){
-//        if (!password == logUser.password){
-//            return redirect('/loginError?error=loginError');
-//        }else{
-//            return res.redirect('/');
-//        }
-//    } else{
-//        res.send('no user');
-//    }
-//
-//});
 
 router.get('/logout', isLoggedIn, (req, res) => {
     req.logout();
     req.session.destroy();
     res.redirect('/');
 })
-
-// const { User } = require('./models');
-// User.create({
-//   id: 'testid2',
-//   name: 'name2',
-//   password: 'pw2',
-//   email: 'test2@gmail.com',
-//   mento: false,
-//   game_id: 4,
-// })
-
 
 module.exports = router;
