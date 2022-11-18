@@ -18,35 +18,35 @@ db.sequelize = sequelize;
 
 db.User = User;
 db.Game = Game;
-// db.Lecture = Lecture;
-// db.Lecture_room = Lecture_room;
-// db.Lecture_user = Lecture_user;
-// db.Review_star = Review_star;
-// db.Rmc = Rmc;
-// db.Rmc_board = Rmc_board;
+db.Lecture = Lecture;
+db.Lecture_room = Lecture_room;
+db.Lecture_user = Lecture_user;
+db.Review_star = Review_star;
+db.Rmc = Rmc;
+db.Rmc_board = Rmc_board;
 
 User.init(sequelize)
-// // User.associate(db);
+//User.associate(db);
 
 Game.init(sequelize)
-// // Game.associate(db);
+//Game.associate(db);
 
-// Lecture.init(sequelize)
-// // Lecture.associate(db);
+Lecture.init(sequelize)
+//Lecture.associate(db);
 
-// Lecture_room.init(sequelize)
-// // Lecture_room.associate(db);
+Lecture_room.init(sequelize)
+//Lecture_room.associate(db);
 
-// Lecture_user.init(sequelize)
-// // Lecture_user.associate(db);
-
-// Review_star.init(sequelize)
-// // Review_star.associate(db);
-
-// Rmc.init(sequelize)
-// // Rmc.associate(db);
-
-// Rmc_board.init(sequelize)
-// // Rmc_board.associate(db);
+//Lecture_user.init(sequelize)
+//Lecture_user.associate(db);
+//
+//Review_star.init(sequelize)
+//Review_star.associate(db);
+//
+//Rmc.init(sequelize)
+//Rmc.associate(db);
+//
+//Rmc_board.init(sequelize)
+//Rmc_board.associate(db);
 
 module.exports = db;

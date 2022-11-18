@@ -13,22 +13,38 @@ module.exports = class Lecture extends Sequelize.Model {
                 type: Sequelize.STRING(20),
                 allowNull: true,
             },
-            description: {
+            title: {
+                type: Sequelize.STRING(45),
+                allowNull: true,
+            },
+            mento_description: {
                 type: Sequelize.BLOB,
+                allowNull: true,
+            },
+            lecture_description: {
+                type: Sequelize.BLOB,
+                allowNull: true,
+            },
+            lecture_time: {
+                type: Sequelize.STRING(45),
                 allowNull: true,
             },
             price: {
                 type: Sequelize.INTEGER,
                 allowNull: true,
             },
-//            start_time: {
-//                type: Sequelize.DATE,
-//                allowNull: true,
+            start_time: {
+                type: Sequelize.DATE,
+                allowNull: true,
 //                defaultValue: Sequelize.NOW,
-//            }
+            },
+            menti_in: {
+                type: Sequelize.BOOLEAN,
+                allowNull: true,
+            },
         }, {
             sequelize,
-            timestamps: true,
+            timestamps: false,
             modelName: 'Lecture',
             tableName: 'lecture',
             paranoid: false,

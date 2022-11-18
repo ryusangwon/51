@@ -8,8 +8,7 @@ const champions = require('../champion.json');
 
 const router = express.Router();
 
-const api_key = "RGAPI-9c43cfbe-a610-4d19-8f93-82a99adb5887";
-
+const api_key = "RGAPI-09c9554e-a246-458e-97cf-dc2f9768c877";
 
 router.get('/', async (req, res, next) => {
     try{
@@ -25,7 +24,7 @@ router.get('/getData', async (req, res, next) => {
     try{
         console.log("[GETDATABYSUMMONERNAME]");
         let name = "hide on bush";
-//        let name = req.body.name;
+//        const {name} = req.body.name;
         let encodedName = urlencode(name);
         console.log(encodedName);
         let url = `https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/${encodedName}?api_key=${api_key}`;
@@ -33,13 +32,12 @@ router.get('/getData', async (req, res, next) => {
         const summonerIdData = await axios.get(url);
         let summonerId = summonerIdData["data"]["id"];
         console.log(summonerId);
-//        url = `https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/${summonerId}?api_key=${api_key}`;
-        url = "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/4A-r8LyUHnKR-eLYeDDRpcOGTy9q9Rpv-M-F3F1_DcxI7A?api_key=RGAPI-9c43cfbe-a610-4d19-8f93-82a99adb5887";
+        url = `https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/${summonerId}?api_key=${api_key}`;
+//        url = "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/4A-r8LyUHnKR-eLYeDDRpcOGTy9q9Rpv-M-F3F1_DcxI7A?api_key=RGAPI-9c43cfbe-a610-4d19-8f93-82a99adb5887";
         const summonerStatusData = await axios.get(url);
         summonerDict = {};
         summonerDict['summonerName'] = summonerStatusData['data'][0]['summonerName'];
-        summonerDict['tier'] = summonerStatusData['data'][0]['tier'];
-        summonerDict['rank'] = summonerStatusData['data'][0]['rank'];
+        summonerDict['tier'] = summonerStatusData['data'][0]['tier'] + summonerStatusData['data'][0]['rank'];
         summonerDict['win'] = summonerStatusData['data'][0]['wins'];
         summonerDict['loss'] = summonerStatusData['data'][0]['losses'];
         summonerDict['win_rates'] = Math.round(100 * summonerDict['win'] / (summonerDict['win'] + summonerDict['loss']))/100;
@@ -53,7 +51,7 @@ router.get('/getData', async (req, res, next) => {
             win: summonerDict['win'],
             loss: summonerDict['loss'],
         });
-        res.send("DONE");
+        return res.json(summonerDict);
         
     } catch (err) {
         console.error(err);
@@ -65,8 +63,8 @@ router.get('/getChampion', async (req, res) => {
     try{
         console.log('[GETCHAMPION]');
         let count = 5;
-        let summonerName = "Hide on bush";
-//        let summonerName = req.body.name;
+//        let summonerName = "Hide on bush";
+        const {summonerName} = req.body.name;
         let summoner = await Game.findOne({where: {summonerName: summonerName}});
         console.log("게임", summoner['encryptedSummonerId']);
         if (summoner === undefined || summoner === null){
@@ -99,11 +97,12 @@ router.get('/getChampion', async (req, res) => {
 router.get('/saveChampion', async (req, res) => {
     try{
         console.log('[SAVECHAMPION]');
-        id = req.body.id;
-        champList = req.body.champList;
+        const {id} = req.body.id;
+        const {position} = req.body.position;
+        const {champList} = req.body.champList;
 
         console.log(champList);
-        for (let i=0; i < 3; i++){
+        for (let i=0; i < 5; i++){
             await game_champ.create({
                 id: id,
                 champion: champList[i],

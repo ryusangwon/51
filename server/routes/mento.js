@@ -3,9 +3,9 @@ const User = require('../models/user');
 
 const router = express.Router();
 
-router.get('/register', async (req, res, next) => {
+router.post('/register', async (req, res, next) => {
 //    let mento = req.params.body.mento;
-    let mento_id = req.params.body.id;
+    const {mento_id} = req.params.body.id;
 
     try{
         let message;

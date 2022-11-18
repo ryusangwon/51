@@ -23,10 +23,6 @@ module.exports = class Game extends Sequelize.Model {
           type: Sequelize.STRING(20),
           allowNull: true,
         },
-        rank: {
-          type: Sequelize.STRING(5),
-          allowNull: true,
-        },
         win: {
           type: Sequelize.INTEGER,
           allowNull: true,
