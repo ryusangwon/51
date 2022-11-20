@@ -25,7 +25,7 @@ db.User = User;
 db.Game = Game;
  db.Lecture = Lecture;
  db.Lecture_room = Lecture_room;
-// db.Lecture_user = Lecture_user;
+ db.Lecture_user = Lecture_user;
 // db.Review_star = Review_star;
 // db.Rmc = Rmc;
 // db.Rmc_board = Rmc_board;
@@ -41,8 +41,8 @@ Game.init(sequelize);
 
  Lecture_room.init(sequelize)
 //  Lecture_room.associate(db);
-//
-// Lecture_user.init(sequelize)
+
+ Lecture_user.init(sequelize)
 //  Lecture_user.associate(db);
 //
 // Review_star.init(sequelize)

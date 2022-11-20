@@ -18,11 +18,11 @@ module.exports = class Lecture extends Sequelize.Model {
                 allowNull: true,
             },
             mento_description: {
-                type: Sequelize.BLOB,
+                type: Sequelize.TEXT,
                 allowNull: true,
             },
             lecture_description: {
-                type: Sequelize.BLOB,
+                type: Sequelize.TEXT,
                 allowNull: true,
             },
             lecture_time: {

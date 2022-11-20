@@ -31,10 +31,6 @@ module.exports = class Game extends Sequelize.Model {
           type: Sequelize.INTEGER,
           allowNull: true,
         },
-        champion: {
-          type: Sequelize.STRING(45),
-          allowNull: true,
-        },
         position: {
           type: Sequelize.STRING(45),
           allowNull: true,
@@ -52,7 +48,7 @@ module.exports = class Game extends Sequelize.Model {
     );
   }
   static associate(db) {
-    db.Game.hasOne(db.User, { foreignKey: 'game_id', sourceKey: 'id' });
     db.Game.hasMany(db.Game_champ, { foreignKey: 'game_id', sourceKey: 'id' });
+    db.Game.belongsTo(db.User, { foreignKey: 'game_id', sourceKey: 'id' });
   }
 };
