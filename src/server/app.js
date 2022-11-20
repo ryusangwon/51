@@ -17,6 +17,7 @@ const mentoRouter = require('./routes/mento');
 const lectureRouter = require('./routes/lecture');
 const lectureRoomRouter = require('./routes/lecture_room');
 
+//주석
 dotenv.config();
 const app = express();
 passportConfig();

@@ -15,7 +15,7 @@ const Rmc = () => {
 
   }
 
-  const notice_write_btn = () => {
+  const new_rmc_btn = () => {
 
   }
   
@@ -52,7 +52,7 @@ const Rmc = () => {
           </table>
 
           <div className="rmc_table_bottom_div">
-            <button className = "rmc_record_btn" type="button" onClick={() => notice_write_btn()}>새글쓰기</button>
+            <button className = "rmc_record_btn" type="button" onClick={() => new_rmc_btn()}>새글쓰기</button>
           </div>
 
 
