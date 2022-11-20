@@ -21,13 +21,13 @@ router.get('/', async (req, res, next) => {
 });
 
 let summonerDict;
-router.get('/getData', async (req, res, next) => {
+router.post('/getData', async (req, res, next) => {
     try{
         console.log("[GETDATABYSUMMONERNAME]");
 //        let name = "hide on bush";
 //        let position = "미드";
-        const {name} = req.body.name;
-        const {position} = req.body.position;
+        const name = req.body.name;
+        const position = req.body.position;
         let encodedName = urlencode(name);
         console.log(encodedName);
         let url = `https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/${encodedName}?api_key=${api_key}`;
