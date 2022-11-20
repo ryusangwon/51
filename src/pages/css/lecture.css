@@ -12,24 +12,24 @@
 
 * {
     box-sizing: border-box;
-} 
-    
+}
+
     .lecture_grid-init {
         width: 90%;
-      margin: auto; 
+      margin: auto;
       margin-top: 50px;
-      padding: 10px; 
-    }
-    
-    .box-init { 
-      font-size: larger; 
-      color: #000000; 
       padding: 10px;
-    
-      /*display: flex; 
-      align-items: center; 
+    }
+
+    .box-init {
+      font-size: larger;
+      color: #000000;
+      padding: 10px;
+
+      /*display: flex;
+      align-items: center;
       justify-content: center;
-      */ 
+      */
     }
 
 .grid{
@@ -43,9 +43,9 @@
 .box_init_img{
     width: 100%;
     height: 180px;
-    border-radius: 5px; 
-    background-color: #2196f3; 
-    border: 1px solid black; 
+    border-radius: 5px;
+    background-color: #2196f3;
+    border: 1px solid black;
 }
 .box_init_div_id{
     font-size: 10px;
@@ -55,10 +55,25 @@
 }
 .box_init_div_time{
     font-size: 10px;
-}   
+}
 
 .lecture_regist_btn_div{
     position: absolute;
     top: 100px;
     left: 90%;
+}
+
+
+.box_init_div_title{
+  font-size: 15px;
+}
+
+
+.box_init_div_time{
+  font-size: 15px;
+}
+
+
+.box_init_div_time{
+  font-size: 15px;
 }

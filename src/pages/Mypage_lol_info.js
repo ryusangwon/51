@@ -47,7 +47,7 @@ const Mypage_lol_info = () => {
         <div className="mypage_back">
             <div className="mypage_side">
             <div className="mypage_side_account">
-              Tester
+              {sessionStorage.getItem('login-token')}
             </div>
             <div className="mypage_side_divide">
 

@@ -40,11 +40,25 @@ const Login = () => {
   }
 
   const login_success = () => {
-
     axios.post('http://localhost:3001/user/ismenti', {
       id : id,
     }).then((result)=>{
       console.log(result.data);
+
+      if(result.data == "mento"){
+        sessionStorage.setItem('login-token', id);
+        sessionStorage.setItem('mento', 0);
+
+        navigate("/");
+      }else if(result.data == "no mento"){
+        sessionStorage.setItem('login-token', id);
+        sessionStorage.setItem('mento', 1);
+
+        navigate("/");
+      }else{
+        alert('로그인 실패');
+      }
+
 
     })
 
