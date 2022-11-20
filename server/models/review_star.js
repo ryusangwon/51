@@ -27,6 +27,6 @@ module.exports = class Review_star extends Sequelize.Model {
         });
     }
     static associate(db) {
-        db.Review_star.belongsTo(db.User, {foreignKey:'mento_id', targetKey: 'id'});
+        db.Review_star.belongsTo(db.Lecture, {foreignKey:'lecture_id', targetKey: 'id'});
     }
 };
