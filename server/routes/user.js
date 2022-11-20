@@ -63,7 +63,7 @@ router.get('/logout', isLoggedIn, (req, res) => {
 })
 
 
-router.post('/ismenti', (req, res) => {
+router.post('/ismenti', async (req, res) => {
     let id = req.body.id;
     const exUser = await User.findOne({where: {id: id}});
     if (exUser) {

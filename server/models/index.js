@@ -3,7 +3,6 @@ const User = require('./user');
 const Game = require('./game');
 const Lecture = require('./lecture');
 const Lecture_room = require('./lecture_room');
-const Lecture_user = require('./lecture_user');
 const Review_star = require('./review_star');
 const Rmc = require('./rmc');
 const Rmc_board = require('./rmc_board');
@@ -25,7 +24,6 @@ db.User = User;
 db.Game = Game;
 db.Lecture = Lecture;
 db.Lecture_room = Lecture_room;
-db.Lecture_user = Lecture_user;
 // db.Review_star = Review_star;
 // db.Rmc = Rmc;
 // db.Rmc_board = Rmc_board;
@@ -42,8 +40,6 @@ Game.init(sequelize);
  Lecture_room.init(sequelize)
 //  Lecture_room.associate(db);
 
- Lecture_user.init(sequelize)
-//  Lecture_user.associate(db);
 //
 // Review_star.init(sequelize)
 //  Review_star.associate(db);
