@@ -3,25 +3,19 @@ const Sequelize = require('sequelize');
 module.exports = class Review_star extends Sequelize.Model {
     static init(sequelize){
         return super.init({
-            id: {
-                type: Sequelize.INTEGER,
-                primaryKey: true,
-                allowNull: false,
-                autoIncrement: true,
-            },
-            mento_id: {
-                type: Sequelize.STRING(45),
-                allowNull: true,
-            },
             star: {
                 type: Sequelize.STRING(45),
                 allowNull: true,
             },
-//            create_date: {
-//                type: Sequelize.DATE,
-//                allowNull: true,
-//                defaultValue: Sequelize.NOW,
-//            },
+            create_date: {
+                type: Sequelize.DATE,
+                allowNull: true,
+                defaultValue: Sequelize.NOW,
+            },
+            lecture_id: {
+                type: Sequelize.INTEGER,
+                allowNull: false,
+            },
         }, {
             sequelize,
             timestamps: true,

@@ -4,16 +4,10 @@ module.exports = class Game extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        id: {
-          type: Sequelize.INTEGER,
-          primaryKey: true,
-          allowNull: false,
-          autoIncrement: true,
-        },
         summonerName: {
           type: Sequelize.STRING(45),
           allowNull: true,
-          unique: true,
+//          unique: true,
         },
         encryptedSummonerId: {
           type: Sequelize.STRING(45),

@@ -9,8 +9,8 @@ module.exports = class Game_champ extends Sequelize.Model {
           allowNull: false,
         },
         champion: {
-          type: Sequelize.INTEGER,
-          allowNull: false,
+          type: Sequelize.STRING(45),
+          allowNull: true,
         },
       },
       {

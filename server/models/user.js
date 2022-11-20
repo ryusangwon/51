@@ -4,15 +4,13 @@ module.exports = class User extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        id: {
+        gosok_id: {
           type: Sequelize.STRING(20),
-          primaryKey: true,
-          allowNull: false,
-          //                unique: true,
+          allowNull: true,
         },
         name: {
           type: Sequelize.STRING(20),
-          allowNull: false,
+          allowNull: true,
         },
         password: {
           type: Sequelize.STRING(20),
@@ -29,8 +27,7 @@ module.exports = class User extends Sequelize.Model {
         },
         game_id: {
           type: Sequelize.INTEGER,
-          allowNull: true,
-          defaultValue: null,
+          allowNull: false,
         },
       },
       {
