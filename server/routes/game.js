@@ -26,11 +26,8 @@ router.post('/getData', async (req, res, next) => {
         console.log("[GETDATABYSUMMONERNAME]");
 //        let name = "hide on bush";
 //        let position = "미드";
-        console.log(req.body.name);
         const name = req.body.name;
-        console.log(req.body.name);
         const position = req.body.position;
-        console.log(req.body.position);
         let encodedName = urlencode(name);
         console.log(encodedName);
         let url = `https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/${encodedName}?api_key=${api_key}`;
@@ -62,6 +59,8 @@ router.post('/getData', async (req, res, next) => {
         summonerDict['win_rates'] = Math.round(100 * summonerDict['win'] / (summonerDict['win'] + summonerDict['loss']))/100;
         summonerDict['champions'] = champList;
         console.log(summonerDict);
+
+        return res.json(summonerDict);
 
         const game = await Game.create({
             summonerName: summonerDict['summonerName'],

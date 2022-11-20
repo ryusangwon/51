@@ -1,6 +1,7 @@
 const express = require("express");
 const Lecture = require("../models/lecture");
 const Game = require("../models/game");
+const User = require("../models/user");
 
 const router = express.Router();
 
@@ -45,10 +46,11 @@ router.get('/getLecture', async (req, res, next) => {
     }
 });
 
-router.get('/existMenti', async (req, res, next) => {
+router.post('/existMenti', async (req, res, next) => {
     try{
-        const {id} = req.body.id;
+        const {id} = req.body;
         console.log("[EXISTMENTI]");
+        console.log(id);
         const exLecture = await Lecture.findOne({where: {id: id}});
         if (exLecture) {
             await Lecture.update({
@@ -62,7 +64,6 @@ router.get('/existMenti', async (req, res, next) => {
         } else {
             return res.send("NO LECTURE");
         }
-
         return res.send("DONE");
     } catch(err){
         console.error(err);
@@ -70,6 +71,22 @@ router.get('/existMenti', async (req, res, next) => {
     }
 });
 
+router.get('/getUserLecture', async (req, res, next) => {
+    try{
+        console.log("[GET_USER_LECTURE]");
+//        const {id} = req.body.id;
+        let id = "mento_test";
 
+        userLectures = await Lecture.findAll({
+            where: {
+                user_id: id
+            }
+        });
+        return res.send(userLectures);
+    } catch(err){
+        console.error(err);
+        next(err);
+    }
+});
 
 module.exports = router;
