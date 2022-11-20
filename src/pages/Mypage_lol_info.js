@@ -19,8 +19,8 @@ const Mypage_lol_info = () => {
   //const [tier, setTier] = useState('');
   const [position, setPosition] = useState('');
   //const [champion, setChampion] = useState('');
-  const [nameflag, setNameflag] = useState(false);
-  const [info, setInfo] = useState({summonerName:null, position:null, tier:null, win_rates:null, champions:null});
+  //const [nameflag, setNameflag] = useState(false);
+  const [info, setInfo] = useState({summonerName:'', position:'', tier:'', win_rates:'', champions:''});
 
   const info_req_btn = () => {
     axios.post('http://localhost:3001/game/getData', {
@@ -85,7 +85,7 @@ const Mypage_lol_info = () => {
                                     포지션: {position}<br/>
                                     티어: {info.tier}<br/>
                                     승률: {info.win_rates}<br/>
-                                    챔피언: {info.champions[0]}, {info.champions[1]}, {info.champions[2]}, {info.champions[3]}, {info.champions[4]}
+                                    챔피언: {info.champions[0]} {info.champions[1]} {info.champions[2]} {info.champions[3]} {info.champions[4]}
                                 </p>
                             </div>
                         </div>
