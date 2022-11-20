@@ -91,11 +91,13 @@ router.get('/getChampion', async (req, res) => {
     }
 })
 
-router.get('/saveChampion', async (req, res) => {
+router.post('/saveChampion', async (req, res, next) => {
     try{
         console.log('[SAVECHAMPION]');
         const {id} = req.body.id;
+        console.log(req.body.id);
         const {position} = req.body.position;
+        console.log(req.body.position)
         const {champList} = req.body.champList;
 
         console.log(champList);
