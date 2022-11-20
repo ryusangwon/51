@@ -13,8 +13,8 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-router.get('/newLecture', async (req, res, next) => {
-    const {id, user_id, description, room_id, price} = req.body;
+router.post('/newLecture', async (req, res, next) => {
+    const {user_id, title, mento_description, lecture_description, lecture_time, price, start_time, menti_in} = req.body;
     try{
         console.log("[LECTURE_DESCRIPTION]");
         await Lecture.create({

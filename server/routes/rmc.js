@@ -4,7 +4,7 @@ const Rmc = require('../models/rmc');
 
 const router = express.Router();
 
-router.get('/create', async (req, res, next) => {
+router.post('/create', async (req, res, next) => {
     const {id} = req.params.body.id;
     const {user_id} = req.params.body.user_id;
     const {title} = req.params.body.title;

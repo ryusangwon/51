@@ -105,7 +105,6 @@ router.get('/saveChampion', async (req, res) => {
                 champion: champList[i],
             });
         }
-
         return res.send("DONE");
 
     } catch (err) {
