@@ -62,4 +62,19 @@ router.get('/logout', isLoggedIn, (req, res) => {
     res.redirect('/');
 })
 
+
+router.post('/ismenti', (req, res) => {
+    let id = req.body.id;
+    const exUser = await User.findOne({where: {id: id}});
+    if (exUser) {
+        if (exUser.mento === true){
+            return res.send("mento");
+        } else{
+            return res.send("no mento");
+        }
+    } else{
+        return res.send("No User");
+    }
+})
+
 module.exports = router;
