@@ -15,7 +15,7 @@ router.get('/', async (req, res, next) => {
 }); 
 
 router.post('/signup', async (req, res, next) => {
-    const {id, name, password, email, mento} = req.body;
+    const {gosok_id, name, password, email, mento} = req.body;
     try{
         console.log("[SIGNUP]");
         const exUser = await User.findOne({where: {email}});
@@ -23,7 +23,7 @@ router.post('/signup', async (req, res, next) => {
             return res.redirect('/signup?error=exist');
         }
         await User.create({
-            id,
+            gosok_id,
             name,
             password,
             email,
