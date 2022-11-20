@@ -1,0 +1,19 @@
+user/signup
+(id, name, password, email, mento)
+
+user/login
+로그인
+
+user/logout
+
+game/getData
+(name)
+소환사명 입력하면, riot api를 통해서 tier, 승률 db에 저장
+
+game/getChampion
+(name)
+소환사명 입력하면, riot api를 통해서 champion 5개 가져와서 보여주기
+
+game/setChampion
+소환사, 포지션, champion 리스트
+

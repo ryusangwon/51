@@ -55,6 +55,6 @@ module.exports = class User extends Sequelize.Model {
       foreignKey: 'mento_id',
       sourceKey: 'id',
     });
-    db.User.belongsTo(db.Game, { foreignKey: 'game_id', sourceKey: 'id' });
+    db.User.belongsTo(db.Game, { foreignKey: 'game_id', targetKey: 'id' });
   }
 };

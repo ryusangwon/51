@@ -18,7 +18,6 @@ router.post('/newLecture', async (req, res, next) => {
     try{
         console.log("[LECTURE_DESCRIPTION]");
         await Lecture.create({
-            id,
             user_id,
             title,
             mento_description,

@@ -36,5 +36,7 @@ module.exports = class Rmc_board extends Sequelize.Model {
             collate: 'utf8_general_ci',
         });
     }
-    static associate(db) {}
+    static associate(db) {
+        db.Rmc.belongsTo(db.rmc, {foreignKey: 'rmc_id', targetKey: 'id'});
+    }
 };
