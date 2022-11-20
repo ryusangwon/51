@@ -1,5 +1,6 @@
 const express = require("express");
 const Lecture = require("../models/lecture");
+const Game = require("../models/game");
 
 const router = express.Router();
 
@@ -36,7 +37,7 @@ router.post('/newLecture', async (req, res, next) => {
 router.get('/getLecture', async (req, res, next) => {
     try{
         console.log("[GET_LECTURE_DESCRIPTION]");
-        lectures = Lecture.findAll({});
+        lectures = await Lecture.findAll({});
         return res.send(lectures);
     } catch(err){
         console.error(err);
