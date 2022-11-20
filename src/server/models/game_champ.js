@@ -9,8 +9,8 @@ module.exports = class Game_champ extends Sequelize.Model {
           allowNull: false,
         },
         champion: {
-          type: Sequelize.INTEGER,
-          allowNull: false,
+          type: Sequelize.STRING(45),
+          allowNull: true,
         },
       },
       {
@@ -25,6 +25,6 @@ module.exports = class Game_champ extends Sequelize.Model {
     );
   }
   static associate(db) {
-    db.Game_champ.belongsTo(db.Game, { foreignKey: 'game_id', target: 'id' });
+    db.Game_champ.belongsTo(db.Game, { foreignKey: 'game_id', targetKey: 'id' });
   }
 };

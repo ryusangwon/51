@@ -3,33 +3,27 @@ const Sequelize = require('sequelize');
 module.exports = class Rmc extends Sequelize.Model {
     static init(sequelize){
         return super.init({
-            id: {
-                type: Sequelize.INTEGER,
-                primaryKey: true,
-                allowNull: false,
-                autoIncrement: true,
-            },
             title: {
                 type: Sequelize.STRING(45),
                 allowNull: false,
             },
             content: {
-                type: Sequelize.BLOB,
-                allowNull: true,
-            },
-            writer_id: {
-                type: Sequelize.STRING(45),
+                type: Sequelize.TEXT,
                 allowNull: true,
             },
             video_src: {
                 type: Sequelize.STRING(45),
                 allowNull: true,
             },
-//            create_date: {
-//                type: Sequelize.DATE,
-//                allowNull: true,
-//                defaultValue: Sequelize.NOW,
-//            },
+            create_date: {
+                type: Sequelize.DATE,
+                allowNull: true,
+                defaultValue: Sequelize.NOW,
+            },
+            user_id: {
+                type: Sequelize.INTEGER,
+                allowNull: false,
+            },
         }, {
             sequelize,
             timestamps: true,
@@ -42,6 +36,6 @@ module.exports = class Rmc extends Sequelize.Model {
     }
     static associate(db) {
         db.Rmc.hasMany(db.Rmc_board, {foreignKey: 'rmc_id', sourceKey: 'id'});
-        db.Rmc.belongsTo(db.User, {foreignKey: 'writer_id', targetKey: 'id'});
+        db.Rmc.belongsTo(db.User, {foreignKey: 'user_id', targetKey: 'id'});
     }
 };

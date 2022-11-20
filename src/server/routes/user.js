@@ -15,7 +15,7 @@ router.get('/', async (req, res, next) => {
 }); 
 
 router.post('/signup', async (req, res, next) => {
-    const {id, name, password, email, mento} = req.body;
+    const {gosok_id, name, password, email, mento} = req.body;
     try{
         console.log("[SIGNUP]");
         const exUser = await User.findOne({where: {email}});
@@ -23,7 +23,7 @@ router.post('/signup', async (req, res, next) => {
             return res.redirect('/signup?error=exist');
         }
         await User.create({
-            id,
+            gosok_id,
             name,
             password,
             email,
@@ -55,20 +55,6 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
     })(req, res, next);
 });
 
-//router.post('/login', async (req, res, next) => {
-//    const {id, password} = req.body;
-//    const logUser = await User.findOne({where: {id}});
-//    if (logUser){
-//        if (!password == logUser.password){
-//            return redirect('/loginError?error=loginError');
-//        }else{
-//            return res.redirect('/');
-//        }
-//    } else{
-//        res.send('no user');
-//    }
-//
-//});
 
 router.get('/logout', isLoggedIn, (req, res) => {
     req.logout();
@@ -76,15 +62,19 @@ router.get('/logout', isLoggedIn, (req, res) => {
     res.redirect('/');
 })
 
-// const { User } = require('./models');
-// User.create({
-//   id: 'testid2',
-//   name: 'name2',
-//   password: 'pw2',
-//   email: 'test2@gmail.com',
-//   mento: false,
-//   game_id: 4,
-// })
 
+router.post('/ismenti', async (req, res) => {
+    let id = req.body.id;
+    const exUser = await User.findOne({where: {id: id}});
+    if (exUser) {
+        if (exUser.mento === true){
+            return res.send("mento");
+        } else{
+            return res.send("no mento");
+        }
+    } else{
+        return res.send("No User");
+    }
+})
 
 module.exports = router;

@@ -8,7 +8,7 @@ const champions = require('../champion.json');
 
 const router = express.Router();
 
-const api_key = "RGAPI-b51c0d9e-3fde-4063-b605-2d633994d1b8";
+const api_key = "RGAPI-09c9554e-a246-458e-97cf-dc2f9768c877";
 
 router.get('/', async (req, res, next) => {
     try{
@@ -20,14 +20,13 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-let summonerDict;
 router.post('/getData', async (req, res, next) => {
     try{
         console.log("[GETDATABYSUMMONERNAME]");
 //        let name = "hide on bush";
-//        let position = "미드";
-        const name = req.body.name;
-        const position = req.body.position;
+        const {name} = req.body.name;
+        const {position} = req.body.position;
+
         let encodedName = urlencode(name);
         console.log(encodedName);
         let url = `https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/${encodedName}?api_key=${api_key}`;
@@ -38,38 +37,22 @@ router.post('/getData', async (req, res, next) => {
         url = `https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/${summonerId}?api_key=${api_key}`;
 //        url = "https://kr.api.riotgames.com/lol/league/v4/entries/by-summoner/4A-r8LyUHnKR-eLYeDDRpcOGTy9q9Rpv-M-F3F1_DcxI7A?api_key=RGAPI-9c43cfbe-a610-4d19-8f93-82a99adb5887";
         const summonerStatusData = await axios.get(url);
-
-        url = `https://kr.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${summonerId}/top?count=5&api_key=${api_key}`;
-        const championData = await axios.get(url);
-        let champion = JSON.parse(JSON.stringify(champions));
-        console.log(name, "'s champion list");
-        champList = [];
-        for (let i = 0; i < 5; i++){
-            console.log(champion[0][championData['data'][i]['championId'].toString()]);
-            champList.push(champion[0][championData['data'][i]['championId'].toString()]);
-        }
-        console.log(champList);
-
         summonerDict = {};
         summonerDict['summonerName'] = summonerStatusData['data'][0]['summonerName'];
-        summonerDict['position'] = position;
         summonerDict['tier'] = summonerStatusData['data'][0]['tier'] + summonerStatusData['data'][0]['rank'];
         summonerDict['win'] = summonerStatusData['data'][0]['wins'];
         summonerDict['loss'] = summonerStatusData['data'][0]['losses'];
         summonerDict['win_rates'] = Math.round(100 * summonerDict['win'] / (summonerDict['win'] + summonerDict['loss']))/100;
-        summonerDict['champions'] = champList;
         console.log(summonerDict);
 
         const game = await Game.create({
             summonerName: summonerDict['summonerName'],
             encryptedSummonerId: summonerId,
             tier: summonerDict['tier'],
+            rank: summonerDict['rank'],
             win: summonerDict['win'],
             loss: summonerDict['loss'],
-            win_rates: summonerDict['win_rates'],
-            position: summonerDict['position']
         });
-
         return res.json(summonerDict);
         
     } catch (err) {
@@ -78,5 +61,59 @@ router.post('/getData', async (req, res, next) => {
     }
 })
 
+router.get('/getChampion', async (req, res) => {
+    try{
+        console.log('[GETCHAMPION]');
+        let count = 5;
+//        let summonerName = "Hide on bush";
+        const {summonerName} = req.body.name;
+        let summoner = await Game.findOne({where: {summonerName: summonerName}});
+        console.log("게임", summoner['encryptedSummonerId']);
+        if (summoner === undefined || summoner === null){
+            return res.send("No Data");
+        }
+        let summonerId = summoner['encryptedSummonerId'];
+
+//        let url = 'https://kr.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/4A-r8LyUHnKR-eLYeDDRpcOGTy9q9Rpv-M-F3F1_DcxI7A/top?count=5&api_key=RGAPI-9c43cfbe-a610-4d19-8f93-82a99adb5887';
+        let url = `https://kr.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${summonerId}/top?count=5&api_key=${api_key}`;
+        const championData = await axios.get(url);
+        let champion = JSON.parse(JSON.stringify(champions));
+        console.log(summonerName, "'s champion list");
+        champList = [];
+        for (let i = 0; i < 5; i++){
+            console.log(champion[0][championData['data'][i]['championId'].toString()]);
+            champList.push(champion[0][championData['data'][i]['championId'].toString()]);
+        }
+        console.log(champList);
+        return res.send(champList);
+
+    } catch (err) {
+        console.error(err);
+        next(err);
+    }
+})
+
+router.post('/saveChampion', async (req, res) => {
+    try{
+        console.log('[SAVECHAMPION]');
+        const {id} = req.body.id;
+        const {position} = req.body.position;
+        const {champList} = req.body.champList;
+
+        console.log(champList);
+        for (let i=0; i < 5; i++){
+            await game_champ.create({
+                id: id,
+                position: position,
+                champion: champList[i],
+            });
+        }
+        return res.send("DONE");
+
+    } catch (err) {
+        console.error(err);
+        next(err);
+    }
+})
 
 module.exports = router;

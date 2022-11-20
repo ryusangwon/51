@@ -4,6 +4,7 @@ import Header from './Header';
 import './css/lecture_regist.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import axios from 'axios';
 
 
 const Lecture_regist = () => {
@@ -17,7 +18,7 @@ const Lecture_regist = () => {
   const [startDate, setStartDate] = useState(new Date());
 
   const rendering = () => {
-    
+
 
   };
 
@@ -28,25 +29,29 @@ const Lecture_regist = () => {
     console.log(lecture_date);
     console.log(lecture_info);
     console.log(mento_info);
+    //user_id, title, mento_description, lecture_description, lecture_time, price, start_time, menti_in
 
-    /*
-    axios.post('http://localhost:3001/lecture/new', {
+    axios.post('http://localhost:3001/lecture/newLecture', {
       user_id : sessionStorage.getItem('login-token'),
-      description : ,
-      room_id : ,
-      price : ,
-
+      title : lecture_title,
+      lecture_description : lecture_info,
+      mento_description : mento_info,
+      lecture_time : lecture_duration,
+      start_time : startDate,
+      price : lecture_price,
+      menti_in : 0,
       }).then((result)=>{
         console.log(result);
+        window.location.href = "/lecture"
       })
-    */
-      
+
+
   }
 
   const regist_btn = () => {
-    
+
   }
-  
+
     return (
       <div className="height_100_class">
         <Header/>
@@ -57,14 +62,14 @@ const Lecture_regist = () => {
                   강의제목
                 </div>
                 <input id="LOGIN_ID" className = "long_text" type="text" name="id" onChange={(event) => setLecture_title(event.target.value)}/>
-                
-                
+
+
                 <div>
                   <div className="short_inline_div1">
                     <div>
                       강의날짜
                     </div>
-                    
+
                     <div>
                     <DatePicker className="short_text"
                       selected={startDate}
@@ -72,26 +77,33 @@ const Lecture_regist = () => {
                      dateFormat="yyyy년 MM월 dd일 HH:mm:ss"
                      startDate={new Date()}
                      onChange={(date) => setStartDate(date)}
-                     showTimeSelect 
+                     showTimeSelect
                      timeFormat="HH:mm"
-                     timeIntervals={10} 
+                     timeIntervals={10}
                      timeCaption="time"
                       ></DatePicker>
 
                   </div>
 
                   </div>
-                  
+
                   <div className="short_inline_div2">
                     <div>
-                      가격
+                      강의시간
                     </div>
-                    <input id="LOGIN_ID" className = "short_text" type="text" name="id" onChange={(event) => setLecture_price(event.target.value)}/>
+                    <input id="LOGIN_ID" className = "short_text" type="text" name="id" onChange={(event) => setLecture_duration(event.target.value)}/>
                   </div>
+
                 </div>
-                
-                
-                
+
+
+                <div className="short_inline_div1">
+                  <div>
+                    가격
+                  </div>
+                  <input id="LOGIN_ID" className = "short_text" type="text" name="id" onChange={(event) => setLecture_price(event.target.value)}/>
+                </div>
+
                 <div>
                   강의설명
                 </div>
@@ -107,14 +119,14 @@ const Lecture_regist = () => {
                     onChange={(e) => setMento_info(e.target.value) }>
                   </textarea>
 
-              
-                
+
+
                 <button id="LOGIN_BTN" className = "login_btn" type="button" onClick={() => send_btn()}>강의등록</button>
             </div>
         </div>
       </div>
 
-      
+
     );
   }
 

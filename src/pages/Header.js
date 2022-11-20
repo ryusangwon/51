@@ -7,11 +7,11 @@ const Header = () => {
 
     const [login_flag, setLogin_flag] = useState(false);
 
-  
-    
+
+
     const rendering = () => {
       const result = [];
-      
+
       if(!sessionStorage.getItem('login-token')){
 
         result.push(
@@ -33,16 +33,32 @@ const Header = () => {
           </div>
           );
       }
-      
+
       return result;
-  
+
     };
 
 
     const logout_btn = () => {
       sessionStorage.setItem('login-token', '');
       setLogin_flag(false);
-      navigate("/");
+      //navigate("/");
+      window.location.href = "/"
+    }
+
+    const goto_main = () => {
+      window.location.href = "/"
+    }
+
+    const goto_lecture = () => {
+      window.location.href = "/lecture"
+    }
+    const goto_rmc = () => {
+      window.location.href = "/rmc"
+    }
+
+    const goto_mypage = () => {
+      window.location.href = "/mypage_course_list"
     }
 
     return (

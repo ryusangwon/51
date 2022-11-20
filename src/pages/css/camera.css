@@ -1,0 +1,32 @@
+.my_div{
+  position : absolute;
+  display: flex;
+  z-index: 50;
+}
+
+.my_div_gone{
+  display: none;
+}
+
+
+.my_div_camera{
+  display: inline-block;
+  width: 200px;
+  height: 100px;
+}
+
+.my_div_screen{
+  display: inline-block;
+  width: 200px;
+  height: 100px;
+}
+
+.other_div{
+  position : absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.other_div_gone{
+  display: none;
+}

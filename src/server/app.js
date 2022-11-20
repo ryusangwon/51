@@ -60,6 +60,8 @@ app.use('/', indexRouter);
 app.use('/user', userRouter);
 app.use('/game', gameRouter);
 app.use('/mento', mentoRouter);
+app.use('/lecture', lectureRouter);
+app.use('/lectureRoom', lectureRoomRouter);
 
 app.get('/', (req, res) => {
   // req.session.id = 'id';

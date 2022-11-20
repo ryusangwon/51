@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from './Header';
 import './css/mypage_regist_mentor.css';
+import './css/mypage_side.css';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
@@ -10,8 +11,7 @@ const Mypage_regist_mentor = () => {
     let navigate = useNavigate();
 
     const send_btn = () => {
-      alert(sessionStorage.getItem('login-token'));
-      
+
       axios.post('http://localhost:3001/mento/register', {
       mento_id : sessionStorage.getItem('login-token'),
 
@@ -20,12 +20,12 @@ const Mypage_regist_mentor = () => {
         if(result.data == 'message'){
           sessionStorage.setItem('mento', 1);
         }
-      
+
       })
-      
-      
+
+
     }
-  
+
     return (
       <div className="height_100_class">
         <Header/>
@@ -33,7 +33,7 @@ const Mypage_regist_mentor = () => {
         <div className="mypage_back">
           <div className="mypage_side">
             <div className="mypage_side_account">
-              Tester
+              {sessionStorage.getItem('login-token')}
             </div>
             <div className="mypage_side_divide">
 
@@ -62,7 +62,7 @@ const Mypage_regist_mentor = () => {
           </div>
         </div>
       </div>
-      
+
     );
   }
 

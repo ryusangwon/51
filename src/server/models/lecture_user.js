@@ -13,7 +13,11 @@ module.exports = class Lecture_user extends Sequelize.Model {
                 type: Sequelize.INTEGER,
                 allowNull: true,
             },
-            user_id: {
+            mento_id: {
+                type: Sequelize.STRING(45),
+                allowNull: true,
+            },
+            menti_id: {
                 type: Sequelize.STRING(45),
                 allowNull: true,
             },

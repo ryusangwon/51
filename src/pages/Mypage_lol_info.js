@@ -36,14 +36,14 @@ const Mypage_lol_info = () => {
           //navigate("/Mypage_lol_info");
         }
       })
-      
+
   }
 
-  
+
     return (
         <div className="height_100_class">
         <Header/>
-        
+
         <div className="mypage_back">
             <div className="mypage_side">
             <div className="mypage_side_account">
@@ -93,7 +93,7 @@ const Mypage_lol_info = () => {
                 </div>
         </div>
       </div>
-      
+
     );
   }
 
