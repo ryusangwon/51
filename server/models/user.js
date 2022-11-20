@@ -27,7 +27,8 @@ module.exports = class User extends Sequelize.Model {
         },
         game_id: {
           type: Sequelize.INTEGER,
-          allowNull: false,
+          allowNull: true,
+            defaultValue: null,
         },
       },
       {
