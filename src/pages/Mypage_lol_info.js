@@ -70,7 +70,7 @@ const Mypage_lol_info = () => {
                                     <input className="summoner_name" id="name" type="text" placeholder="소환사명" onChange={(event) => setName(event.target.value)}/>
                                     <div className="positions">
                                         <select className="position" placeholder="포지션" onChange={(event) => setPosition(event.target.value)}>
-                                            <option>포지션</option>
+                                            <option>(포지션)</option>
                                             <option value="탑">탑</option>
                                             <option value="미드">미드</option>
                                             <option value="정글">정글</option>
