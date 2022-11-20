@@ -36,10 +36,6 @@ Game.init(sequelize);
 
  Lecture.init(sequelize)
 //  Lecture.associate(db);
-
- Lecture_room.init(sequelize)
-//  Lecture_room.associate(db);
-
 //
 // Review_star.init(sequelize)
 //  Review_star.associate(db);
