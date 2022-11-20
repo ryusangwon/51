@@ -2,6 +2,7 @@ const express = require("express");
 const Lecture = require("../models/lecture");
 const Game = require("../models/game");
 const User = require("../models/user");
+const Lecture_user = require("../models/user_lecture");
 
 const router = express.Router();
 
@@ -77,7 +78,7 @@ router.get('/getUserLecture', async (req, res, next) => {
 //        const {id} = req.body.id;
         let id = "mento_test";
 
-        userLectures = await Lecture.findAll({
+        userLectures = await Lecture_user.findAll({
             where: {
                 user_id: id
             }
