@@ -45,4 +45,31 @@ router.get('/getLecture', async (req, res, next) => {
     }
 });
 
+router.get('/existMenti', async (req, res, next) => {
+    try{
+        const {id} = req.body.id;
+        console.log("[EXISTMENTI]");
+        const exLecture = await Lecture.findOne({where: {id: id}});
+        if (exLecture) {
+            await Lecture.update({
+                menti_in: true,
+            }, {
+                where: {
+                    id: id
+                },
+            })
+            return res.redirect('/signup?error=exist');
+        } else {
+            return res.send("NO LECTURE");
+        }
+
+        return res.send("DONE");
+    } catch(err){
+        console.error(err);
+        next(err);
+    }
+});
+
+
+
 module.exports = router;
