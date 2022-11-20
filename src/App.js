@@ -5,6 +5,7 @@ import Mypage_course_list from './pages/Mypage_course_list';
 import Mypage_lol_info from './pages/Mypage_lol_info';
 import Mypage_regist_mentor from './pages/Mypage_regist_mentor';
 import Camera from './pages/Camera';
+import Screen from './pages/Screen';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Lecture from './pages/Lecture';
@@ -31,6 +32,7 @@ const App = () => {
       <Route path="/signup" element={<Signup />}/>
 
       <Route path="/camera" element={<Camera />}/>
+      <Route path="/screen" element={<Screen />}/>
     </Routes>
   );
 };

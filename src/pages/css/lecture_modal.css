@@ -1,3 +1,24 @@
+.modal_back{
+  position: absolute;
+  width: 500px;
+  height: 400px;
+  background: #A6A6A6;
+  top: calc(50% - 200px);
+  left: calc(50% - 250px);
+}
+
+.modal_back_btn{
+  position: absolute;
+  left: 90%;
+}
+
+.modal_submit_btn{
+  position: absolute;
+  width: 100px;
+  left: calc(50% - 50px);
+  top: 90%;
+}
+
 .login_wrapper{
     position:absolute;
     display: flex;

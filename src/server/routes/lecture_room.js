@@ -1,5 +1,5 @@
 const express = require("express");
-const Lecture = require("../models/lecture");
+const LectureRoom = require("../models/lecture_room");
 const router = express.Router();
 
 router.get('/', async (req, res, next) => {
@@ -27,3 +27,5 @@ router.post('/room', async (req, res, next) => {
         next(err);
     }
 });
+
+module.exports = router;

@@ -12,16 +12,17 @@ const Login = () => {
   let navigate = useNavigate();
 
   const send_btn = () => {
-    
+
     axios.post('http://localhost:3001/user/login', {
       id : id,
       password : pw,
 
     }).then((result)=>{
-      
+
       //console.log(result);
-      //console.log(result.data);
-      
+      /*
+      console.log(result.data);
+
       if(result.data.length != 0){
         sessionStorage.setItem('login-token', id);
 
@@ -29,9 +30,24 @@ const Login = () => {
       }else{
         alert('로그인 실패');
       }
-      
+      */
+
+      login_success();
+
+
     })
-    
+
+  }
+
+  const login_success = () => {
+
+    axios.post('http://localhost:3001/user/ismenti', {
+      id : id,
+    }).then((result)=>{
+      console.log(result.data);
+
+    })
+
   }
 
     return (

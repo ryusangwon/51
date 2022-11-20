@@ -14,11 +14,11 @@ const filterTitle = movies.filter((p) => {
 
 const Mypage_lol_info = () => {
   let navigate = useNavigate();
-  
+
     return (
         <div className="height_100_class">
         <Header/>
-        
+
         <div className="mypage_back">
             <div className="mypage_side">
             <div className="mypage_side_account">
@@ -329,7 +329,7 @@ const Mypage_lol_info = () => {
                 </div>
         </div>
       </div>
-      
+
     );
   }
 

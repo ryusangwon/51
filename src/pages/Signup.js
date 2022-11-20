@@ -28,21 +28,22 @@ const Signup = () => {
       alert('입력한 비밀번호가 일치하지 않습니다.');
     }
 
-    
     axios.post('http://localhost:3001/user/signup', {
-      id : id,
+      gosok_id : id,
       name : name,
       password : pw,
       email : email,
-
+      mento : 0,
       }).then((result)=>{
-        //console.log(result);
+        console.log(result);
+        /*
         if(result.data.length!=0){
           alert('회원가입이 완료되었습니다.');
           navigate("/login");
         }
+        */
       })
-      
+
   }
 
   const pw_change = (value) => {
