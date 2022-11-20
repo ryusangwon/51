@@ -52,7 +52,7 @@ module.exports = class Lecture extends Sequelize.Model {
             foreignKey: 'room_id',
             targetKey: 'id',
         });
-        db.Lecture.belongsTo(db.Review_star, {foreignKey: 'room_id', targetKey: 'id'});
+        db.Lecture.hasOne(db.Review_star, {foreignKey: 'lecture_id', sourceKey: 'id'});
         db.Lecture.belongsToMany(db.User, {through: 'UserLecture'});
     }
 };
