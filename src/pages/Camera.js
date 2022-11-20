@@ -45,7 +45,8 @@ const Camera = () => {
           <button onClick={onPublishPublisher}>Publish Publisher</button>
         </div>
 
-        <OTSession apiKey="47574161" sessionId="1_MX40NzU3NDE2MX5-MTY2NzIxNjkzODE2M350OGpDcEN1eCtmcVBFazF2dFZtb1pQV0V-fg" token="T1==cGFydG5lcl9pZD00NzU3NDE2MSZzaWc9OWM5MjI1ZjM0NTYyYTcwYzY5NzEwNDc3YmNkMWM3YjdhODBhZGFhNTpzZXNzaW9uX2lkPTFfTVg0ME56VTNOREUyTVg1LU1UWTJOekl4Tmprek9ERTJNMzUwT0dwRGNFTjFlQ3RtY1ZCRmF6RjJkRlp0YjFwUVYwVi1mZyZjcmVhdGVfdGltZT0xNjY3MjE2OTYzJm5vbmNlPTAuOTkwNDcxOTYwOTI0ODQzNCZyb2xlPXB1Ymxpc2hlciZleHBpcmVfdGltZT0xNjY5ODA4OTYyJmluaXRpYWxfbGF5b3V0X2NsYXNzX2xpc3Q9">
+        <OTSession apiKey="47574161" sessionId="2_MX40NzU3NDE2MX5-MTY2ODY3MjQ1MjA4MH5ZMHFSRGRoUWs3d2dYeElWbXpOYnlYS1J-fg"
+        token="T1==cGFydG5lcl9pZD00NzU3NDE2MSZzaWc9MDY2YzllNjc3YWI0MmEzMWQxZjE2MzBmZTk5NjMyZDQ1NDhkZjE1ZDpzZXNzaW9uX2lkPTJfTVg0ME56VTNOREUyTVg1LU1UWTJPRFkzTWpRMU1qQTRNSDVaTUhGU1JHUm9VV3MzZDJkWWVFbFdiWHBPWW5sWVMxSi1mZyZjcmVhdGVfdGltZT0xNjY4NjcyNDY4Jm5vbmNlPTAuMTc0MzE3NDY3ODE2MTk5ODMmcm9sZT1wdWJsaXNoZXImZXhwaXJlX3RpbWU9MTY3MTI2NDQ2OSZpbml0aWFsX2xheW91dF9jbGFzc19saXN0PQ==">
         <OTPublisher />
         <OTPublisher
               properties={{ videoSource: "screen", width: 200, height: 200 }}

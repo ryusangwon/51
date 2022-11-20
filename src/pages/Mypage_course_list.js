@@ -6,6 +6,16 @@ import { useNavigate } from "react-router-dom";
 const Mypage_course_list = () => {
   let navigate = useNavigate();
   
+
+  const enter_lecture = () => {
+    
+    //var link = 'https://ec2-52-78-78-27.ap-northeast-2.compute.amazonaws.com/camera.php';
+    var link = 'https://ehi-service.com/camera.php';
+    window.open(link, '_blank')
+    
+  }
+
+
     return (
 
       <div className="height_100_class">
@@ -39,7 +49,7 @@ const Mypage_course_list = () => {
                       <td className="learning_table_num_td">번호</td>
                       <td className="learning_table_title_td">강의제목</td>
                       <td classname="learning_table_date_td">일자</td>
-                      <td><input type="button" id="regist_button" className="learning_table_button" value="강의실입장" /></td>
+                      <td><input type="button" id="regist_button" onClick={() => enter_lecture()} className="learning_table_button" value="강의실입장" /></td>
                     </tr>
 
                     <tr>

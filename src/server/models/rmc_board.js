@@ -21,11 +21,11 @@ module.exports = class Rmc_board extends Sequelize.Model {
                 type: Sequelize.BOOLEAN,
                 allowNull: true,
             },
-            create_date: {
-                type: Sequelize.DATE,
-                allowNull: true,
-                defaultValue: Sequelize.NOW,
-            },
+//            create_date: {
+//                type: Sequelize.DATE,
+//                allowNull: true,
+//                defaultValue: Sequelize.NOW,
+//            },
         }, {
             sequelize,
             timestamps: true,

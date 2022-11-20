@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Header from './Header';
 import './css/mypage_regist_mentor.css';
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 const Mypage_regist_mentor = () => {
     const [flag, setFlag] = useState(false);
@@ -9,15 +10,20 @@ const Mypage_regist_mentor = () => {
     let navigate = useNavigate();
 
     const send_btn = () => {
-      /*
-      axios.post('http://localhost:3001/user/signup', {
-      id : id,
-      password : pw,
+      alert(sessionStorage.getItem('login-token'));
+      
+      axios.post('http://localhost:3001/mento/register', {
+      mento_id : sessionStorage.getItem('login-token'),
 
       }).then((result)=>{
-        console.log(result);
+        console.log(result.data);
+        if(result.data == 'message'){
+          sessionStorage.setItem('mento', 1);
+        }
+      
       })
-      */
+      
+      
     }
   
     return (

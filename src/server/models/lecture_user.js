@@ -19,7 +19,7 @@ module.exports = class Lecture_user extends Sequelize.Model {
             },
         }, {
             sequelize,
-            timestamps: true,
+            timestamps: false,
             modelName: 'Lecture_user',
             tableName: 'lecture_user',
             paranoid: false,

@@ -18,11 +18,10 @@ const Login = () => {
       password : pw,
 
     }).then((result)=>{
-      
       //console.log(result);
       //console.log(result.data);
       
-      if(result.data.length !== 0){
+      if(result.data.length != 0){
         sessionStorage.setItem('login-token', id);
 
         navigate("/");
