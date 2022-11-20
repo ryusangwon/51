@@ -1,3 +1,11 @@
+
+//const User_lecture = sequelize.define('User_lecture', {
+//
+//});
+//
+//db.User.belongsToMany(Lecture, {through: User_lecture});
+//db.Lecture.belongsToMany(User, {through: User_lecture});
+
 //const Sequelize = require('sequelize');
 //
 //module.exports = class Lecture_user extends Sequelize.Model {
