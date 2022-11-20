@@ -4,15 +4,13 @@ module.exports = class User extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        id: {
+        gosok_id: {
           type: Sequelize.STRING(20),
-          primaryKey: true,
-          allowNull: false,
-          //                unique: true,
+          allowNull: true,
         },
         name: {
           type: Sequelize.STRING(20),
-          allowNull: false,
+          allowNull: true,
         },
         password: {
           type: Sequelize.STRING(20),
@@ -29,8 +27,7 @@ module.exports = class User extends Sequelize.Model {
         },
         game_id: {
           type: Sequelize.INTEGER,
-          allowNull: true,
-          defaultValue: null,
+          allowNull: false,
         },
       },
       {
@@ -45,16 +42,9 @@ module.exports = class User extends Sequelize.Model {
     );
   }
   static associate(db) {
-//    db.User.hasMany(db.Rmc, { foreignKey: 'writer_id', sourceKey: 'id' });
-    db.User.hasMany(db.Lecture, { foreignKey: 'user_id', sourceKey: 'id' });
-    db.User.hasMany(db.Lecture_user, {
-      foreignKey: 'user_id',
-      sourceKey: 'id',
-    });
-//    db.User.hasMany(db.Review_star, {
-//      foreignKey: 'mento_id',
-//      sourceKey: 'id',
-//    });
-    db.User.hasOne(db.Game, { foreignKey: 'game_id', targetKey: 'id' });
+    db.User.hasMany(db.Rmc, { foreignKey: 'user_id', sourceKey: 'id' });
+    db.User.hasMany(db.Rmc_board, { foreignKey: 'user_id', sourceKey: 'id' });
+    db.User.belongsTo(db.Game, {foreignKey: 'game_id', targetKey: 'id'});
+    db.User.belongsToMany(db.User, {through: 'UserLecture'});
   }
 };

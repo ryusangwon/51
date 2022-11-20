@@ -1,19 +1,18 @@
-user/signup
+user/signup POST
 (id, name, password, email, mento)
 
-user/login
+user/login POST
 로그인
 
-user/logout
+user/logout GET
 
-game/getData
-(name)
-소환사명 입력하면, riot api를 통해서 tier, 승률 db에 저장
+mento/register POST
+(mento_id)
+사용자 id 가져와서 멘토로 등록
 
-game/getChampion
-(name)
-소환사명 입력하면, riot api를 통해서 champion 5개 가져와서 보여주기
+game/getData POST
+소환사명, 라인 입력하면 모든정보(소환사명, 라인, 승률, 챔피언5개) 보낸다.
 
-game/setChampion
-소환사, 포지션, champion 리스트
-
+game/saveData POST
+확인버튼 받으면
+모든 정보 db에 저장

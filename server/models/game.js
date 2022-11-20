@@ -4,16 +4,10 @@ module.exports = class Game extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        id: {
-          type: Sequelize.INTEGER,
-          primaryKey: true,
-          allowNull: false,
-          autoIncrement: true,
-        },
         summonerName: {
           type: Sequelize.STRING(45),
           allowNull: true,
-          unique: true,
+//          unique: true,
         },
         encryptedSummonerId: {
           type: Sequelize.STRING(45),
@@ -53,6 +47,6 @@ module.exports = class Game extends Sequelize.Model {
   }
   static associate(db) {
     db.Game.hasMany(db.Game_champ, { foreignKey: 'game_id', sourceKey: 'id' });
-    db.Game.belongsTo(db.User, { foreignKey: 'game_id', sourceKey: 'id' });
+    db.Game.hasOne(db.User, { foreignKey: 'game_id', sourceKey: 'id' });
   }
 };
