@@ -8,17 +8,17 @@ const Rmc = () => {
   const [search, setSearch] = useState('');
 
   const search_btn = () => {
-    alert(search);
+  //  alert(search);
   }
 
   const record_btn = () => {
 
   }
 
-  const notice_write_btn = () => {
+  const new_rmc_btn = () => {
 
   }
-  
+
     return (
       <div classname="height_100_class">
         <Header/>
@@ -52,7 +52,7 @@ const Rmc = () => {
           </table>
 
           <div className="rmc_table_bottom_div">
-            <button className = "rmc_record_btn" type="button" onClick={() => notice_write_btn()}>새글쓰기</button>
+            <button className = "rmc_record_btn" type="button" onClick={() => new_rmc_btn()}>새글쓰기</button>
           </div>
 
 
@@ -61,7 +61,7 @@ const Rmc = () => {
 
 
       </div>
-      
+
     );
   }
 
