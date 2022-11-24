@@ -48,11 +48,10 @@ module.exports = class Lecture extends Sequelize.Model {
         });
     }
     static associate(db) {
-        db.Lecture.belongsTo(db.Lecture_room, {
-            foreignKey: 'room_id',
-            targetKey: 'id',
-        });
-        db.Lecture.hasOne(db.Review_star, {foreignKey: 'lecture_id', sourceKey: 'id'});
-        db.Lecture.belongsToMany(db.User, {through: 'UserLecture'});
+        db.Lecture.belongsTo(db.Lecture_room, {foreignKey: 'room_id', targetKey: 'id'});
+        
+        db.Lecture.hasOne(db.User_lecture, {foreignKey: 'lecture_id', sourceKey: 'id'});
+        db.Lecture.hasMany(db.Review_star, {foreignKey: 'lecture_id', sourceKey: 'id'});
+
     }
 };

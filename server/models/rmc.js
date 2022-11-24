@@ -35,7 +35,9 @@ module.exports = class Rmc extends Sequelize.Model {
         });
     }
     static associate(db) {
-        db.Rmc.hasMany(db.Rmc_board, {foreignKey: 'rmc_id', sourceKey: 'id'});
         db.Rmc.belongsTo(db.User, {foreignKey: 'user_id', targetKey: 'id'});
+
+        db.Rmc.hasMany(db.Rmc_board, {foreignKey: 'rmc_id', sourceKey: 'id'});
+
     }
 };

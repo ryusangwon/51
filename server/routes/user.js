@@ -45,7 +45,7 @@ router.post('/signup', async (req, res, next) => {
         console.error(err);
         next(err);
     }
-})
+});
 
 router.post('/login', isNotLoggedIn, (req, res, next) => {
     passport.authenticate('local', (authError, user, info) => {
@@ -71,7 +71,7 @@ router.get('/logout', isLoggedIn, (req, res) => {
     req.logout();
     req.session.destroy();
     res.redirect('/');
-})
+});
 
 
 router.post('/ismento', async (req, res) => {
@@ -86,7 +86,7 @@ router.post('/ismento', async (req, res) => {
     } else{
         return res.send("No User");
     }
-})
+});
 
 router.post('/getLecture', async (req, res) => {
     let id = req.body.id;
@@ -109,6 +109,6 @@ router.post('/getLecture', async (req, res) => {
     } else{
         return res.send("No User");
     }
-})
+});
 
 module.exports = router;
