@@ -13,7 +13,7 @@ import Lecture from './pages/Lecture';
 import Lecture_regist from './pages/Lecture_regist';
 import Rmc from './pages/Rmc';
 import RmcView from './pages/RmcView';
-import RmcQuestion from './pages/RmcQuestion';
+import RmcWrite from './pages/RmcWrite';
 
 
 const App = () => {
@@ -30,7 +30,7 @@ const App = () => {
 
       <Route path="/rmc" element={<Rmc />}/>
       <Route path='/rmc/:rmcId' element={<RmcView />}/>
-      <Route path='/rmc/question' element={<RmcQuestion />}  />
+      <Route path='/rmc/write' element={<RmcWrite />}  />
       
       <Route path="/mypage" element={<Mypage />}/>
 

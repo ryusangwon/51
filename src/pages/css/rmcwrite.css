@@ -1,0 +1,16 @@
+.rmc-write-wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
+.video {
+  padding: 0 230px 0 0;
+  font-weight: bold;
+}
+.file_upload {
+  width: 100px;
+  height: 30px;
+}
+.content {
+  width: 100%;
+  height: 400px;
+}
