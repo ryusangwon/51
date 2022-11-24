@@ -3,6 +3,14 @@ test.js
 backup.js
 test.txt
 note.txt
+./server/backup.js
+/backup.js
+./server/test.js
+/server/backup.js
+./server/api.txt
+api.txt
+/server/routes/game 1.js
+/server/routes/game 2.js
 
 ### Node ###
 # Logs
