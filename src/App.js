@@ -1,4 +1,5 @@
-import { Route, Routes } from 'react-router-dom';
+import React from "react";
+import { Route, Routes} from 'react-router-dom';
 import Main from './pages/Main';
 import Mypage from './pages/Mypage';
 import Mypage_course_list from './pages/Mypage_course_list';
@@ -11,6 +12,8 @@ import Signup from './pages/Signup';
 import Lecture from './pages/Lecture';
 import Lecture_regist from './pages/Lecture_regist';
 import Rmc from './pages/Rmc';
+import RmcView from './pages/RmcView';
+import RmcQuestion from './pages/RmcQuestion';
 
 
 const App = () => {
@@ -26,6 +29,9 @@ const App = () => {
       <Route path="/lecture_regist" element={<Lecture_regist />}/>
 
       <Route path="/rmc" element={<Rmc />}/>
+      <Route path='/rmc/:rmcId' element={<RmcView />}/>
+      <Route path='/rmc/question' element={<RmcQuestion />}  />
+      
       <Route path="/mypage" element={<Mypage />}/>
 
       <Route path="/login" element={<Login />}/>
