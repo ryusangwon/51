@@ -17,11 +17,11 @@ router.get('/', async (req, res, next) => {
 });
 
 router.post('/newLecture', async (req, res, next) => {
-    const {user_id, title, mento_description, lecture_description, lecture_time, price, start_time, menti_in} = req.body;
+    const {id, title, mento_description, lecture_description, lecture_time, price, start_time, menti_in} = req.body;
     try{
         console.log("[LECTURE_DESCRIPTION]");
         await Lecture.create({
-            user_id,
+            id,
             title,
             mento_description,
             lecture_description,
