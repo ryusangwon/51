@@ -75,8 +75,8 @@ router.post('/existMenti', async (req, res, next) => {
 router.get('/getUserLecture', async (req, res, next) => {
     try{
         console.log("[GET_USER_LECTURE]");
-        const {id} = req.body.id;
-        //let id = "mento_test";
+//        const {id} = req.body.id;
+        let id = "mento_test";
 
         userLectures = await Lecture_user.findAll({
             where: {

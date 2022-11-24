@@ -16,10 +16,11 @@ const Mypage_regist_mentor = () => {
       mento_id : sessionStorage.getItem('login-token'),
 
       }).then((result)=>{
-        console.log(result.data);
+        alert("멘토로 등록되셨습니다.");
+        /*console.log(result.data);
         if(result.data == 'message'){
           sessionStorage.setItem('mento', 1);
-        }
+        }*/
 
       })
 

@@ -1,0 +1,26 @@
+.rmc-view-wrapper {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.rmc-view-go-list-btn {
+  border: 0;
+  padding: 10px;
+  background-color: #ffd9d9;
+}
+
+.rmc-view-row {
+  margin: 10px 0;
+  display: flex;
+}
+
+.rmc-view-row>label:first-child {
+  margin: 10px 0;
+  width: 30%;
+  font-weight: bold;
+}
+
+.rmc-view-row>*:nth-child(2) {
+  margin: 10px 0;
+  width: 70%;
+}
