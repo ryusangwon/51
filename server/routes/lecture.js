@@ -82,23 +82,23 @@ router.post('/existMenti', async (req, res, next) => {
     }
 });
 
-router.get('/getUserLecture', async (req, res, next) => {
-    try{
-        console.log("[GET_USER_LECTURE]");
-//        const {id} = req.body.id;
-        let id = "mento_test";
-
-        userLectures = await Lecture_user.findAll({
-            where: {
-                user_id: id
-            }
-        });
-        return res.send(userLectures);
-    } catch(err){
-        console.error(err);
-        next(err);
-    }
-});
+//router.get('/getUserLecture', async (req, res, next) => {
+//    try{
+//        console.log("[GET_USER_LECTURE]");
+////        const {id} = req.body.id;
+//        let id = "mento_test";
+//
+//        userLectures = await Lecture_user.findAll({
+//            where: {
+//                user_id: id
+//            }
+//        });
+//        return res.send(userLectures);
+//    } catch(err){
+//        console.error(err);
+//        next(err);
+//    }
+//});
 
 router.post('/getLectureByPosition', async (req, res, next) => {
     try{
