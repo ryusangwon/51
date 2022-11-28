@@ -53,6 +53,7 @@ router.post('/create', async (req, res, next) => {
         video_src: video_src,
         content: content,
     });
+    res.send("DONE");
 });
 
 module.exports = router;
