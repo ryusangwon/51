@@ -96,7 +96,7 @@ router.post('/getLecture', async (req, res) => {
     console.log(exUser);
     if (exUser) {
         if (exUser.mento === true){
-            query = 'SELECT * FROM lecture_user, lecture WHERE lecture_user.mento_id = (SELECT user.game_id FROM user where user.id=1) AND lecture.id = lecture_user.lecture_id';
+            query = 'SELECT * FROM lecture_user, lecture WHERE lecture_user.mento_id = (SELECT user.game_id FROM user where user.id=?) AND lecture.id = lecture_user.lecture_id';
             const result = await sequelize.query(query, {
                 type: QueryTypes.SELECT,
                 replacements: [id],

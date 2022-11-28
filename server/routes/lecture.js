@@ -3,8 +3,19 @@ const Lecture = require("../models/lecture");
 const Game = require("../models/game");
 const User = require("../models/user");
 const Lecture_user = require("../models/user_lecture");
-
+const {QueryTypes} = require("sequelize");
 const router = express.Router();
+
+const Sequelize = require("sequelize");
+const env = process.env.NODE_ENV || 'development';
+const config = require('../config/config.json')[env];
+const sequelize = new Sequelize(
+        config.database,
+        config.username,
+        config.password,
+        config
+        );
+
 
 router.get('/', async (req, res, next) => {
     try{
@@ -65,7 +76,6 @@ router.post('/existMenti', async (req, res, next) => {
         } else {
             return res.send("NO LECTURE");
         }
-        return res.send("DONE");
     } catch(err){
         console.error(err);
         next(err);
@@ -89,5 +99,21 @@ router.get('/getUserLecture', async (req, res, next) => {
         next(err);
     }
 });
+
+router.get('/getLectureByPosition', async (req, res, next) => {
+    try{
+        let position = '미드';
+        let query = `SELECT * FROM lecture WHERE id IN (SELECT lecture_id FROM user_lecture WHERE user_id = (SELECT id FROM user WHERE game_id = (SELECT id FROM game WHERE game.position=?)))`;
+        const result = await sequelize.query(query, {
+            type: QueryTypes.SELECT,
+            replacements: [position],
+        });
+        console.log("test", result);
+        return res.send(result);
+    } catch (err) {
+        console.error(err);
+        next(err);
+    }
+})
 
 module.exports = router;
