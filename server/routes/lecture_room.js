@@ -16,7 +16,7 @@ router.post('/room', async (req, res, next) => {
     const {id, session_id, token_id} = req.body;
     try{
         console.log("[LECTURE_ROOM]");
-        await Lecture.create({
+        await LectureRoom.create({
             id,
             session_id,
             token_id,
