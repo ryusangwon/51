@@ -10,7 +10,7 @@ function GetData(rmcId) {
   const [answer, setAnswer] = useState({});
 
   useEffect(() => {
-    axios.get('/toyseven/voc/search/'+rmcId).then((response)=> {
+    axios.get('http://localhost:3001/rmc/search/'+rmcId).then((response)=> {
         setQuestion(response.data.question);
         setAnswer(response.data.answer);
     })

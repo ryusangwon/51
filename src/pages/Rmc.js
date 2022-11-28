@@ -11,7 +11,7 @@ import RmcHeader from '../components/RmcHeader';
 function GetData() {
   const [data, setData] = useState({});
   useEffect(() => {
-    axios.get('/toyseven/voc').then((response)=> {
+    axios.get('http://localhost:3001/rmc').then((response)=> {
       setData(response.data);
     })
   }, []);
