@@ -100,9 +100,10 @@ router.get('/getUserLecture', async (req, res, next) => {
     }
 });
 
-router.get('/getLectureByPosition', async (req, res, next) => {
+router.post('/getLectureByPosition', async (req, res, next) => {
     try{
-        let position = '미드';
+        const {position} = req.body.position;
+//        let position = '미드';
         let query = `SELECT * FROM lecture WHERE id IN (SELECT lecture_id FROM user_lecture WHERE user_id = (SELECT id FROM user WHERE game_id = (SELECT id FROM game WHERE game.position=?)))`;
         const result = await sequelize.query(query, {
             type: QueryTypes.SELECT,
