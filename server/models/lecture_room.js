@@ -22,6 +22,6 @@ module.exports = class Lecture_room extends Sequelize.Model {
         });
     }
     static associate(db) {
-        db.Lecture_room.hasMany(db.Lecture, {foreignKey:'room_id', sourceKey: 'id'});
+        db.Lecture_room.hasOne(db.Lecture, {foreignKey:'room_id', sourceKey: 'id'});
     }
 };

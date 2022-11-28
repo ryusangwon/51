@@ -5,13 +5,9 @@ const Rmc = require('../models/rmc');
 const router = express.Router();
 
 router.get('/', async (req, res, next) => {
-  try{
-      console.log("[RMC]");
-      res.send('Hello, Rmc');
-  } catch(err){
-      console.error(err);
-      next(err);
-  }
+    console.log("[GET_RMC]");
+    Rmcs = await Rmc.findAll({});
+    return res.send(Rmcs);
 });
 
 router.post('/create', async (req, res, next) => {
@@ -45,15 +41,18 @@ router.put('/update', async (req, res, next) => {
   res.send('update done');
 });
 
-router.post('/rmclist', async (req, res) => {
-  //작성한 정보 가져옴
-  const { borderDate, borderUserNick, borderPwd, borderTitle, borderContent } = req.body;
-  //유효성 검사
-  isExist = await borders.find({ borderDate });
-  if (isExist.length == 0) {
-    await borders.create({ borderDate, borderUserNick, borderPwd, borderTitle, borderContent });
-  }
-  res.send({ result: "success" });
+router.post('/create', async (req, res, next) => {
+    const {id} = req.params.body.id;
+    const {user_id} = req.params.body.user_id;
+    const {title} = req.params.body.title;
+    const {content} = req.params.body.content;
+
+    const rmc = await Rmc.create({
+        id: id,
+        user_id: user_id,
+        title: title,
+        content: content,
+    });
 });
 
 module.exports = router;
