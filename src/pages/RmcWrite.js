@@ -10,7 +10,7 @@ const HandleWriteSubmit = async({body}) => {
     'Authorization' : "Bearer cognito 의 access token"
   }
 
-  const response = await axios.post('http://localhost:3001/user/', body, {headers: headers}).then((response) => {
+  const response = await axios.post('/toyseven/voc/question', body, {headers: headers}).then((response) => {
     console.log('status : '+response.status);
   }).catch((error) => {
     console.log('error : '+error);
@@ -47,6 +47,7 @@ function RmcWrite() {
   return (
     <div classname="height_100_class">
     <Header/>
+    
   <>
     <h2 align="center">게시글 작성</h2>
     <div className="rmc-view-wrapper">

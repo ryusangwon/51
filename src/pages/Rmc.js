@@ -4,28 +4,28 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 
 import RmcTable from '../components/table/RmcTable';
-import RmcTableColumn from '../components/table/RmcTableCol';
+import RmcTableCol from '../components/table/RmcTableCol';
 import RmcTableRow from '../components/table/RmcTableRow';
 import RmcHeader from '../components/RmcHeader';
 
 function GetData() {
   const [data, setData] = useState({});
   useEffect(() => {
-    axios.get('http://localhost:3001/user/').then((response)=> {
+    axios.get('/toyseven/voc').then((response)=> {
       setData(response.data);
     })
   }, []);
 
   const item = (Object.values(data)).map((rmc) => (
     <RmcTableRow key={rmc.id}>
-    <RmcTableColumn>{rmc.id}</RmcTableColumn>
-    <RmcTableColumn>
+    <RmcTableCol>{rmc.id}</RmcTableCol>
+    <RmcTableCol>
       <Link to={`/rmc/${rmc.id}`}>
         {rmc.title}
       </Link>
-    </RmcTableColumn>
-    <RmcTableColumn>{rmc.createAt}</RmcTableColumn>
-    <RmcTableColumn>{rmc.username}</RmcTableColumn>
+    </RmcTableCol>
+    <RmcTableCol>{rmc.createAt}</RmcTableCol>
+    <RmcTableCol>{rmc.username}</RmcTableCol>
   </RmcTableRow>
   ));
 
