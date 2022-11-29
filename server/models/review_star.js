@@ -4,17 +4,17 @@ module.exports = class Review_star extends Sequelize.Model {
     static init(sequelize){
         return super.init({
             star: {
-                type: Sequelize.STRING(45),
-                allowNull: true,
+                type: Sequelize.INTEGER,
+                allowNull: false,
+            },
+            lecture_id: {
+                type: Sequelize.INTEGER,
+                allowNull: false,
             },
             create_date: {
                 type: Sequelize.DATE,
                 allowNull: true,
                 defaultValue: Sequelize.NOW,
-            },
-            lecture_id: {
-                type: Sequelize.INTEGER,
-                allowNull: false,
             },
         }, {
             sequelize,
