@@ -11,13 +11,13 @@ router.get('/', async (req, res, next) => {
 });
 
 router.post('/create', async (req, res, next) => {
-    const {user_id} = req.params.body.user_id;
-    const {title} = req.params.body.title;
-    const {video_src} = req.params.body.video_src;
-    const {content} = req.params.body.content;
+    const gosok_id = req.body.gosok_id;
+    const title = req.body.title;
+    const video_src = req.body.video_src;
+    const content = req.body.content;
 
     const rmc = await Rmc.create({
-        user_id: user_id,
+        gosok_id: gosok_id,
         title: title,
         video_src: video_src,
         content: content,
@@ -25,11 +25,33 @@ router.post('/create', async (req, res, next) => {
     res.send("DONE");
 });
 
+router.get('/getRmc', async (req, res, next) => {
+    try{
+        console.log("[GET_RMC]");
+        rmcs = await Rmc.findAll({});
+        return res.send(rmcs);
+    } catch(err){
+        console.error(err);
+        next(err);
+    }
+});
+
+router.post('/getRmcById', async (req, res, next) => {
+    try{
+        console.log("[GET_RMC]");
+        const id = req.body.id;
+        rmcById = await Rmc.findOne({where: {id: id}});
+        return res.send(rmcById);
+    } catch(err){
+        console.error(err);
+        next(err);
+    }
+});
 
 router.put('/update', async (req, res, next) => {
-  let id = req.params.body.id;
-  let title = req.params.body.title;
-  let content = req.params.body.content;
+  let id = req.body.id;
+  let title = req.body.title;
+  let content = req.body.content;
 
   Rmc.update(
     {

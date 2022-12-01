@@ -20,13 +20,21 @@ module.exports = class Rmc extends Sequelize.Model {
                 allowNull: true,
                 defaultValue: Sequelize.NOW,
             },
-            user_id: {
-                type: Sequelize.INTEGER,
+            gosok_id: {
+                type: Sequelize.STRING(20),
                 allowNull: false,
+            },
+            good: {
+                type: Sequelize.INTEGER,
+                allowNull: true,
+            },
+            bad: {
+                type: Sequelize.INTEGER,
+                allowNull: true,
             },
         }, {
             sequelize,
-            timestamps: true,
+            timestamps: false,
             modelName: 'Rmc',
             tableName: 'rmc',
             paranoid: false,

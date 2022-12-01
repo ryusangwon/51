@@ -20,13 +20,13 @@ module.exports = class Rmc_board extends Sequelize.Model {
                 type: Sequelize.INTEGER,
                 allowNull: false,
             },
-            user_id: {
-                type: Sequelize.INTEGER,
+            gosok_id: {
+                type: Sequelize.STRING(20),
                 allowNull: false,
             },
         }, {
             sequelize,
-            timestamps: true,
+            timestamps: false,
             modelName: 'Rmc_board',
             tableName: 'rmc_board',
             paranoid: false,
