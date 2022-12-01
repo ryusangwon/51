@@ -12,7 +12,7 @@ router.post('/create', async (req, res, next) => {
     const rmc_id = req.body.rmc_id;
     const gosok_id = req.body.gosok_id;
 
-    const RmcBoard = await RmcBoard.create({
+    await RmcBoard.create({
         comment: comment,
         rmc_id: rmc_id,
         create_date: Sequelize.NOW,
