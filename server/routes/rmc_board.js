@@ -7,10 +7,10 @@ const Sequelize = require('sequelize');
 const router = express.Router();
 
 router.post('/create', async (req, res, next) => {
-    const {id} = req.params.body.id;
-    const {user_id} = req.params.body.user_id;
-    const {title} = req.params.body.title;
-    const {content} = req.params.body.content;
+    const {id} = req.body.id;
+    const {user_id} = req.body.user_id;
+    const {title} = req.body.title;
+    const {content} = req.body.content;
 
     const RmcBoard = await Rmc.create({
         id: id,

@@ -11,8 +11,8 @@ router.get('/', async (req, res, next) => {
 });
 
 router.post('/create', async (req, res, next) => {
-    const {star} = req.params.body.star;
-    const {lecture_id} = req.params.body.lecture_id;
+    const {star} = req.body.star;
+    const {lecture_id} = req.body.lecture_id;
 
     const ReviewStar = await ReviewStar.create({
         star: star,
