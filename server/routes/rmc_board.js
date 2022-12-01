@@ -21,7 +21,17 @@ router.post('/create', async (req, res, next) => {
         console.error(e);
         next(e);
     }
+});
 
+router.get('/getRmcBoard', async (req, res, next) => {
+    try{
+        console.log("[GET_RMC_BOARD]");
+        boards = await RmcBoard.findAll({});
+        return res.send(boards);
+    } catch(err){
+        console.error(err);
+        next(err);
+    }
 });
 
 module.exports = router;
