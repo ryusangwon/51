@@ -11,13 +11,13 @@ router.get('/', async (req, res, next) => {
 });
 
 router.post('/create', async (req, res, next) => {
-    const user_id = req.body.user_id;
+    const gosok_id = req.body.gosok_id;
     const title = req.body.title;
     const video_src = req.body.video_src;
     const content = req.body.content;
 
     const rmc = await Rmc.create({
-        user_id: user_id,
+        gosok_id: gosok_id,
         title: title,
         video_src: video_src,
         content: content,
