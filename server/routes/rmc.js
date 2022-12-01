@@ -5,6 +5,16 @@ const User_rmc = require('../models/user_rmc');
 
 const router = express.Router();
 
+const Sequelize = require("sequelize");
+const env = process.env.NODE_ENV || 'development';
+const config = require('../config/config.json')[env];
+const sequelize = new Sequelize(
+        config.database,
+        config.username,
+        config.password,
+        config
+        );
+
 router.get('/', async (req, res, next) => {
     console.log("[GET_RMC]");
     Rmcs = await Rmc.findAll({});
