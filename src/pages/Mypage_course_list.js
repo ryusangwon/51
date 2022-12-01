@@ -10,7 +10,6 @@ const Mypage_course_list = () => {
   let navigate = useNavigate();
   const [ lecture_list, setLecture_list ] = React.useState([]);
   const [server_flag, setServer_flag] = useState(false);
-
   /*
   useEffect(async() => {
 
@@ -60,6 +59,33 @@ const Mypage_course_list = () => {
     window.open('/camera', '_blank')
   }
 
+  const useConfirm = (message = null, onConfirm, onCancel) => {
+    if (!onConfirm || typeof onConfirm !== "function") {
+      return;
+    }
+    if (onCancel && typeof onCancel !== "function") {
+      return;
+    }
+  
+    const confirmAction = () => {
+      if (window.confirm(message)) {
+        onConfirm();
+      } else {
+        onCancel();
+      }
+    };
+  
+    return confirmAction;
+  };
+  const deleteConfirm = (id) => {
+    window.location.href = "/review?id="+id
+  }
+  //const cancelConfirm = () => console.log("종료를 취소했습니다.");
+  //const confirmDelete = (id) => useConfirm(
+  //  "종료하시겠습니까?",
+  //  deleteConfirm(id),
+  //  cancelConfirm
+  //);
 
     return (
 
@@ -95,6 +121,7 @@ const Mypage_course_list = () => {
                       <td className="learning_table_num_td">{list.id}</td>
                       <td className="learning_table_title_td">{list.title}</td>
                       <td classname="learning_table_date_td">{moment(list.start_time).format('YYYY-MM-DD HH:mm:ss')}</td>
+                      <td><input type="button" id="regist_end_button" onClick={() => deleteConfirm(list.id)} className="learning_table_button" value="강의종료" /></td>
                       <td><input type="button" id="regist_button" onClick={() => enter_lecture()} className="learning_table_button" value="강의실입장" /></td>
                     </tr>
                     )}

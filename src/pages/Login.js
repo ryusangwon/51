@@ -40,7 +40,7 @@ const Login = () => {
   }
 
   const login_success = () => {
-    axios.post('http://localhost:3001/user/ismenti', {
+    axios.post('http://localhost:3001/user/ismento', {
       id : id,
     }).then((result)=>{
       console.log(result.data);

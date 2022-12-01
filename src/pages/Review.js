@@ -2,27 +2,28 @@ import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import { FaStar } from 'react-icons/fa';
 import styled from 'styled-components';
+import './css/review.css';
 import axios from 'axios';
 
 const ARRAY = [0, 1, 2, 3, 4];
 
 function Review() {
-  const [clicked, setClicked] = useState([false, false, false, false, false]);
+  const [star, setStar] = useState([false, false, false, false, false]);
 
   const handleStarClick = index => {
-    let clickStates = [...clicked];
+    let clickStates = [...star];
     for (let i = 0; i < 5; i++) {
       clickStates[i] = i <= index ? true : false;
     }
-    setClicked(clickStates);
+    setStar(clickStates);
   };
 
-  useEffect(() => {
-    sendReview();
-  }, [clicked]); //컨디마 컨디업
+  //useEffect(() => {
+  // sendReview();
+  //}, [star]); //컨디마 컨디업
 
-  const sendReview = () => {
-    let score = clicked.filter(Boolean).length;
+  //const sendReview = () => {
+    //let score = star.filter(Boolean).length;
     // fetch('http://52.78.63.175:8000/movie', {
     //   method: 'POST',
     //   Headers: {
@@ -33,7 +34,20 @@ function Review() {
     //     star: score,
     //   }),
     // });
-  };
+  //};
+
+  const sendReview = () => {
+
+    console.log(star);
+
+    axios.post('http://localhost:3001/review_star/create', {
+      star : star,
+      //lecture_id : lecture_id
+      }).then((result)=>{
+        console.log(result);
+        window.location.href = "/mypage_course_list"
+      })
+  }
 
   return (
     <div className="height_100_class">
@@ -47,11 +61,12 @@ function Review() {
               key={idx}
               size="50"
               onClick={() => handleStarClick(el)}
-              className={clicked[el] && 'yellowStar'}
+              className={star[el] && 'yellowStar'}
             />
           );
         })}
       </Stars>
+      <button className="rating_finish" onClick={sendReview}>완료</button>
     </Wrap>
     </div>
   );
@@ -67,7 +82,7 @@ const Wrap = styled.div`
 
 const RatingText = styled.div`
   color: #787878;
-  font-size: 12px;
+  font-size: 20px;
   font-weight: 400;
 `;
 
