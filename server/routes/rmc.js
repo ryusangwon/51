@@ -68,7 +68,9 @@ router.post('/vote', async (req, res, next) => {
         const vote = req.body.vote; // 0이면 false(반대), 1이면 true(찬성)
 
         const exUser = await User_rmc.findOne({where: {gosok_id}});
-        if (exUser) {
+        const exUserRmc = await User_rmc.findOne({where: {rmc_id}});
+
+        if (exUser && exUserRmc) {
             return res.send('이미 투표하였습니다.');
         } else{
             await User_rmc.create({
