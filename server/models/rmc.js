@@ -34,7 +34,7 @@ module.exports = class Rmc extends Sequelize.Model {
             },
         }, {
             sequelize,
-            timestamps: true,
+            timestamps: false,
             modelName: 'Rmc',
             tableName: 'rmc',
             paranoid: false,
