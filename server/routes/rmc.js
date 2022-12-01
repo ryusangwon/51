@@ -48,6 +48,19 @@ router.post('/getRmcById', async (req, res, next) => {
     }
 });
 
+router.post('/getGoodBad', async (req, res, next) => {
+    try{
+        console.log("[GET_GOOD_BAD]");
+        const id = req.body.id;
+        rmcById = await Rmc.findOne({where: {id: id}});
+        let good = rmcById 
+        return res.send(rmcById);
+    } catch(err){
+        console.error(err);
+        next(err);
+    }
+});
+
 router.put('/update', async (req, res, next) => {
   let id = req.body.id;
   let title = req.body.title;

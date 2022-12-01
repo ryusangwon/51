@@ -75,7 +75,7 @@ router.get('/logout', isLoggedIn, (req, res) => {
 
 
 router.post('/ismento', async (req, res) => {
-    let id = req.body.id;
+    const id = req.body.id;
     const exUser = await User.findOne({where: {gosok_id: id}});
     if (exUser) {
         if (exUser.mento === true){

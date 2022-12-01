@@ -60,7 +60,7 @@ router.get('/getLecture', async (req, res, next) => {
 
 router.post('/existMenti', async (req, res, next) => {
     try{
-        const {id} = req.body;
+        const id = req.body;
         console.log("[EXISTMENTI]");
         console.log(id);
         const exLecture = await Lecture.findOne({where: {id: id}});
@@ -102,7 +102,7 @@ router.post('/existMenti', async (req, res, next) => {
 
 router.post('/getLectureByPosition', async (req, res, next) => {
     try{
-        const {position} = req.body.position;
+        const position = req.body.position;
 //        let position = '미드';
         let query = `SELECT * FROM lecture WHERE id IN (SELECT lecture_id FROM user_lecture WHERE user_id = (SELECT id FROM user WHERE game_id = (SELECT id FROM game WHERE game.position=?)))`;
         const result = await sequelize.query(query, {
@@ -119,13 +119,8 @@ router.post('/getLectureByPosition', async (req, res, next) => {
 
 router.get('/getLectureByStar', async (req, res, next) => {
     try{
-//        const {lecture_id} = req.body.lecture_id;
-        let lecture_id = 2;
-        let query = `SELECT * FROM lecture WHERE id IN (SELECT lecture_id FROM user_lecture WHERE user_id = (SELECT id FROM user WHERE game_id = (SELECT id FROM game WHERE game.position=?)))`;
-        const result = await sequelize.query(query, {
-            type: QueryTypes.SELECT,
-            replacements: [position],
-        });
+        let query = `SELECT lecture_id, AVG(star) FROM review_star GROUP BY lecture_id ORDER BY AVG(star) desc;`;
+        const result = await sequelize.query(query);
         console.log("test", result);
         return res.send(result);
     } catch (err) {
