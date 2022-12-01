@@ -11,10 +11,10 @@ router.get('/', async (req, res, next) => {
 });
 
 router.post('/create', async (req, res, next) => {
-    const {user_id} = req.body.user_id;
-    const {title} = req.body.title;
-    const {video_src} = req.body.video_src;
-    const {content} = req.body.content;
+    const user_id = req.body.user_id;
+    const title = req.body.title;
+    const video_src = req.body.video_src;
+    const content = req.body.content;
 
     const rmc = await Rmc.create({
         user_id: user_id,
@@ -27,9 +27,9 @@ router.post('/create', async (req, res, next) => {
 
 
 router.put('/update', async (req, res, next) => {
-  let id = req.params.body.id;
-  let title = req.params.body.title;
-  let content = req.params.body.content;
+  let id = req.body.id;
+  let title = req.body.title;
+  let content = req.body.content;
 
   Rmc.update(
     {
