@@ -10,6 +10,7 @@ module.exports = class User_rmc extends Sequelize.Model {
             rmc_id: {
                 type: Sequelize.INTEGER,
                 allowNull: true,
+                unique: true,
             },
             vote: {
                 type: Sequelize.BOOLEAN,
