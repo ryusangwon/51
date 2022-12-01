@@ -5,6 +5,17 @@ const ReviewStar = require('../models/review_star');
 
 const router = express.Router();
 
+const Sequelize = require("sequelize");
+const env = process.env.NODE_ENV || 'development';
+const config = require('../config/config.json')[env];
+const sequelize = new Sequelize(
+        config.database,
+        config.username,
+        config.password,
+        config
+        );
+
+
 router.get('/', async (req, res, next) => {
     console.log("[GET_REVIEW_STAR]");
     return res.send("DONE`");
@@ -22,8 +33,10 @@ router.post('/create', async (req, res, next) => {
 
 router.get('/getStar', async (req, res, next) => {
     const lecture_id = req.body.lecture_id;
-    const reviewStar = await ReviewStar.findOne({
-        where: {lecture_id: lecture_id}
+    let query = `SELECT AVG(star) FROM review_star WHERE lecture_id=?`;
+    const reviewStar = await sequelize.query(query, {
+        type: QueryTypes.SELECT,
+        replacements: [lecture_id],
     });
 
     return res.send(reviewStar);
