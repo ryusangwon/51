@@ -48,10 +48,11 @@ router.post('/getRmcById', async (req, res, next) => {
     }
 });
 
-router.post('/getGoodBad', async (req, res, next) => {
+router.post('/vote', async (req, res, next) => {
     try{
-        console.log("[GET_GOOD_BAD]");
-        const id = req.body.id;
+        console.log("[GET_vote]");
+        const vote = req.body.vote;
+
         rmcById = await Rmc.findOne({where: {id: id}});
         let good = rmcById 
         return res.send(rmcById);
