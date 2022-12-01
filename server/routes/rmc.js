@@ -36,6 +36,18 @@ router.get('/getRmc', async (req, res, next) => {
     }
 });
 
+router.post('/getRmcById', async (req, res, next) => {
+    try{
+        console.log("[GET_RMC]");
+        const id = req.body.id;
+        rmcById = await Rmc.findOne({where: {id: id}});
+        return res.send(rmcById);
+    } catch(err){
+        console.error(err);
+        next(err);
+    }
+});
+
 router.put('/update', async (req, res, next) => {
   let id = req.body.id;
   let title = req.body.title;
