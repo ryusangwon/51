@@ -74,6 +74,21 @@ function RmcView() {
             setComment_result(result.data);
         })
 
+        axios.post('http://localhost:3001/rmc/voteResult', {
+          rmc_id: id,
+          }).then((result)=>{
+            console.log(result.data);
+            for(var i = 0; i<result.data.length; i++){
+              if(result.data[i].vote == 1){
+                if(result.data[i].count != 0)
+                  setGood(result.data[i].count);
+              }else{
+                if(result.data[i].count != 0)
+                  setBad(result.data[i].count);
+              }
+            }
+          })
+
   }, []);
 
   const send_comment = () => {
@@ -92,6 +107,30 @@ function RmcView() {
       console.log(result);
       //window.location.href = "/rmc/rmcview?id="+id;
       window.location.replace("/rmc/rmcview?id="+id);
+    })
+
+    window.location.replace("/rmc/rmcview?id="+id);
+
+  }
+
+  const send_vote = (flag) => {
+    console.log(flag);
+
+    axios.post('http://localhost:3001/rmc/vote', {
+      rmc_id : id,
+      gosok_id : sessionStorage.getItem('login-token'),
+      vote : flag,
+
+    }).then((result)=>{
+
+      console.log(result.data);
+      if(result.data == '이미 투표하였습니다.'){
+        alert('이미 투표하였습니다.');
+      }else{
+        window.location.replace("/rmc/rmcview?id="+id);
+      }
+      //window.location.href = "/rmc/rmcview?id="+id;
+      //window.location.replace("/rmc/rmcview?id="+id);
     })
 
   }
@@ -146,7 +185,7 @@ function RmcView() {
             </div>
 
             <div className="rmc-view-center">
-                <button className="agree_btn">
+                <button className="agree_btn" onClick={() => send_vote(1)}>
                   찬성
                 </button>
                 <div className="rmc-view-bar">
@@ -167,7 +206,7 @@ function RmcView() {
                     }
                   </div>
                 </div>
-                <button className="disagree_btn">
+                <button className="disagree_btn" onClick={() => send_vote(0)}>
                   반대
                 </button>
             </div>

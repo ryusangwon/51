@@ -73,6 +73,7 @@ const Lecture = () => {
         const res = await axios.get('http://localhost:3001/lecture/getLecture')
         // 받아온 데이터를 useState 를 이용하여 선언한다.
         console.log(res.data);
+
         setResult(res.data);
         setServer_flag(true);
 
