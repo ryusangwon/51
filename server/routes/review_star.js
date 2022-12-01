@@ -20,5 +20,14 @@ router.post('/create', async (req, res, next) => {
     });
 });
 
+router.get('/getStar', async (req, res, next) => {
+    const lecture_id = req.body.lecture_id;
+    const reviewStar = await ReviewStar.findOne({
+        where: {lecture_id: lecture_id}
+    });
+
+    return res.send(reviewStar);
+});
+
 
 module.exports = router;
