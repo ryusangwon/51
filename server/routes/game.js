@@ -8,7 +8,7 @@ const champions = require('../champion.json');
 
 const router = express.Router();
 
-const api_key = "RGAPI-43b69d2a-9c38-4db2-998e-684f73b53cef";
+const api_key = "RGAPI-cea1b272-38d2-44aa-821f-e8b65b9023b3";
 
 router.get('/', async (req, res, next) => {
     try{
