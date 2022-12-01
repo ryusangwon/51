@@ -2,11 +2,11 @@ import React from 'react';
 
 const RmcTableRow = ({ children }) => {
   return (
-    <td className="common-table-row">
+    <tr className="common-table-row">
       {
         children
       }
-    </td>
+    </tr>
   )
 }
 

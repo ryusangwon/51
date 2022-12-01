@@ -24,11 +24,6 @@ const Lecture_regist = () => {
 
   const send_btn = () => {
 
-    console.log(lecture_title);
-    console.log(lecture_price);
-    console.log(lecture_date);
-    console.log(lecture_info);
-    console.log(mento_info);
     //user_id, title, mento_description, lecture_description, lecture_time, price, start_time, menti_in
 
     axios.post('http://localhost:3001/lecture/newLecture', {
