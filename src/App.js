@@ -11,6 +11,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Lecture from './pages/Lecture';
 import Lecture_regist from './pages/Lecture_regist';
+import Review from './pages/Review';
 import Rmc from './pages/Rmc';
 import RmcView from './pages/RmcView';
 import RmcWrite from './pages/RmcWrite';
@@ -27,6 +28,7 @@ const App = () => {
 
       <Route path="/lecture" element={<Lecture />}/>
       <Route path="/lecture_regist" element={<Lecture_regist />}/>
+      <Route path="/review" element={<Review />}/>
 
       <Route path="/rmc" element={<Rmc />}/>
       <Route path='/rmc/:rmcId' element={<RmcView />}/>

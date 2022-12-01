@@ -26,6 +26,9 @@
     "react-bootstrap": "^2.6.0",
     "react-datepicker": "^4.8.0",
     "react-dom": "^16.8.0",
+    "react-icons": "^4.7.1",
+    "react-native": "^0.70.6",
+    "react-native-reanimated": "^2.13.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
@@ -35,6 +38,7 @@
     "redux-persist": "^6.0.0",
     "sass": "^1.56.1",
     "scss": "^0.2.4",
+    "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
