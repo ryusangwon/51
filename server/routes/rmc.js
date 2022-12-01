@@ -60,16 +60,12 @@ router.post('/getRmcById', async (req, res, next) => {
     }
 });
 
-router.get('/vote', async (req, res, next) => {
+router.post('/vote', async (req, res, next) => {
     try{
         console.log("[GET_vote]");
-//        const gosok_id = req.body.gosok_id;
-//        const rmc_id = req.body.rmc_id;
-//        const vote = req.body.vote; // 0이면 false(반대), 1이면 true(찬성)
-
-        const gosok_id = 1;
-        const rmc_id = 1;
-        vote = 0;
+        const gosok_id = req.body.gosok_id;
+        const rmc_id = req.body.rmc_id;
+        const vote = req.body.vote; // 0이면 false(반대), 1이면 true(찬성)
 
         await User_rmc.create({
             gosok_id: gosok_id,
