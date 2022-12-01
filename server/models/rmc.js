@@ -20,8 +20,8 @@ module.exports = class Rmc extends Sequelize.Model {
                 allowNull: true,
                 defaultValue: Sequelize.NOW,
             },
-            user_id: {
-                type: Sequelize.INTEGER,
+            gosok_id: {
+                type: Sequelize.STRING(20),
                 allowNull: false,
             },
             good: {
