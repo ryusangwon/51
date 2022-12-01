@@ -74,7 +74,7 @@ router.post('/vote', async (req, res, next) => {
         });
         console.log(result);
 
-        if (result) {
+        if (result.length != 0) {
             return res.send('이미 투표하였습니다.');
         } else{
             await User_rmc.create({
