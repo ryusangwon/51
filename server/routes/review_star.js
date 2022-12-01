@@ -29,6 +29,7 @@ router.post('/create', async (req, res, next) => {
         star: star,
         lecture_id: lecture_id,
     });
+    return res.send("Thanks for review");
 });
 
 router.get('/getStar', async (req, res, next) => {
