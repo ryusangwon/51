@@ -73,7 +73,7 @@ router.post('/vote', async (req, res, next) => {
             vote: vote,
         });
 
-        let query = `SELECT vote, count(vote) FROM user_rmc WHERE rmc_id=? GROUP BY vote`;
+        let query = `SELECT vote, count(vote) AS count FROM user_rmc WHERE rmc_id=? GROUP BY vote`;
         const result = await sequelize.query(query, {
             type: QueryTypes.SELECT,
             replacements: [rmc_id],
