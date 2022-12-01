@@ -72,6 +72,7 @@ router.post('/vote', async (req, res, next) => {
             type: QueryTypes.SELECT,
             replacements: [gosok_id, rmc_id],
         });
+        console.log(result);
 
         if (result) {
             return res.send('이미 투표하였습니다.');
@@ -84,12 +85,12 @@ router.post('/vote', async (req, res, next) => {
         }
 
         query = `SELECT vote, count(vote) AS count FROM user_rmc WHERE rmc_id=? GROUP BY vote`;
-        result = await sequelize.query(query, {
+        const result2 = await sequelize.query(query, {
             type: QueryTypes.SELECT,
             replacements: [rmc_id],
         });
 
-        return res.send(result);
+        return res.send(result2);
     } catch(err){
         console.error(err);
         next(err);
