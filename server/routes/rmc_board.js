@@ -15,7 +15,6 @@ router.post('/create', async (req, res, next) => {
         await RmcBoard.create({
             comment: comment,
             rmc_id: rmc_id,
-            create_date: Sequelize.NOW,
             gosok_id: gosok_id,
         });
     } catch (e){
