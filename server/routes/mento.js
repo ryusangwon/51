@@ -5,20 +5,20 @@ const router = express.Router();
 
 router.post('/register', async (req, res, next) => {
 //    let mento = req.params.body.mento;
-    const mento_id = req.body.mento_id;
+    const {mento_id} = req.params.body.id;
 
     try{
         let message;
-//        if (mento.mento === false){
-//            User.update({
-//                mento: true,
-//            }, {
-//                where: {id: mento_id},
-//            })
-//        } else{
-//            message = "Already registered";
-//            return res.send('message');
-//        }
+        //        if (mento.mento === false){
+        //            User.update({
+        //                mento: true,
+        //            }, {
+        //                where: {id: mento_id},
+        //            })
+        //        } else{
+        //            message = "Already registered";
+        //            return res.send('message');
+        //        }
         await User.update({
             mento: true,
         }, {
