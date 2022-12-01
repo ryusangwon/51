@@ -70,8 +70,16 @@ router.post('/vote', async (req, res, next) => {
         const exUser = await User_rmc.findOne({where: {gosok_id}});
         const exUserRmc = await User_rmc.findOne({where: {rmc_id}});
 
-        if (exUser && exUserRmc) {
-            return res.send('이미 투표하였습니다.');
+        if (exUser) {
+            if (exUserRmc){
+                return res.send('이미 투표하였습니다.');
+            }else{
+                await User_rmc.create({
+                    gosok_id: gosok_id,
+                    rmc_id: rmc_id,
+                    vote: vote,
+                });
+            }
         } else{
             await User_rmc.create({
                         gosok_id: gosok_id,
