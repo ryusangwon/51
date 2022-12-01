@@ -75,6 +75,8 @@ const Lecture = () => {
         console.log(res.data);
         setResult(res.data);
         setServer_flag(true);
+
+        console.log(res.data);;
     } catch(e) {
         console.error(e.message)
     }
@@ -149,7 +151,8 @@ const Lecture = () => {
 
 
           <div class="lecture_grid-init grid">
-          {result.map((list) =>
+          {
+            result.map((list) =>
               <div class="box-init box" onClick={()=>select_modal(list.id, list.title, list.start_time, list.lecture_time, list.price, list.lecture_description, list.mento_description)}>
                 <img className="box_init_img"></img>
 
@@ -174,7 +177,8 @@ const Lecture = () => {
                   }
 
               </div>
-            )}
+            )
+          }
           </div>
 
         </div>

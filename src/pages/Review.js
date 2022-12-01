@@ -8,22 +8,25 @@ import axios from 'axios';
 const ARRAY = [0, 1, 2, 3, 4];
 
 function Review() {
-  const [star, setStar] = useState([false, false, false, false, false]);
+  const [count, setCount] = useState([0, 0, 0, 0, 0]);
+  const params = new URLSearchParams(window.location.search);
+  const [id, setId] = useState(params.get("id"));
 
   const handleStarClick = index => {
-    let clickStates = [...star];
+    let clickStates = [...count];
     for (let i = 0; i < 5; i++) {
-      clickStates[i] = i <= index ? true : false;
+      clickStates[i] = i <= index ? 1 : 0;
     }
-    setStar(clickStates);
+    
+    setCount(clickStates);
   };
 
   //useEffect(() => {
   // sendReview();
-  //}, [star]); //컨디마 컨디업
+  //}, [count]); //컨디마 컨디업
 
   //const sendReview = () => {
-    //let score = star.filter(Boolean).length;
+    //let score = count.filter(Boolean).length;
     // fetch('http://52.78.63.175:8000/movie', {
     //   method: 'POST',
     //   Headers: {
@@ -31,21 +34,31 @@ function Review() {
     //   },
     //   body: JSON.stringify({
     //     movie_id:1
-    //     star: score,
+    //     count: score,
     //   }),
     // });
   //};
 
   const sendReview = () => {
+    //let clickStates = [...count];
+    let star = 0;
+    for (let i = 0; i < count.length; i++) {
+      if(count[i] == 1) {
+        //setStar(1);
+        star++;
+      }
+    }
 
     console.log(star);
+    console.log(id);
 
     axios.post('http://localhost:3001/review_star/create', {
       star : star,
+      lecture_id : id,
       //lecture_id : lecture_id
       }).then((result)=>{
         console.log(result);
-        window.location.href = "/mypage_course_list"
+        //window.location.href = "/mypage_course_list"
       })
   }
 
@@ -61,7 +74,7 @@ function Review() {
               key={idx}
               size="50"
               onClick={() => handleStarClick(el)}
-              className={star[el] && 'yellowStar'}
+              className={count[el] && 'yellowStar'}
             />
           );
         })}

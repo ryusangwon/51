@@ -15,6 +15,7 @@ import Review from './pages/Review';
 import Rmc from './pages/Rmc';
 import RmcView from './pages/RmcView';
 import RmcWrite from './pages/RmcWrite';
+import Record from './pages/Record';
 
 
 const App = () => {
@@ -31,9 +32,9 @@ const App = () => {
       <Route path="/review" element={<Review />}/>
 
       <Route path="/rmc" element={<Rmc />}/>
-      <Route path='/rmc/:rmcId' element={<RmcView />}/>
+      <Route path='/rmc/rmcview' element={<RmcView />}/>
       <Route path='/rmc/write' element={<RmcWrite />}  />
-      
+
       <Route path="/mypage" element={<Mypage />}/>
 
       <Route path="/login" element={<Login />}/>
@@ -41,6 +42,7 @@ const App = () => {
 
       <Route path="/camera" element={<Camera />}/>
       <Route path="/screen" element={<Screen />}/>
+      <Route path="/record" element={<Record />}/>
     </Routes>
   );
 };
