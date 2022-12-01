@@ -9,6 +9,7 @@ const ARRAY = [0, 1, 2, 3, 4];
 
 function Review() {
   const [count, setCount] = useState([0, 0, 0, 0, 0]);
+  let star = 0;
   const params = new URLSearchParams(window.location.search);
   const [id, setId] = useState(params.get("id"));
 
@@ -41,7 +42,6 @@ function Review() {
 
   const sendReview = () => {
     //let clickStates = [...count];
-    let star = 0;
     for (let i = 0; i < count.length; i++) {
       if(count[i] == 1) {
         //setStar(1);
@@ -52,13 +52,13 @@ function Review() {
     console.log(star);
     console.log(id);
 
-    axios.post('http://localhost:3001/review_star/create', {
+    axios.post('http://localhost:3001/reviewStar/create', {
       star : star,
       lecture_id : id,
       //lecture_id : lecture_id
       }).then((result)=>{
         console.log(result);
-        //window.location.href = "/mypage_course_list"
+        window.location.href = "/mypage_course_list"
       })
   }
 
