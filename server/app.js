@@ -18,6 +18,7 @@ const lectureRouter = require('./routes/lecture');
 const lectureRoomRouter = require('./routes/lecture_room');
 const rmcRouter = require('./routes/rmc');
 const rmcBoardRouter = require('./routes/rmc_board');
+const reviewStarRouter = require('./routes/review_star');
 
 dotenv.config();
 const app = express();
@@ -65,6 +66,7 @@ app.use('/lecture', lectureRouter);
 app.use('/lectureRoom', lectureRoomRouter);
 app.use('/rmc', rmcRouter);
 app.use('/rmcBoard', rmcBoardRouter);
+app.use('/reviewStar', reviewStarRouter);
 
 app.get('/', (req, res) => {
   // req.session.id = 'id';
