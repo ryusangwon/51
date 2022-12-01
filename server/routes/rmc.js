@@ -25,6 +25,16 @@ router.post('/create', async (req, res, next) => {
     res.send("DONE");
 });
 
+router.get('/getRmc', async (req, res, next) => {
+    try{
+        console.log("[GET_RMC]");
+        rmcs = await Rmc.findAll({});
+        return res.send(rmcs);
+    } catch(err){
+        console.error(err);
+        next(err);
+    }
+});
 
 router.put('/update', async (req, res, next) => {
   let id = req.body.id;
