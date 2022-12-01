@@ -6,6 +6,7 @@ const Lecture_room = require('./lecture_room');
 const Review_star = require('./review_star');
 const Rmc = require('./rmc');
 const Rmc_board = require('./rmc_board');
+const User_rmc = require('./user_rmc');
 
 const env = process.env.NODE_ENV || 'development';
 const config = require('../config/config.json')[env];
@@ -27,6 +28,7 @@ db.Lecture_room = Lecture_room;
 db.Review_star = Review_star;
 db.Rmc = Rmc;
 db.Rmc_board = Rmc_board;
+db.User_rmc = User_rmc;
 
 User.init(sequelize);
 //User.associate(db);
@@ -45,5 +47,7 @@ Rmc.init(sequelize)
 
 Rmc_board.init(sequelize)
 //Rmc_board.associate(db);
+
+User_rmc.init(sequelize);
 
 module.exports = db;
