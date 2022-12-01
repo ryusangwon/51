@@ -2,27 +2,31 @@ import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import { FaStar } from 'react-icons/fa';
 import styled from 'styled-components';
+import './css/review.css';
 import axios from 'axios';
 
 const ARRAY = [0, 1, 2, 3, 4];
 
 function Review() {
-  const [clicked, setClicked] = useState([false, false, false, false, false]);
+  const [count, setCount] = useState([0, 0, 0, 0, 0]);
+  const params = new URLSearchParams(window.location.search);
+  const [id, setId] = useState(params.get("id"));
 
   const handleStarClick = index => {
-    let clickStates = [...clicked];
+    let clickStates = [...count];
     for (let i = 0; i < 5; i++) {
-      clickStates[i] = i <= index ? true : false;
+      clickStates[i] = i <= index ? 1 : 0;
     }
-    setClicked(clickStates);
+    
+    setCount(clickStates);
   };
 
-  useEffect(() => {
-    sendReview();
-  }, [clicked]); //컨디마 컨디업
+  //useEffect(() => {
+  // sendReview();
+  //}, [count]); //컨디마 컨디업
 
-  const sendReview = () => {
-    let score = clicked.filter(Boolean).length;
+  //const sendReview = () => {
+    //let score = count.filter(Boolean).length;
     // fetch('http://52.78.63.175:8000/movie', {
     //   method: 'POST',
     //   Headers: {
@@ -30,10 +34,33 @@ function Review() {
     //   },
     //   body: JSON.stringify({
     //     movie_id:1
-    //     star: score,
+    //     count: score,
     //   }),
     // });
-  };
+  //};
+
+  const sendReview = () => {
+    //let clickStates = [...count];
+    let star = 0;
+    for (let i = 0; i < count.length; i++) {
+      if(count[i] == 1) {
+        //setStar(1);
+        star++;
+      }
+    }
+
+    console.log(star);
+    console.log(id);
+
+    axios.post('http://localhost:3001/review_star/create', {
+      star : star,
+      lecture_id : id,
+      //lecture_id : lecture_id
+      }).then((result)=>{
+        console.log(result);
+        //window.location.href = "/mypage_course_list"
+      })
+  }
 
   return (
     <div className="height_100_class">
@@ -47,11 +74,12 @@ function Review() {
               key={idx}
               size="50"
               onClick={() => handleStarClick(el)}
-              className={clicked[el] && 'yellowStar'}
+              className={count[el] && 'yellowStar'}
             />
           );
         })}
       </Stars>
+      <button className="rating_finish" onClick={sendReview}>완료</button>
     </Wrap>
     </div>
   );
@@ -67,7 +95,7 @@ const Wrap = styled.div`
 
 const RatingText = styled.div`
   color: #787878;
-  font-size: 12px;
+  font-size: 20px;
   font-weight: 400;
 `;
 
