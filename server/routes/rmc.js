@@ -1,6 +1,7 @@
 const express = require('express');
 const User = require('../models/user');
 const Rmc = require('../models/rmc');
+const User_rmc = require('../models/user_rmc');
 
 const router = express.Router();
 
@@ -51,11 +52,23 @@ router.post('/getRmcById', async (req, res, next) => {
 router.post('/vote', async (req, res, next) => {
     try{
         console.log("[GET_vote]");
-        const vote = req.body.vote;
+        const gosok_id = req.body.gosok_id;
+        const rmc_id = req.body.rmc_id;
+        const vote = req.body.vote; // 0이면 false(반대), 1이면 true(찬성)
 
-        rmcById = await Rmc.findOne({where: {id: id}});
-        let good = rmcById 
-        return res.send(rmcById);
+        await User_rmc.create({
+            gosok_id: gosok_id,
+            rmc_id: rmc_id,
+            vote: vote,
+        });
+
+        let query = `SELECT vote, count(vote) FROM user_rmc WHERE rmc_id=? GROUP BY vote`;
+        const result = await sequelize.query(query, {
+            type: QueryTypes.SELECT,
+            replacements: [rmc_id],
+        });
+
+        return res.send(result);
     } catch(err){
         console.error(err);
         next(err);

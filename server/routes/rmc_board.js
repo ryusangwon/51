@@ -28,8 +28,12 @@ router.post('/getRmcBoard', async (req, res, next) => {
         console.log("[GET_RMC_BOARD]");
         const rmc_id = req.body.rmc_id;
         const boards = await RmcBoard.findAll({
-            where: {rmc_id:rmc_id},
-            order: [["create_date", "DESC"]],
+            where: {
+                rmc_id:rmc_id,
+            },
+            order: [
+                ["create_date", "DESC"],
+            ],
         });
         return res.send(boards);
     } catch(err){

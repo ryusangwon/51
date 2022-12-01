@@ -119,7 +119,7 @@ router.post('/getLectureByPosition', async (req, res, next) => {
 
 router.get('/getLectureByStar', async (req, res, next) => {
     try{
-        let query = `SELECT lecture_id, AVG(star) FROM review_star GROUP BY lecture_id ORDER BY AVG(star) desc;`;
+        let query = `SELECT lecture_id, AVG(star) FROM review_star GROUP BY lecture_id ORDER BY AVG(star) desc`;
         const result = await sequelize.query(query);
         console.log("test", result);
         return res.send(result);
