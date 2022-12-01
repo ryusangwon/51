@@ -24,6 +24,14 @@ module.exports = class Rmc extends Sequelize.Model {
                 type: Sequelize.INTEGER,
                 allowNull: false,
             },
+            good: {
+                type: Sequelize.INTEGER,
+                allowNull: true,
+            },
+            bad: {
+                type: Sequelize.INTEGER,
+                allowNull: true,
+            },
         }, {
             sequelize,
             timestamps: true,
