@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post('/register', async (req, res, next) => {
 //    let mento = req.params.body.mento;
-    const {mento_id} = req.params.body.id;
+    const mento_id = req.body.mento_id;
 
     try{
         let message;

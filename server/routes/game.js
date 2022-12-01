@@ -60,6 +60,8 @@ router.post('/getData', async (req, res, next) => {
         summonerDict['champions'] = champList;
         console.log(summonerDict);
 
+        return res.json(summonerDict);
+
         const game = await Game.create({
             summonerName: summonerDict['summonerName'],
             encryptedSummonerId: summonerId,
