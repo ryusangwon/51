@@ -75,6 +75,24 @@ router.post('/vote', async (req, res, next) => {
     }
 });
 
+router.post('/voteResult', async (req, res, next) => {
+    try{
+        console.log("[GET_vote_result]");
+        const rmc_id = req.body.rmc_id;
+        let query = `SELECT vote, count(vote) FROM user_rmc WHERE rmc_id=? GROUP BY vote`;
+        const result = await sequelize.query(query, {
+            type: QueryTypes.SELECT,
+            replacements: [rmc_id],
+        });
+
+        return res.send(result);
+    } catch(err){
+        console.error(err);
+        next(err);
+    }
+});
+
+
 router.put('/update', async (req, res, next) => {
   let id = req.body.id;
   let title = req.body.title;
