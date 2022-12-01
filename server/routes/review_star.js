@@ -25,7 +25,7 @@ router.post('/create', async (req, res, next) => {
     const star = req.body.star;
     const lecture_id = req.body.lecture_id;
 
-    const ReviewStar = await ReviewStar.create({
+    await ReviewStar.create({
         star: star,
         lecture_id: lecture_id,
     });
