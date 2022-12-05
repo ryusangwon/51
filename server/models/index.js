@@ -1,12 +1,14 @@
 const Sequelize = require('sequelize');
 const User = require('./user');
 const Game = require('./game');
+const Game_champ = require('./game_champ');
 const Lecture = require('./lecture');
 const Lecture_room = require('./lecture_room');
 const Review_star = require('./review_star');
 const Rmc = require('./rmc');
 const Rmc_board = require('./rmc_board');
 const User_rmc = require('./user_rmc');
+const User_lecture = require('./user_lecture');
 
 const env = process.env.NODE_ENV || 'development';
 const config = require('../config/config.json')[env];
@@ -23,31 +25,43 @@ db.sequelize = sequelize;
 
 db.User = User;
 db.Game = Game;
+db.Game_champ = Game_champ;
 db.Lecture = Lecture;
 db.Lecture_room = Lecture_room;
 db.Review_star = Review_star;
 db.Rmc = Rmc;
 db.Rmc_board = Rmc_board;
 db.User_rmc = User_rmc;
+db.User_lecture = User_lecture;
 
 User.init(sequelize);
-//User.associate(db);
 
 Game.init(sequelize);
-//Game.associate(db);
 
-Lecture.init(sequelize)
-//Lecture.associate(db);
+Game_champ.init(sequelize);
 
-Review_star.init(sequelize)
-//Review_star.associate(db);
+Lecture.init(sequelize);
 
-Rmc.init(sequelize)
-//Rmc.associate(db);
+Review_star.init(sequelize);
 
-Rmc_board.init(sequelize)
-//Rmc_board.associate(db);
+Rmc.init(sequelize);
 
 User_rmc.init(sequelize);
+
+User_lecture.init(sequelize);
+
+Rmc_board.init(sequelize)
+
+User.associate(db);
+
+Game.associate(db);
+
+Lecture.associate(db);
+
+Review_star.associate(db);
+
+Rmc.associate(db);
+
+Rmc_board.associate(db);
 
 module.exports = db;
