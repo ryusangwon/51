@@ -12,10 +12,13 @@ const Lecture = () => {
   const [select_id, setSelect_id] = useState('');
   const [search, setSearch] = useState('');
   const [ result, setResult ] = React.useState([]);
+  const [ result_total, setResult_total ] = React.useState([]);
 
   const [modalOpen, setModalOpen] = useState(false);
 
   const [server_flag, setServer_flag] = useState(false);
+
+  const [selected, setSelected] = useState('');
 
   const openModal = () => {
     setModalOpen(true);
@@ -75,6 +78,7 @@ const Lecture = () => {
         console.log(res.data);
 
         setResult(res.data);
+        setResult_total(res.data);
         setServer_flag(true);
 
         console.log(res.data);;
@@ -118,7 +122,39 @@ const Lecture = () => {
   */
 
   const search_btn = () => {
-    //alert(search);
+    /*
+    let search = queryString.parse(window.location.search);
+    console.log(search)
+    if(search) {
+      search = search.search;
+
+      const search_array = [];
+
+      for(let i=0; i<data.length; i++){
+        if((data[i]['title']+"").includes(search) || (data[i]['gosok_id']+"").includes(search)){
+          search_array.push(data[i]);
+        }
+      }
+
+      console.log(search);
+      console.log(search_array);
+
+      setData(search_array);
+    }
+    */
+
+    const search_array = [];
+
+    for(let i=0; i<result_total.length; i++){
+      if((result_total[i]['title']+"").includes(search) || (result_total[i]['gosok_id']+"").includes(search)){
+        search_array.push(result_total[i]);
+      }
+    }
+
+    console.log(search);
+    console.log(search_array);
+
+    setResult(search_array);
   }
 
   const regist_btn = () => {
@@ -129,6 +165,10 @@ const Lecture = () => {
     window.location.href = "/lecture_regist"
     //navigate("/lecture_regist");
   }
+
+  const handleSelect = (e) => {
+    setSelected(e.target.value);
+  };
 
     return (
 
@@ -141,6 +181,14 @@ const Lecture = () => {
         <Header/>
 
         <div className="lecture_background">
+        <select className="w150" onChange={handleSelect}>
+            <option value="0" >선택</option>
+            <option value="1" >탑</option>
+            <option value="2">정글</option>
+            <option value="3">미드</option>
+            <option value="4">원딜</option>
+            <option value="5">서폿</option>
+          </select>
           <div className="lecture_search_div">
             <input className = "lecture_search_input" type="text" name="search" placeholder="검색" onChange={(event) => setSearch(event.target.value)}/>
             <button className = "lecture_search_btn" type="button" onClick={() => search_btn()}>검색</button>

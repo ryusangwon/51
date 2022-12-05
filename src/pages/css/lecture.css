@@ -77,3 +77,10 @@
 .box_init_div_time{
   font-size: 15px;
 }
+
+.w150{
+  position : absolute;
+  width : 100px;
+  left : 20%;
+  top: 105px;
+}
