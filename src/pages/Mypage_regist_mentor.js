@@ -54,7 +54,12 @@ const Mypage_regist_mentor = () => {
                     <div className="mypage_regist_mentor">
                         <div className="manage">
                             <div className="mentor">
-                                <div className="points">멘토등록시 주의할 점<br/>1.<br/>2.<br/>3.<br/>4.<br/>5.<br/></div>
+                                <div className="points">멘토등록시 주의할 점<br/>
+                                  1. 멘토 등록전에 lol정보를 먼저 입력해야 합니다.<br/>
+                                  2. 멘토는 티어 상관없이 등록이 가능합니다.<br/>
+                                  3. 멘토는 사명감을 가지면서 강의를 임해야 합니다.<br/>
+                                  4. 멘토를 거짓으로 등록한 것이 판명될시 그에 따른 불이익을 받을 수 있습니다.<br/>
+                                </div>
                                 <input type="checkbox" id="regist_check" onChange={(event) => setFlag(flag => !flag)} /> 위 내용을 숙지하였습니다.
                                 <input type="button" id="regist_button" value="멘토 등록" disabled={!flag} onClick={() => send_btn()}/>
                             </div>
