@@ -132,5 +132,42 @@ router.put('/update', async (req, res, next) => {
   res.send('update done');
 });
 
+//router.get('/votetest', async (req, res, next) => {
+//    try{
+//        console.log("[GET_vote]");
+//        const gosok_id = "menti_test";
+//        const rmc_id = 1;
+//        const vote = 0; // 0이면 false(반대), 1이면 true(찬성)
+//
+//        let query = `SELECT * from user_rmc where gosok_id=? and rmc_id=?;`
+//        const result = await sequelize.query(query, {
+//            type: QueryTypes.SELECT,
+//            replacements: [gosok_id, rmc_id],
+//        });
+//        console.log(result);
+//        console.log(result.length);
+//
+//        if (result.length != 0) {
+//            return res.send('이미 투표하였습니다.');
+//        } else{
+//            await User_rmc.create({
+//                gosok_id: gosok_id,
+//                rmc_id: rmc_id,
+//                vote: vote,
+//            });
+//        }
+//
+//        query = `SELECT vote, count(vote) AS count FROM user_rmc WHERE rmc_id=? GROUP BY vote`;
+//        const result2 = await sequelize.query(query, {
+//            type: QueryTypes.SELECT,
+//            replacements: [rmc_id],
+//        });
+//
+//        return res.send(result2);
+//    } catch(err){
+//        console.error(err);
+//        next(err);
+//    }
+//});
 
 module.exports = router;

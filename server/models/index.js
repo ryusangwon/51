@@ -52,16 +52,16 @@ User_lecture.init(sequelize);
 
 Rmc_board.init(sequelize)
 
-User.associate(db);
-
-Game.associate(db);
-
-Lecture.associate(db);
-
-Review_star.associate(db);
-
-Rmc.associate(db);
-
-Rmc_board.associate(db);
+//User.associate(db);
+//
+//Game.associate(db);
+//
+//Lecture.associate(db);
+//
+//Review_star.associate(db);
+//
+//Rmc.associate(db);
+//
+//Rmc_board.associate(db);
 
 module.exports = db;

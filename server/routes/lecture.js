@@ -49,6 +49,7 @@ router.post('/newLecture', async (req, res, next) => {
 
 router.get('/getLecture', async (req, res, next) => {
     try{
+        // 여기서 계산을 다한다음에 테이블 업데이트
         console.log("[GET_LECTURE_DESCRIPTION]");
         lectures = await Lecture.findAll({});
         return res.send(lectures);
