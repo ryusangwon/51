@@ -4,7 +4,16 @@ import './css/lecture.css';
 import { useNavigate } from "react-router-dom";
 import Modal from './Lecture_modal.js';
 import axios from 'axios';
-
+import jpg_1 from './img/1.jpg';
+import jpg_2 from './img/2.jpg';
+import jpg_3 from './img/3.jpg';
+import jpg_4 from './img/4.jpg';
+import jpg_5 from './img/5.jpg';
+import jpg_6 from './img/6.jpg';
+import jpg_7 from './img/7.jpg';
+import jpg_8 from './img/8.jpg';
+import jpg_9 from './img/9.jpg';
+import jpg_10 from './img/10.jpg';
 
 const Lecture = () => {
   let navigate = useNavigate();
@@ -26,6 +35,8 @@ const Lecture = () => {
   const [select_lecture_description, setSelect_lecture_description] = useState('');
   const [select_mento_description, setSelect_mento_description] = useState('');
   const [select_start_time, setSelect_start_time] = useState('');
+  //let img_count = 1;
+  //const [img , setImg] = useState('jpg_1');
 
   const openModal = () => {
     setModalOpen(true);
@@ -94,8 +105,43 @@ const Lecture = () => {
     try{
         const res = await axios.get('http://localhost:3001/lecture/getLecture')
         // 받아온 데이터를 useState 를 이용하여 선언한다.
-        console.log(res.data);
 
+        for(var i=0; i<res.data.length; i++){
+          var count = i%10;
+          console.log(count);
+          switch(count){
+            case 0:
+              res.data[i].img_url = jpg_1;
+            break;
+            case 1:
+              res.data[i].img_url = jpg_2;
+            break;
+            case 2:
+              res.data[i].img_url = jpg_3;
+            break;
+            case 3:
+              res.data[i].img_url = jpg_4;
+            break;
+            case 4:
+              res.data[i].img_url = jpg_5;
+            break;
+            case 5:
+              res.data[i].img_url = jpg_6;
+            break;
+            case 6:
+              res.data[i].img_url = jpg_7;
+            break;
+            case 7:
+              res.data[i].img_url = jpg_8;
+            break;
+            case 8:
+              res.data[i].img_url = jpg_9;
+            break;
+            case 9:
+              res.data[i].img_url = jpg_10;
+            break;
+          }
+        }
         setResult(res.data);
         setResult_total(res.data);
         setServer_flag(true);
@@ -170,9 +216,6 @@ const Lecture = () => {
       }
     }
 
-    console.log(search);
-    console.log(search_array);
-
     setResult(search_array);
   }
 
@@ -217,7 +260,7 @@ const Lecture = () => {
           {
             result.map((list) =>
               <div class="box-init box" onClick={()=>select_modal(list.id, list.title, list.start_time, list.lecture_time, list.price, list.lecture_description, list.mento_description)}>
-                <img className="box_init_img"></img>
+                <img className="box_init_img" src={list.img_url}></img>
 
                 <div className="box_init_div_id">
 
