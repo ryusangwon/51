@@ -20,6 +20,13 @@ const Lecture = () => {
 
   const [selected, setSelected] = useState('');
 
+  const [select_title, setSelect_title] = useState('');
+  const [select_lecture_time, setSelect_lecture_time] = useState('');
+  const [select_price, setSelect_price] = useState('');
+  const [select_lecture_description, setSelect_lecture_description] = useState('');
+  const [select_mento_description, setSelect_mento_description] = useState('');
+  const [select_start_time, setSelect_start_time] = useState('');
+
   const openModal = () => {
     setModalOpen(true);
   };
@@ -65,7 +72,19 @@ const Lecture = () => {
   };
 
   const select_modal = (id) => {
-    setSelect_id(id);
+    //setSelect_id(id);
+    for(var i=0; i< result.length; i++){
+      if(id == result[i].id){
+        setSelect_id(result[i].id);
+        setSelect_title(result[i].title);
+        setSelect_lecture_time(result[i].lecture_time);
+        setSelect_price(result[i].price);
+        setSelect_lecture_description(result[i].lecture_description);
+        setSelect_mento_description(result[i].mento_description);
+        setSelect_start_time(result[i].start_time);
+        break;
+      }
+    }
     openModal();
   };
 
@@ -174,21 +193,16 @@ const Lecture = () => {
 
       <div className="height_100_class">
 
-      <Modal open={modalOpen} close={closeModal} closeModal={closeModal} submit_click={submit_click}>
+      <Modal open={modalOpen} close={closeModal} closeModal={closeModal} submit_click={submit_click}
+      selectId={select_id} select_title={select_title} select_lecture_time={select_lecture_time}
+      select_price={select_price} select_lecture_description={select_lecture_description} select_mento_description={select_mento_description} select_start_time={select_start_time}>
       </Modal>
 
 
         <Header/>
 
         <div className="lecture_background">
-        <select className="w150" onChange={handleSelect}>
-            <option value="0" >선택</option>
-            <option value="1" >탑</option>
-            <option value="2">정글</option>
-            <option value="3">미드</option>
-            <option value="4">원딜</option>
-            <option value="5">서폿</option>
-          </select>
+
           <div className="lecture_search_div">
             <input className = "lecture_search_input" type="text" name="search" placeholder="검색" onChange={(event) => setSearch(event.target.value)}/>
             <button className = "lecture_search_btn" type="button" onClick={() => search_btn()}>검색</button>
