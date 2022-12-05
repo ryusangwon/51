@@ -23,6 +23,7 @@
     "node-module": "^2.0.0",
     "nunjucks": "^3.2.3",
     "opentok-react": "^0.11.0",
+    "query-string": "^7.1.3",
     "react": "^16.14.0",
     "react-bootstrap": "^2.6.0",
     "react-canvas-recorder": "^1.1.1",

@@ -8,6 +8,8 @@ import RmcTable from '../components/table/RmcTable';
 import RmcTableColumn from '../components/table/RmcTableCol';
 import RmcTableRow from '../components/table/RmcTableRow';
 import RmcHeader from '../components/RmcHeader';
+import RmcSearch from '../components/table/RmcSearch';
+import queryString from 'query-string';
 
 import recorder from 'react-canvas-recorder';
 
@@ -40,7 +42,12 @@ function Rmc() {
   const item = GetData();
   const ref = useRef();
 
-
+  let search = queryString.parse(window.location.search);  
+  console.log(search)
+  if(search) {
+    search = search.search;
+  }
+  console.log(search)
   return (
     <div classname="height_100_class">
         <Header/>
@@ -48,7 +55,9 @@ function Rmc() {
     <RmcHeader></RmcHeader>
     <RmcTable headersName={['글번호', '제목', '등록일', '작성자']}>
       {item}
+      
     </RmcTable>
+    <RmcSearch/>
 
   </>
   </div>
