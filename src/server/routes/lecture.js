@@ -53,6 +53,23 @@ router.post('/newLecture', async (req, res, next) => {
     }
 });
 
+router.post('/finishLecture', async (req, res, next) => {
+    const id = req.body;
+
+    try{
+        console.log("[LECTURE_DELETE]");
+        await Lecture.update({
+            in_progress: 0}, {
+            where: { id: id}
+        });
+
+        return res.send('DELETE LECTURE');
+    } catch(err){
+        console.error(err);
+        next(err);
+    }
+});
+
 router.get('/getLecture', async (req, res, next) => {
     try{
         // 리뷰 업데이트
