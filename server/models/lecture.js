@@ -37,6 +37,11 @@ module.exports = class Lecture extends Sequelize.Model {
                 allowNull: true,
                 defaultValue: null,
             },
+            average: {
+                type: Sequelize.DOUBLE,
+                allowNull: true,
+                defaultValue: 1,
+            },
         }, {
             sequelize,
             timestamps: false,

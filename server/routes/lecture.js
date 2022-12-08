@@ -28,7 +28,7 @@ router.get('/', async (req, res, next) => {
 });
 
 router.post('/newLecture', async (req, res, next) => {
-    const {id, title, mento_description, lecture_description, lecture_time, price, start_time, menti_in} = req.body;
+    const {id, title, mento_description, lecture_description, lecture_time, price, start_time, menti_in, mento_id} = req.body;
     try{
         console.log("[LECTURE_DESCRIPTION]");
         await Lecture.create({
@@ -40,6 +40,12 @@ router.post('/newLecture', async (req, res, next) => {
             price,
             start_time,
         });
+
+        await Lecture_user.create({
+            lecture_id: id,
+            mento_id: mento_id,
+        });
+
         return res.redirect('/');
     } catch(err){
         console.error(err);
@@ -49,10 +55,34 @@ router.post('/newLecture', async (req, res, next) => {
 
 router.get('/getLecture', async (req, res, next) => {
     try{
-        // 여기서 계산을 다한다음에 테이블 업데이트
+        // 리뷰 업데이트
+        let query = `SELECT lecture_id, AVG(star) as avg FROM review_star GROUP BY lecture_id;`;
+        const reviewStar = await sequelize.query(query, {
+            type: QueryTypes.SELECT,
+        });
+        console.log(reviewStar);
+        console.log("length:", reviewStar.length);
+        console.log("lecture_id:", reviewStar[0]['lecture_id']);
+        console.log("reviewStar:", reviewStar['avg']);
+        for (let i=0; i < reviewStar.length; i++){
+            console.log(reviewStar[i]['lecture_id'], ":", reviewStar[i]['avg']);
+
+            await Lecture.update({
+                average: reviewStar[i]['avg']}, {
+                where: {
+                    id: reviewStar[i]['lecture_id'],
+                }
+            })
+        }
+
+        // 멘토 정보 보내주기
+        query = "SELECT * FROM user_lecture LEFT JOIN lecture ON user_lecture.lecture_id=lecture.id LEFT JOIN user ON user_id=user.id LEFT JOIN game ON user.game_id=game.id";
+        const results = await sequelize.query(query, {
+            type: QueryTypes.SELECT,
+        });
+
         console.log("[GET_LECTURE_DESCRIPTION]");
-        lectures = await Lecture.findAll({});
-        return res.send(lectures);
+        return res.send(results);
     } catch(err){
         console.error(err);
         next(err);
