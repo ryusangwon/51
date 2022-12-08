@@ -28,6 +28,19 @@ function Rmcwrite() {
       console.log(content);
       console.log(video);
 
+      if(title == '') {
+        alert("제목을 입력하세요.");
+        return;
+      }
+      if(video == '') {
+        alert("유튜브 링크를 입력하세요");
+        return;
+      }
+      if(content == '') {
+        alert("내용을 입력하세요.");
+        return;
+      }
+
       axios.post('http://localhost:3001/rmc/create', {
         gosok_id: sessionStorage.getItem('login-token'),
         title: title,
