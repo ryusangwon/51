@@ -5,11 +5,14 @@ import './css/mypage_side.css';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import moment from 'moment';
+import 'moment/locale/ko';
 
 const Mypage_course_list = () => {
   let navigate = useNavigate();
   const [ lecture_list, setLecture_list ] = React.useState([]);
   const [server_flag, setServer_flag] = useState(false);
+  var interval = null;
+
   /*
   useEffect(async() => {
 
@@ -30,12 +33,18 @@ const Mypage_course_list = () => {
       try{
           const res = await axios.get('http://localhost:3001/lecture/getLecture')
           // 받아온 데이터를 useState 를 이용하여 선언한다.
-          console.log(res.data);
+          //console.log(res.data);
+          for(var i=0; i<res.data.length; i++){
+            res.data[i].lecture_enable = false;
+          }
+
           setLecture_list(res.data);
           setServer_flag(true);
+
       } catch(e) {
           console.error(e.message)
       }
+
     };
 
     useEffect(() => {
@@ -43,13 +52,57 @@ const Mypage_course_list = () => {
           async_function();
       }
 
+      interval = setInterval(() => {
+        const nowTime = moment().format('YYYY-MM-DD HH:mm:ss');
+        //console.log(nowTime);
 
+        const test_array = lecture_list;
+
+        var change_flag = false;
+
+        for(var i=0; i<test_array.length; i++){
+          if(moment(test_array[i].start_time).format('YYYY-MM-DD HH:mm:ss')<nowTime){
+              if(!test_array[i].lecture_enable){
+                test_array[i].lecture_enable = true;
+                //setLecture_list(test_array);
+                change_flag = true;
+                //console.log(test_array[i].id);
+              }
+          }
+        }
+
+        if(change_flag){
+          setLecture_list(test_array);
+        }
+
+
+      }, 1000);
+
+      //return () => clearInterval(interval);
+
+
+      /*
+      const interval = setInterval(() => {
+        setRunningTime(getRunningTime(isoStartTime));
+        console.log(runningTime);
+      }, 1000);
+      return () => {
+        clearInterval(interval);
+      };
+      */
 
     });
 
 
-  const enter_lecture = () => {
 
+  const enter_lecture = (id) => {
+
+    for(var i=0; i<lecture_list.length; i++){
+      if(lecture_list[i].id == id && lecture_list[i].lecture_enable=="false"){
+        alert("현재 강의시간이 아닙니다.");
+        return;
+      }
+    }
 
     //var link = 'https://ehi-service.com/camera.php';
     //window.open(link, '_blank')
@@ -66,7 +119,7 @@ const Mypage_course_list = () => {
     if (onCancel && typeof onCancel !== "function") {
       return;
     }
-  
+
     const confirmAction = () => {
       if (window.confirm(message)) {
         onConfirm();
@@ -74,7 +127,7 @@ const Mypage_course_list = () => {
         onCancel();
       }
     };
-  
+
     return confirmAction;
   };
   const deleteConfirm = (id) => {
@@ -121,8 +174,8 @@ const Mypage_course_list = () => {
                       <td className="learning_table_num_td">{list.id}</td>
                       <td className="learning_table_title_td">{list.title}</td>
                       <td classname="learning_table_date_td">{moment(list.start_time).format('YYYY-MM-DD HH:mm:ss')}</td>
-                      <td><input type="button" id="regist_end_button" onClick={() => deleteConfirm(list.id)} className="learning_table_button" value="강의종료" /></td>
-                      <td><input type="button" id="regist_button" onClick={() => enter_lecture()} className="learning_table_button" value="강의실입장" /></td>
+                      <td><input type="button" id="regist_end_button" onClick={() => deleteConfirm(list.id)} className="learning_table_button" value="강의종료"/></td>
+                      <td><input type="button" id="regist_button" onClick={() => enter_lecture(list.id)} className="learning_table_button" value="강의실입장" disabled={!list.lecture_enable}/></td>
                     </tr>
                     )}
                   </table>

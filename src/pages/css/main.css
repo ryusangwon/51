@@ -1,0 +1,26 @@
+.main_lecture_div{
+  position: absolute;
+  width: 25%;
+  height: 50%;
+  top: 20%;
+  left: 5%;
+  text-align: center;
+}
+
+.main_rmc_div{
+  position: absolute;
+  width: 25%;
+  height: 50%;
+  top: 20%;
+  left: 35%;
+  text-align: center;
+}
+
+.main_mypage_div{
+  position: absolute;
+  width: 25%;
+  height: 50%;
+  top: 20%;
+  left: 65%;
+  text-align: center;
+}

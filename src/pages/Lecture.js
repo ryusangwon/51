@@ -108,7 +108,6 @@ const Lecture = () => {
 
         for(var i=0; i<res.data.length; i++){
           var count = i%10;
-          console.log(count);
           switch(count){
             case 0:
               res.data[i].img_url = jpg_1;
@@ -146,7 +145,6 @@ const Lecture = () => {
         setResult_total(res.data);
         setServer_flag(true);
 
-        console.log(res.data);;
     } catch(e) {
         console.error(e.message)
     }

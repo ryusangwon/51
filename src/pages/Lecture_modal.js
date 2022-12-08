@@ -15,12 +15,6 @@ const Lecture_modal = ({open, close, closeModal, submit_click, selectId, select_
   //const { open, close, header } = props;
 
   //alert(selectId);
-  console.log(selectId);
-  console.log(select_title);
-  console.log(select_lecture_time);
-  console.log(select_price);
-  console.log(select_lecture_description);
-  console.log(select_mento_description);
 
 
   return (
