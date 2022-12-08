@@ -1,0 +1,44 @@
+.common-table {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  border-spacing: 0;
+}
+
+.common-table-header-column {
+  border-bottom: 1px solid #e8e8e8;
+  padding: 0;
+  font-size: 16px;
+  padding: 10px 5px;
+  font-weight: bold;
+}
+
+.common-table-row:hover {
+  background-color: #eceaea;
+  cursor: pointer;
+}
+
+.common-table-column {
+  padding: 10px 5px;
+}
+
+.search_input {
+  padding: 2px;
+  margin-right: 5px;
+  margin-top: 15px;
+  width: 35%;
+  border: 1px solid;
+  position: absolute;
+  left: 50%;
+  top: 120px;
+  transform: translate(-50%,-50%);
+}
+
+.serach_submit {
+  position: absolute;
+  margin-top: 14px;
+  cursor: pointer;
+  left: 70%;
+  top: 120px;
+  transform: translate(-50%,-50%);
+}
