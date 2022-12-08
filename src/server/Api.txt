@@ -16,3 +16,7 @@ game/getData POST
 game/saveData POST
 확인버튼 받으면
 모든 정보 db에 저장
+
+lecture/finishLecture POST
+강의종료 버튼 받으면 in_progress 값 0으로 변환
+
