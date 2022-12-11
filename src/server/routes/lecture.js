@@ -198,7 +198,7 @@ router.post('/ingLectureMento', async (req, res, next) => {
 router.post('/edLectureMento', async (req, res, next) => {
   const user_id = req.body.user_id;
 
-  let query = `select * from user_lecture left join lecture on user_lecture.lecture_id=lecture.id where menti_id=? and in_progress=1`;
+  let query = `select * from user_lecture left join lecture on user_lecture.lecture_id=lecture.id where user_id=? and in_progress=0`;
   const result = await sequelize.query(query, {
     type: QueryTypes.SELECT,
     replacements: [user_id],
