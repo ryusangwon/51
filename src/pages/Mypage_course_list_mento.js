@@ -332,6 +332,7 @@ const Mypage_course_list = () => {
       gosok_id : sessionStorage.getItem('login-token'),
 
     }).then((result)=>{
+      sessionStorage.setItem('point', result.data.point);
       alert("충전이 완료되었습니다.");
       console.log(result);
     })
