@@ -64,26 +64,26 @@ const Lecture = () => {
       }
     }
 
+
+    axios.post('http://localhost:3001/lecture/applyLecture', {
+      user_id : sessionStorage.getItem('user_id'),
+      lecture_id : select_id,
+
+    }).then((result)=>{
+      async_function();
+    })
+
+
+    /*
     const new_result = [];
 
     axios.post('http://localhost:3001/lecture/existMenti', {
       id : select_id,
 
     }).then((result)=>{
-      /*
-      console.log(result);
-      for(var i=0; i<result.length; i++){
-        if(result[i].id == select_id){
-          result[i].menti_in = 1;
-        }
-
-        new_result.push(result[i]);
-      }
-
-      setResult(new_result);
-      */
       async_function();
     })
+    */
 
   };
 
