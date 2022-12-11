@@ -52,8 +52,6 @@ const Mypage_course_list = () => {
 
               setLecture_list(lecture);
               setServer_flag(true);
-              console.log(1);
-              console.log(lecture);
             })
 
 
@@ -114,8 +112,6 @@ const Mypage_course_list = () => {
 
               setLecture_end_list(lecture);
               setServer_flag(true);
-              console.log(2);
-              console.log(lecture);
             })
 
       } catch(e) {
@@ -145,8 +141,6 @@ const Mypage_course_list = () => {
 
               setMento_lecture_list(lecture);
               setServer_flag(true);
-              console.log(3);
-              console.log(lecture);
             })
 
       } catch(e) {
@@ -176,8 +170,6 @@ const Mypage_course_list = () => {
 
               setMento_lecture_end_list(lecture);
               setServer_flag(true);
-              console.log(4);
-              console.log(lecture);
             })
 
       } catch(e) {
