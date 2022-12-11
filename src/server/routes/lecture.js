@@ -76,17 +76,20 @@ router.post('/newLecture', async (req, res, next) => {
 
 router.post('/finishLecture', async (req, res, next) => {
   const lecture_id = req.body.lecture_id;
+  const user_id = req.body.user_id;
+  const star = req.body.star;
 
   try {
     console.log('[LECTURE_DELETE]');
     await Lecture.update(
-      {
-        in_progress: 0,
-      },
-      {
-        where: { lecture_id: lecture_id },
-      }
+      {in_progress: 0,},
+      {where: { lecture_id: lecture_id },}
     );
+
+    await ReviewStar.create({
+        user_id: user_id,
+        star: star,
+    })
 
     return res.send('DELETE LECTURE');
   } catch (err) {
