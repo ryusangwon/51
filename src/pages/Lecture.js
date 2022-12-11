@@ -70,6 +70,8 @@ const Lecture = () => {
       lecture_id : select_id,
 
     }).then((result)=>{
+      console.log(result);
+      sessionStorage.setItem('point', result.data);
       async_function();
     })
 
