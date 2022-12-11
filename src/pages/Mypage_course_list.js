@@ -167,6 +167,9 @@ const Mypage_course_list = () => {
             <div className="mypage_side_account">
               {sessionStorage.getItem('login-token')}
               <br/>포인트 : {sessionStorage.getItem('point')}
+              <br/>
+              <input type="text" className="point_value" placeholder="포인트를 입력하세요" />
+              <button>포인트 등록</button>
             </div>
             <div className="mypage_side_divide">
 
