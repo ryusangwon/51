@@ -98,9 +98,11 @@ router.post('/ismento', async (req, res) => {
 router.post('/chargePoint', async (req, res) => {
     const gosok_id = req.body.gosok_id;
     const point = req.body.point;
-
-    await User.update({point: point}, {where: {gosok_id: gosok_id}});
-    return res.send(point, "point 충전 되었습니다");
+    const user = await User.findOne({where:{gosok_id: gosok_id}});
+    let current_point = user['point'];
+    current_point = parseInt(point) + parseInt(current_point);
+    await User.update({point: current_point}, {where: {gosok_id: gosok_id}});
+    return res.send(point);
 });
 
 module.exports = router;
