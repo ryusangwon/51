@@ -32,10 +32,23 @@ const Login = () => {
       }
       */
 
-      if(result.data=="로그인 성공"){
-        login_success();
-      }else{
+      if(result.data=="로그인 실패."){
         alert(result.data);
+        //login_success();
+      }else{
+        //login_success();
+
+        //if(result.data[0].gosok_id)
+        sessionStorage.setItem('user_id', result.data.id);
+        sessionStorage.setItem('login-token', result.data.gosok_id);
+        if(result.data.mento){
+          sessionStorage.setItem('mento', 0);
+        }else {
+          sessionStorage.setItem('mento', 1);
+        }
+          sessionStorage.setItem('point', result.data.point);
+
+          navigate("/");
       }
       //console.log(result.data);
 

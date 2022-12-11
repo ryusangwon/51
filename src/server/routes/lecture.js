@@ -37,7 +37,6 @@ router.post('/newLecture', async (req, res, next) => {
     start_time,
     menti_in,
   } = req.body;
-  console.log('TTTTTTTTt');
   const exMento = await User.findOne({ where: { gosok_id: user_id } });
   console.log(exMento);
   if (exMento['mento'] === 0) {
@@ -143,8 +142,8 @@ router.post('applyLecture', async (req, res, next) => {
   const lecture_id = req.body.lecture_id;
 
   await User_lecture.update({
-    lecture_id: id,
-    menti_id: user_id,
+      menti_id: user_id,
+      lecture_id: lecture_id,
   });
 
   res.send('강의 신청 완료');
