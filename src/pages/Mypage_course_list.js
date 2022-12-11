@@ -149,6 +149,7 @@ const Mypage_course_list = () => {
         <div className="mypage_side">
             <div className="mypage_side_account">
               {sessionStorage.getItem('login-token')}
+              <br/>포인트 : {sessionStorage.getItem('point')}
             </div>
             <div className="mypage_side_divide">
 
@@ -180,6 +181,21 @@ const Mypage_course_list = () => {
                     )}
                   </table>
                 </div>
+
+                <div className="learning">수강완료 강의</div>
+                  <div className="learning_box">
+                    <table className="learning_table">
+                      {lecture_list.map((list) =>
+                      <tr>
+                        <td className="learning_table_num_td">{list.id}</td>
+                        <td className="learning_table_title_td">{list.title}</td>
+                        <td classname="learning_table_date_td">{moment(list.start_time).format('YYYY-MM-DD HH:mm:ss')}</td>
+                        <td><input type="button" id="regist_end_button" onClick={() => deleteConfirm(list.id)} className="learning_table_button" value="강의종료"/></td>
+                        <td><input type="button" id="regist_button" onClick={() => enter_lecture(list.id)} className="learning_table_button" value="강의실입장" disabled={!list.lecture_enable}/></td>
+                      </tr>
+                      )}
+                    </table>
+                  </div>
 
 
               </div>

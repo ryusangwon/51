@@ -35,6 +35,7 @@ const Mypage_regist_mentor = () => {
           <div className="mypage_side">
             <div className="mypage_side_account">
               {sessionStorage.getItem('login-token')}
+              <br/>포인트 : {sessionStorage.getItem('point')}
             </div>
             <div className="mypage_side_divide">
 

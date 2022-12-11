@@ -32,9 +32,14 @@ const Login = () => {
       }
       */
 
-      console.log(result.data);
+      if(result.data=="로그인 성공"){
+        login_success();
+      }else{
+        alert(result.data);
+      }
+      //console.log(result.data);
 
-      login_success();
+      //login_success();
 
 
     })
