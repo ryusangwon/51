@@ -71,8 +71,13 @@ const Lecture = () => {
 
     }).then((result)=>{
       console.log(result);
-      sessionStorage.setItem('point', result.data);
-      async_function();
+      if(result.data=='Not enough money'){
+        alert("포인트가 부족합니다");
+        return;
+      }else{
+        sessionStorage.setItem('point', result.data);
+        async_function();
+      }
     })
 
 
