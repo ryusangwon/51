@@ -93,9 +93,10 @@ const Lecture = () => {
       return;
     }
     //setSelect_id(id);
+    //console.log(result);
     for(var i=0; i< result.length; i++){
-      if(id == result[i].id){
-        setSelect_id(result[i].id);
+      if(id == result[i].lecture_id){
+        setSelect_id(result[i].lecture_id);
         setSelect_title(result[i].title);
         setSelect_lecture_time(result[i].lecture_time);
         setSelect_price(result[i].price);
@@ -533,7 +534,7 @@ const Lecture = () => {
           <div class="lecture_grid-init grid">
           {
             result.map((list) =>
-              <div class="box-init box" onClick={()=>select_modal(list.id, list.title, list.start_time, list.lecture_time, list.price, list.lecture_description, list.mento_description)}>
+              <div class="box-init box" onClick={()=>select_modal(list.lecture_id, list.title, list.start_time, list.lecture_time, list.price, list.lecture_description, list.mento_description)}>
                 <img className="box_init_img" src={list.img_url}></img>
 
                 <div className="box_init_div_id">

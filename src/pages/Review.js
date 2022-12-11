@@ -71,7 +71,12 @@ function Review() {
         //lecture_id : lecture_id
         }).then((result)=>{
           console.log(result);
-          window.location.href = "/mypage_course_list"
+          //window.location.href = "/mypage_course_list"
+          if(sessionStorage.getItem('mento')=='0'){
+            window.location.href = "/mypage_course_list_mento"
+          }else{
+            window.location.href = "/mypage_course_list"
+          }
         })
   }
 

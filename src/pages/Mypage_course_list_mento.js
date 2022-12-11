@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Header from './Header';
-import './css/mypage_course_list.css';
+import './css/mypage_course_list_mento.css';
 import './css/mypage_side.css';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
@@ -348,9 +348,6 @@ const Mypage_course_list = () => {
             <div className="mypage_side_account">
               {sessionStorage.getItem('login-token')}
               <br/>포인트 : {sessionStorage.getItem('point')}
-              <br/>
-              <input type="text" className="point_value" placeholder="포인트를 입력하세요" />
-              <button>포인트 등록</button>
             </div>
             <div className="mypage_side_divide">
 
@@ -369,7 +366,7 @@ const Mypage_course_list = () => {
           <div className="mypage_content">
             <div className="course">
               <div className="learning">수강중인 강의</div>
-                <div className="learning_box_menti">
+                <div className="learning_box_mento">
                   <table className="learning_table">
                     {lecture_list.map((list) =>
                     <tr>
@@ -384,7 +381,7 @@ const Mypage_course_list = () => {
                 </div>
 
                 <div className="learning">수강완료 강의</div>
-                  <div className="learning_box_menti">
+                  <div className="learning_box_mento">
                     <table className="learning_table">
                       {lecture_end_list.map((list) =>
                       <tr>
@@ -398,6 +395,36 @@ const Mypage_course_list = () => {
                     </table>
                   </div>
 
+                  <div className="learning">내가 가르치는 강의</div>
+                    <div className="learning_box_mento">
+                      <table className="learning_table">
+                        {mento_lecture_list.map((list) =>
+                        <tr>
+                          <td className="learning_table_num_td">{list.lecture_id}</td>
+                          <td className="learning_table_title_td">{list.title}</td>
+                          <td classname="learning_table_date_td">{moment(list.start_time).format('YYYY-MM-DD HH:mm:ss')}</td>
+                          <td></td>
+                          <td><input type="button" id="regist_button" onClick={() => enter_lecture(list.id)} className="learning_table_button" value="강의실입장" disabled={!list.lecture_enable}/></td>
+                        </tr>
+                        )}
+                      </table>
+                    </div>
+
+
+                    <div className="learning">내가 완료한 강의</div>
+                      <div className="learning_box_mento">
+                        <table className="learning_table">
+                          {mento_lecture_end_list.map((list) =>
+                          <tr>
+                            <td className="learning_table_num_td">{list.lecture_id}</td>
+                            <td className="learning_table_title_td">{list.title}</td>
+                            <td classname="learning_table_date_td">{moment(list.start_time).format('YYYY-MM-DD HH:mm:ss')}</td>
+                            <td></td>
+                            <td><input type="button" id="regist_button" onClick={() => enter_lecture(list.id)} className="learning_table_button" value="강의실입장" disabled={!list.lecture_enable}/></td>
+                          </tr>
+                          )}
+                        </table>
+                      </div>
 
 
               </div>

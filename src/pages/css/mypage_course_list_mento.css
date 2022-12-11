@@ -35,10 +35,10 @@
 .learning{
   margin-top: 20px;
 }
-.learning_box_menti{
+.learning_box_mento{
     display: block;
     width: 100%;
-    height: 200px;
+    height: 110px;
     overflow-y:scroll;
     border: 30px;
     border-radius: 5px;

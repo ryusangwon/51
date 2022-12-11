@@ -17,6 +17,7 @@ const Lecture_modal = ({open, close, closeModal, submit_click, selectId, select_
   //alert(selectId);
 
 
+
   return (
     // 모달이 열릴때 openModal 클래스가 생성된다.
     <div className={open ? 'openModal modal' : 'modal'}>

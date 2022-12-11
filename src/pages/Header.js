@@ -61,7 +61,11 @@ const Header = () => {
         alert("로그인 후 이용가능합니다.");
         return;
       }
-      window.location.href = "/mypage_course_list"
+      if(sessionStorage.getItem('mento')=='0'){
+        window.location.href = "/mypage_course_list_mento"
+      }else{
+        window.location.href = "/mypage_course_list"
+      }
     }
 
     return (

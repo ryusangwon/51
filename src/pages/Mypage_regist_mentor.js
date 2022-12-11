@@ -27,6 +27,14 @@ const Mypage_regist_mentor = () => {
 
     }
 
+    const goto_page = () => {
+      if(sessionStorage.getItem('mento')=='0'){
+        window.location.href = "/mypage_course_list_mento"
+      }else{
+        window.location.href = "/mypage_course_list"
+      }
+    }
+
     return (
       <div className="height_100_class">
         <Header/>
@@ -40,7 +48,7 @@ const Mypage_regist_mentor = () => {
             <div className="mypage_side_divide">
 
             </div>
-            <div className="mypage_side_menu" onClick={()=>navigate("/mypage_course_list")}>
+            <div className="mypage_side_menu" onClick={()=>goto_page()}>
               수강내역
             </div>
             <div className="mypage_side_menu" onClick={()=>navigate("/mypage_regist_mentor")}>
