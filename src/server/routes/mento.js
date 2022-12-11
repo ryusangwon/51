@@ -19,6 +19,7 @@ router.post('/register', async (req, res, next) => {
         //            message = "Already registered";
         //            return res.send('message');
         //        }
+        console.log("TEST");
         await User.update({
             mento: true,
         }, {
