@@ -101,8 +101,11 @@ router.post('/chargePoint', async (req, res) => {
     const user = await User.findOne({where:{gosok_id: gosok_id}});
     let current_point = user['point'];
     current_point = parseInt(point) + parseInt(current_point);
+    console.log(current_point);
+    let now = current_point;
     await User.update({point: current_point}, {where: {gosok_id: gosok_id}});
-    return res.send(current_point);
+
+    return res.send(String(now));
 });
 
 module.exports = router;
