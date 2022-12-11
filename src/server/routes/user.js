@@ -56,20 +56,18 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
             console.error(authError);
             return next(authError);
         }
-        console.log("DDDDDD");
         if (!user){
-            console.log("여기다");
             return res.send("로그인 실패.");
         }
-        console.log("1");
-        return req.login(user, (loginError) => {
+        return req.login(user, async (loginError) => {
             console.log("check");
             if (loginError) {
                 console.error(loginError);
                 return next(loginError, "로그인 안됨");
             }
-            console.log('info');
-            return res.send("로그인 성공");
+            const user = await User.findOne({where: {gosok_id: info}});
+            console.log('로그인 되는 아이디 정보', user['dataValues']);
+            return res.send(user['dataValues']);
         });
     })(req, res, next);
 });

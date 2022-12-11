@@ -12,10 +12,6 @@ module.exports = () => {
             const exUser = await User.findOne({
                 where: {gosok_id:id}
             });
-            console.log("DD", id);
-            console.log("D", exUser);
-            console.log("DD", password);
-//            console.log("DDDDD", exUser['password']);
             if (exUser) {
                 if (password === exUser.password){
                     done(null, exUser, id);
