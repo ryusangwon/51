@@ -151,10 +151,8 @@ router.post('/applyLecture', async (req, res, next) => {
   if (money < 0){
       res.send("Not enough money");
   }
-  await User_lecture.update({
-      menti_id: user_id,
-      lecture_id: lecture_id,
-  });
+
+  await User_lecture.update({menti_id: user_id}, {where: {lecture_id: lecture_id}});
 
   res.send(String(money));
 });
