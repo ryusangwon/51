@@ -106,7 +106,7 @@ router.get('/getLecture', async (req, res, next) => {
       type: QueryTypes.SELECT,
     });
 //    console.log(reviewStar);
-//    console.log('length:', reviewStar.length);
+    console.log('length:', reviewStar.length);
     //    console.log('user_id:', reviewStar[0]['user_id']);
       console.log('reviewStar:', reviewStar[0]['avg']);
     for (let i = 0; i < reviewStar.length; i++) {
