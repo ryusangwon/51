@@ -142,8 +142,8 @@ router.post('applyLecture', async (req, res, next) => {
   const lecture_id = req.body.lecture_id;
 
   await User_lecture.update({
-    lecture_id: id,
-    menti_id: user_id,
+      menti_id: user_id,
+      lecture_id: lecture_id,
   });
 
   res.send('강의 신청 완료');
