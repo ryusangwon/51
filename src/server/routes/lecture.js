@@ -38,7 +38,7 @@ router.post('/newLecture', async (req, res, next) => {
     start_time,
     menti_in,
   } = req.body;
-  const exMento = await User.findOne({ where: { gosok_id: user_id } });
+  const exMento = await User.findOne({ where: { id: user_id } });
   console.log(exMento);
   if (exMento['mento'] === 0) {
     return res.send('멘토 등록이 필요합니다.');
@@ -62,6 +62,7 @@ router.post('/newLecture', async (req, res, next) => {
         lecture_description: lecture_description,
       },
     });
+    console.log("ASFDASDF", lecture);
 
     await User_lecture.create({
       lecture_id: lecture['id'],
@@ -83,16 +84,7 @@ router.post('/finishLecture', async (req, res, next) => {
 
   try {
     console.log('[LECTURE_DELETE]');
-    await Lecture.update(
-      {
-          in_progress: '0',
-      },
-      {
-          where: {
-              lecture_id: lecture_id,
-          },
-      }
-    );
+    await Lecture.update({in_progress: '0'}, {where: {lecture_id: lecture_id}});
 
     await ReviewStar.create({
         user_id: user_id,
@@ -139,7 +131,7 @@ router.get('/getLecture', async (req, res, next) => {
       type: QueryTypes.SELECT,
     });
 
-    console.log('[GET_LECTURE_DESCRIPTION]');
+    console.log(results);
     return res.send(results);
   } catch (err) {
     console.error(err);
@@ -152,6 +144,13 @@ router.post('/applyLecture', async (req, res, next) => {
   const user_id = req.body.user_id;
   const lecture_id = req.body.lecture_id;
 
+  const lecture = await Lecture.findOne({where: {id:lecture_id}});
+  const user = await User.findOne({where: {id:user_id}});
+  console.log("money test:", user['point'], lecture['price']);
+  let money = user['point'] - lecture['price'];
+  if (money < 0){
+      res.send("Not enough money");
+  }
   await User_lecture.update({
       menti_id: user_id,
       lecture_id: lecture_id,
