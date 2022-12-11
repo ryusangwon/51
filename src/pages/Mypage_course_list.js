@@ -238,7 +238,7 @@ const Mypage_course_list = () => {
 
         if(change_flag){
           setLecture_list(test_array);
-          setLecture_list(test_array2);
+          setMento_lecture_list(test_array2);
         }
 
 
