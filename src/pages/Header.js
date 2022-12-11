@@ -8,7 +8,6 @@ const Header = () => {
     const [login_flag, setLogin_flag] = useState(false);
 
 
-
     const rendering = () => {
       const result = [];
 
@@ -58,6 +57,10 @@ const Header = () => {
     }
 
     const goto_mypage = () => {
+      if(!sessionStorage.getItem('login-token')){
+        alert("로그인 후 이용가능합니다.");
+        return;
+      }
       window.location.href = "/mypage_course_list"
     }
 
@@ -75,7 +78,7 @@ const Header = () => {
           <div className="header_menu_rmc" onClick={()=>navigate("/rmc")}>
             롤문철게시판
           </div>
-          <div className="header_menu_mypage" onClick={()=>navigate("/mypage_course_list")}>
+          <div className="header_menu_mypage" onClick={()=>goto_mypage()}>
             마이페이지
           </div>
         </div>
