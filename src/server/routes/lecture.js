@@ -149,13 +149,13 @@ router.post('/applyLecture', async (req, res, next) => {
   console.log("money test:", user['point'], lecture['price']);
   let money = parseInt(user['point']) - parseInt(lecture['price']);
   if (money < 0){
-      res.send("Not enough money");
+      return res.send("Not enough money");
   }
 
   await User_lecture.update({menti_id: user_id}, {where: {lecture_id: lecture_id}});
   await User.update({point: money}, {where: {id: user_id}});
 
-  res.send(String(money));
+  return res.send(String(money));
 });
 
 // 멘티의 수강중인 강좌
