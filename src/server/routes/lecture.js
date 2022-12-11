@@ -98,7 +98,7 @@ router.get('/getLecture', async (req, res, next) => {
     });
     console.log(reviewStar);
     console.log('length:', reviewStar.length);
-    console.log('mento_id:', reviewStar[0]['mento_id']);
+    console.log('user_id:', reviewStar[0]['user_id']);
     console.log('reviewStar:', reviewStar['avg']);
     for (let i = 0; i < reviewStar.length; i++) {
       console.log(reviewStar[i]['lecture_id'], ':', reviewStar[i]['avg']);
@@ -109,7 +109,7 @@ router.get('/getLecture', async (req, res, next) => {
         },
         {
           where: {
-            id: reviewStar[i]['mento_id'],
+            id: reviewStar[i]['user_id'],
           },
         }
       );
@@ -139,7 +139,7 @@ router.post('applyLecture', async (req, res, next) =>{
 
     await User_lecture.update({
         lecture_id: id,
-        menti_id: mento_id,
+        menti_id: user_id,
     });
 
     res.send("강의 신청 완료");
@@ -291,7 +291,7 @@ router.post('/getLectureByPosition', async (req, res, next) => {
 
 router.get('/getLectureByStar', async (req, res, next) => {
   try {
-    let query = `SELECT lecture_id, AVG(별) FROM review_star GROUP BY mento_id ORDER BY AVG(별) desc`;
+    let query = `SELECT lecture_id, AVG(별) FROM review_star GROUP BY user_id ORDER BY AVG(별) desc`;
     const result = await sequelize.query(query);
     console.log('test', result);
     return res.send(result);
