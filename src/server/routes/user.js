@@ -69,6 +69,7 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
             console.log('로그인 되는 아이디 정보', user['dataValues']);
             return res.send(user['dataValues']);
         });
+
     })(req, res, next);
 });
 
@@ -94,35 +95,11 @@ router.post('/ismento', async (req, res) => {
     }
 });
 
-router.post('/getLecture', async (req, res) => {
-    let id = req.body.id;
-//    let id = 1;
-    let query;
-    const exUser = await User.findOne({where: {id: id}});
-    console.log(exUser);
-    if (exUser) {
-        if (exUser.mento === true){
-            query = 'SELECT * FROM lecture_user, lecture WHERE lecture_user.mento_id = (SELECT user.game_id FROM user where user.id=?) AND lecture.id = lecture_user.lecture_id';
-            const result = await sequelize.query(query, {
-                type: QueryTypes.SELECT,
-                replacements: [id],
-            });
-            console.log(result);
-            return res.send(result);
-        } else{
-            return res.send("no mento");
-        }
-    } else{
-        return res.send("No User");
-    }
-});
-
 router.post('/chargePoint', async (req, res) => {
-    const id = req.body.gosok_id;
+    const gosok_id = req.body.gosok_id;
     const point = req.body.point;
 
     await User.update({point: point}, {where: {gosok_id: gosok_id}});
-
     return res.send(point, "point 충전 되었습니다");
 });
 

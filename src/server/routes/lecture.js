@@ -37,7 +37,6 @@ router.post('/newLecture', async (req, res, next) => {
     start_time,
     menti_in,
   } = req.body;
-  console.log('TTTTTTTTt');
   const exMento = await User.findOne({ where: { gosok_id: user_id } });
   console.log(exMento);
   if (exMento['mento'] === 0) {
