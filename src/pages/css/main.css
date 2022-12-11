@@ -1,26 +1,44 @@
+.main_page{
+  width: 90%;
+  margin: 10px auto;
+  display: flex;
+}
+
+.main_title{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.lecture{
+  margin: 20px;
+}
+
 .main_lecture_div{
-  position: absolute;
-  width: 25%;
-  height: 50%;
-  top: 20%;
-  left: 5%;
+  width: 450px;
+  height: 450px;
   text-align: center;
+  display: block;
+}
+
+.rmc{
+  margin: 20px;
 }
 
 .main_rmc_div{
-  position: absolute;
-  width: 25%;
-  height: 50%;
-  top: 20%;
-  left: 35%;
+  width: 450px;
+  height: 450px;
   text-align: center;
+  display: block;
+}
+
+.mypage{
+  margin: 20px;
 }
 
 .main_mypage_div{
-  position: absolute;
-  width: 25%;
-  height: 50%;
-  top: 20%;
-  left: 65%;
+  width: 450px;
+  height: 450px;
   text-align: center;
+  display: block;
 }
+

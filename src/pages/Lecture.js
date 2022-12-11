@@ -245,7 +245,7 @@ const Lecture = () => {
         <div className="lecture_background">
 
           <div className="lecture_search_div">
-            <input className = "lecture_search_input" type="text" name="search" placeholder="검색" onChange={(event) => setSearch(event.target.value)}/>
+            <input className = "lecture_search_input" type="text" name="search" placeholder="제목 검색" onChange={(event) => setSearch(event.target.value)}/>
             <button className = "lecture_search_btn" type="button" onClick={() => search_btn()}>검색</button>
           </div>
 
