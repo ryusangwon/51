@@ -68,7 +68,7 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
                 console.error(loginError);
                 return next(loginError, "로그인 안됨");
             }
-
+            console.log('info');
             return res.send("로그인 성공");
         });
     })(req, res, next);

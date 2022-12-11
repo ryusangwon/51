@@ -18,7 +18,7 @@ module.exports = () => {
 //            console.log("DDDDD", exUser['password']);
             if (exUser) {
                 if (password === exUser.password){
-                    done(null, exUser, gosok_id);
+                    done(null, exUser, id);
                 } else{
                     console.log("틀려");
                     done(null, false, {message: '비밀번호가 일치하지 않습니다.'});
