@@ -75,7 +75,7 @@ router.post('/newLecture', async (req, res, next) => {
 });
 
 router.post('/finishLecture', async (req, res, next) => {
-  const id = req.body;
+  const lecture_id = req.body.lecture_id;
 
   try {
     console.log('[LECTURE_DELETE]');
@@ -84,7 +84,7 @@ router.post('/finishLecture', async (req, res, next) => {
         in_progress: 0,
       },
       {
-        where: { id: id },
+        where: { lecture_id: lecture_id },
       }
     );
 
