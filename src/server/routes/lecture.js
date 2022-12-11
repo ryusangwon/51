@@ -2,6 +2,7 @@ const express = require('express');
 const Lecture = require('../models/lecture');
 const Game = require('../models/game');
 const User = require('../models/user');
+const ReviewStar = require('../models/review_star');
 const User_lecture = require('../models/user_lecture');
 const { QueryTypes } = require('sequelize');
 const router = express.Router();
