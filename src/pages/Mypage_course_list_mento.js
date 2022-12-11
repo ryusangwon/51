@@ -333,6 +333,7 @@ const Mypage_course_list = () => {
 
     }).then((result)=>{
       alert("충전이 완료되었습니다.");
+      console.log(result);
     })
   }
 
