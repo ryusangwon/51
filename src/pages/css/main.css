@@ -16,7 +16,7 @@
 .main_lecture_div{
   width: 450px;
   height: 450px;
-  text-align: center;
+  margin: auto;
   display: block;
 }
 
@@ -27,7 +27,7 @@
 .main_rmc_div{
   width: 450px;
   height: 450px;
-  text-align: center;
+  margin: auto;
   display: block;
 }
 
@@ -38,7 +38,7 @@
 .main_mypage_div{
   width: 450px;
   height: 450px;
-  text-align: center;
+  margin: auto;
   display: block;
 }
 
