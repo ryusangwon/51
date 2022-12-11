@@ -20,3 +20,5 @@ game/saveData POST
 lecture/finishLecture POST
 강의종료 버튼 받으면 in_progress 값 0으로 변환
 
+lecture/newLecture POST
+멘토인지 확인하고 강의 생성 (id, title, mento_description, lecture_time, price, start_time,  mento_id 필요
