@@ -24,21 +24,21 @@ router.get('/', async (req, res, next) => {
 router.post('/create', async (req, res, next) => {
     console.log(req.body.lecture_id);
     const star = req.body.star;
-    const lecture_id = req.body.lecture_id;
+    const user_id = req.body.user_id;
 
     await ReviewStar.create({
         star: star,
-        lecture_id: lecture_id,
+        user_id: user_id,
     });
     return res.send("Thanks for review");
 });
 
 router.get('/getStar', async (req, res, next) => {
-    const lecture_id = req.body.lecture_id;
+    const user_id = req.body.user_id;
     let query = `SELECT AVG(star) FROM review_star WHERE lecture_id=?`;
     const reviewStar = await sequelize.query(query, {
         type: QueryTypes.SELECT,
-        replacements: [lecture_id],
+        replacements: [user_id],
     });
 
     return res.send(reviewStar);

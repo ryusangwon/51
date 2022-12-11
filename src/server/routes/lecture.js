@@ -92,13 +92,13 @@ router.post('/finishLecture', async (req, res, next) => {
 router.get('/getLecture', async (req, res, next) => {
   try {
     // 리뷰 업데이트
-    let query = `SELECT lecture_id, AVG(별) as avg FROM review_star GROUP BY lecture_id;`;
+    let query = `SELECT user_id, AVG(star) as avg FROM review_star GROUP BY user_id`;
     const reviewStar = await sequelize.query(query, {
       type: QueryTypes.SELECT,
     });
     console.log(reviewStar);
     console.log('length:', reviewStar.length);
-    console.log('lecture_id:', reviewStar[0]['lecture_id']);
+    console.log('mento_id:', reviewStar[0]['mento_id']);
     console.log('reviewStar:', reviewStar['avg']);
     for (let i = 0; i < reviewStar.length; i++) {
       console.log(reviewStar[i]['lecture_id'], ':', reviewStar[i]['avg']);
@@ -109,7 +109,7 @@ router.get('/getLecture', async (req, res, next) => {
         },
         {
           where: {
-            id: reviewStar[i]['lecture_id'],
+            id: reviewStar[i]['mento_id'],
           },
         }
       );
@@ -291,7 +291,7 @@ router.post('/getLectureByPosition', async (req, res, next) => {
 
 router.get('/getLectureByStar', async (req, res, next) => {
   try {
-    let query = `SELECT lecture_id, AVG(별) FROM review_star GROUP BY lecture_id ORDER BY AVG(별) desc`;
+    let query = `SELECT lecture_id, AVG(별) FROM review_star GROUP BY mento_id ORDER BY AVG(별) desc`;
     const result = await sequelize.query(query);
     console.log('test', result);
     return res.send(result);
