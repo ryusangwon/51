@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post('/register', async (req, res, next) => {
 //    let mento = req.body.mento;
-    const mento_id = req.body.id;
+    const gosok_id = req.body.mento_id;
 
     try{
         let message;
@@ -23,7 +23,7 @@ router.post('/register', async (req, res, next) => {
         await User.update({
             mento: true,
         }, {
-            where: {gosok_id: mento_id}
+            where: {gosok_id: gosok_id}
         })
         message = "Register new mento";
         return res.send('message');
