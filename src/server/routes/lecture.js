@@ -110,7 +110,7 @@ router.get('/getLecture', async (req, res, next) => {
     //    console.log('user_id:', reviewStar[0]['user_id']);
       console.log('reviewStar:', reviewStar[0]['avg']);
     for (let i = 0; i < reviewStar.length; i++) {
-      console.log(reviewStar[i]['user_id'], ':', reviewStar[i]['avg']);
+      console.log("TEST review:", reviewStar[i]['user_id'], ':', reviewStar[i]['avg']);
 
       await Lecture.update(
         {
@@ -147,7 +147,7 @@ router.post('/applyLecture', async (req, res, next) => {
   const lecture = await Lecture.findOne({where: {id:lecture_id}});
   const user = await User.findOne({where: {id:user_id}});
   console.log("money test:", user['point'], lecture['price']);
-  let money = user['point'] - lecture['price'];
+  let money = parseInt(user['point']) - parseInt(lecture['price']);
   if (money < 0){
       res.send("Not enough money");
   }
@@ -156,7 +156,7 @@ router.post('/applyLecture', async (req, res, next) => {
       lecture_id: lecture_id,
   });
 
-  res.send('강의 신청 완료');
+  res.send(String(money));
 });
 
 // 멘티의 수강중인 강좌
