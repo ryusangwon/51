@@ -14,7 +14,12 @@ const Main = () => {
       alert("로그인 후 이용가능합니다.");
       return;
     }
-    window.location.href = "/mypage_course_list"
+    //window.location.href = "/mypage_course_list"
+    if(sessionStorage.getItem('mento')=='0'){
+      window.location.href = "/mypage_course_list_mento"
+    }else{
+      window.location.href = "/mypage_course_list"
+    }
   }
 
   return (
@@ -29,7 +34,7 @@ const Main = () => {
           <label className="main_title">강의찾기</label>
           <div>자신이 원하는 강의를 찾을 수 있습니다.</div>
         </div>
-      
+
         <div className="rmc">
           <Link to="./Rmc">
           <img className="main_rmc_div" src={rmc_img} />
