@@ -54,7 +54,7 @@ function Review() {
 
     axios.post('http://localhost:3001/reviewStar/create', {
       star : star,
-      lecture_id : id,
+      user_id : id,
       //lecture_id : lecture_id
       }).then((result)=>{
         console.log(result);
