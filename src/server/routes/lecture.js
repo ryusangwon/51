@@ -2,7 +2,7 @@ const express = require("express");
 const Lecture = require("../models/lecture");
 const Game = require("../models/game");
 const User = require("../models/user");
-const Lecture_user = require("../models/user_lecture");
+const User_lecture = require("../models/user_lecture");
 const {QueryTypes} = require("sequelize");
 const router = express.Router();
 
@@ -29,6 +29,12 @@ router.get('/', async (req, res, next) => {
 
 router.post('/newLecture', async (req, res, next) => {
     const {id, title, mento_description, lecture_description, lecture_time, price, start_time, menti_in, mento_id} = req.body;
+
+    const exMento = await User.findOne(({where: {id: mento_id}}));
+    if (exMento['mento'] === 0){
+        return res.send("멘토 등록이 필요합니다.");
+    }
+
     try{
         console.log("[LECTURE_DESCRIPTION]");
         await Lecture.create({
@@ -41,7 +47,7 @@ router.post('/newLecture', async (req, res, next) => {
             start_time,
         });
 
-        await Lecture_user.create({
+        await User_lecture.create({
             lecture_id: id,
             mento_id: mento_id,
         });
@@ -106,6 +112,29 @@ router.get('/getLecture', async (req, res, next) => {
     }
 });
 
+router.post('ingLecture', async (req, res, next) => {
+    const user_id = req.body.user;
+
+    let query = `select * from user_lecture left join lecture on user_lecture.lecture_id=lecture.id where user_id=? and in_progess=1`;
+    const result = await sequelize.query(query, {
+        type: QueryTypes.SELECT,
+        replacements: [user_id]
+    });
+    res.send(result);
+})
+
+
+router.post('edLecture', async (req, res, next) => {
+    const user_id = req.body.user;
+
+    let query = `select * from user_lecture left join lecture on user_lecture.lecture_id=lecture.id where user_id=? and in_progess=0`;
+    const result = await sequelize.query(query, {
+        type: QueryTypes.SELECT,
+        replacements: [user_id]
+    });
+    res.send(result);
+})
+
 router.post('/existMenti', async (req, res, next) => {
     try{
         const id = req.body;
@@ -136,7 +165,7 @@ router.post('/existMenti', async (req, res, next) => {
 ////        const {id} = req.body.id;
 //        let id = "mento_test";
 //
-//        userLectures = await Lecture_user.findAll({
+//        userLectures = await User_lecture.findAll({
 //            where: {
 //                user_id: id
 //            }
