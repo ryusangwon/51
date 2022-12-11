@@ -98,7 +98,7 @@ router.get('/getLecture', async (req, res, next) => {
     });
     console.log(reviewStar);
     console.log('length:', reviewStar.length);
-    console.log('user_id:', reviewStar[0]['user_id']);
+//    console.log('user_id:', reviewStar[0]['user_id']);
     console.log('reviewStar:', reviewStar['avg']);
     for (let i = 0; i < reviewStar.length; i++) {
       console.log(reviewStar[i]['user_id'], ':', reviewStar[i]['avg']);
