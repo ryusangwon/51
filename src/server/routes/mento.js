@@ -23,7 +23,7 @@ router.post('/register', async (req, res, next) => {
         await User.update({
             mento: true,
         }, {
-            where: {id: mento_id}
+            where: {gosok_id: mento_id}
         })
         message = "Register new mento";
         return res.send('message');
