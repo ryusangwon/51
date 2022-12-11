@@ -33,7 +33,7 @@ const Mypage_course_list = () => {
       try{
           const res = await axios.get('http://localhost:3001/lecture/getLecture')
           // 받아온 데이터를 useState 를 이용하여 선언한다.
-          //console.log(res.data);
+          console.log(res.data);
           for(var i=0; i<res.data.length; i++){
             res.data[i].lecture_enable = false;
           }
@@ -130,8 +130,8 @@ const Mypage_course_list = () => {
 
     return confirmAction;
   };
-  const deleteConfirm = (id) => {
-    window.location.href = "/review?id="+id
+  const deleteConfirm = (user_id) => {
+    window.location.href = "/review?user_id="+user_id
   }
   //const cancelConfirm = () => console.log("종료를 취소했습니다.");
   //const confirmDelete = (id) => useConfirm(
@@ -172,7 +172,6 @@ const Mypage_course_list = () => {
                   <table className="learning_table">
                     {lecture_list.map((list) =>
                     <tr>
-                      <td className="learning_table_num_td">{list.id}</td>
                       <td className="learning_table_title_td">{list.title}</td>
                       <td classname="learning_table_date_td">{moment(list.start_time).format('YYYY-MM-DD HH:mm:ss')}</td>
                       <td><input type="button" id="regist_end_button" onClick={() => deleteConfirm(list.id)} className="learning_table_button" value="강의종료"/></td>
@@ -187,10 +186,9 @@ const Mypage_course_list = () => {
                     <table className="learning_table">
                       {lecture_list.map((list) =>
                       <tr>
-                        <td className="learning_table_num_td">{list.id}</td>
                         <td className="learning_table_title_td">{list.title}</td>
                         <td classname="learning_table_date_td">{moment(list.start_time).format('YYYY-MM-DD HH:mm:ss')}</td>
-                        <td><input type="button" id="regist_end_button" onClick={() => deleteConfirm(list.id)} className="learning_table_button" value="강의종료"/></td>
+                        <td><input type="button" id="regist_end_button" onClick={() => deleteConfirm(list.user_id)} className="learning_table_button" value="강의종료"/></td>
                         <td><input type="button" id="regist_button" onClick={() => enter_lecture(list.id)} className="learning_table_button" value="강의실입장" disabled={!list.lecture_enable}/></td>
                       </tr>
                       )}

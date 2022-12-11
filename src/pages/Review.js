@@ -11,7 +11,7 @@ function Review() {
   const [count, setCount] = useState([0, 0, 0, 0, 0]);
   let star = 0;
   const params = new URLSearchParams(window.location.search);
-  const [id, setId] = useState(params.get("id"));
+  const [id, setId] = useState(params.get("user_id"));
 
   const handleStarClick = index => {
     let clickStates = [...count];
