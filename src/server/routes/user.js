@@ -102,7 +102,7 @@ router.post('/chargePoint', async (req, res) => {
     let current_point = user['point'];
     current_point = parseInt(point) + parseInt(current_point);
     await User.update({point: current_point}, {where: {gosok_id: gosok_id}});
-    return res.send(point);
+    return res.send(current_point);
 });
 
 module.exports = router;
