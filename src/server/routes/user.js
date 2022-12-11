@@ -49,19 +49,26 @@ router.post('/signup', async (req, res, next) => {
 
 router.post('/login', isNotLoggedIn, (req, res, next) => {
     passport.authenticate('local', (authError, user, info) => {
+        console.log("authError", authError);
+        console.log("user", user);
+        console.log('info', info);
         if (authError) {
             console.error(authError);
             return next(authError);
         }
+        console.log("DDDDDD");
         if (!user){
-            return res.redirect('/');
+            console.log("여기다");
+            return res.send("비밀번호가 일치하지 않습니다.");
         }
+        console.log("1");
         return req.login(user, (loginError) => {
+            console.log("check");
             if (loginError) {
                 console.error(loginError);
-                return next(loginError);
+                return next(loginError, "로그인 안됨");
             }
-            return res.send(info);
+            return res.send("로그인 성공");
         });
     })(req, res, next);
 });

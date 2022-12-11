@@ -10,15 +10,19 @@ module.exports = () => {
     }, async (id, password, done) => {
         try{
             const exUser = await User.findOne({
-                where: {id}
+                where: {gosok_id:id}
             });
+            console.log("DD", id);
+            console.log("D", exUser);
+            console.log("DD", password);
+            console.log("DDDDD", exUser['password']);
             if (exUser) {
                 if (password === exUser.password){
                     done(null, exUser);
                 } else{
+                    console.log("틀려");
                     done(null, false, {message: '비밀번호가 일치하지 않습니다.'});
                 }
-
             } else{
                 done(null, false, {message: '가입되지 않은 회원'});
             }
