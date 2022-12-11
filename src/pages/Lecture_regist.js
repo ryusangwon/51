@@ -27,7 +27,7 @@ const Lecture_regist = () => {
     //user_id, title, mento_description, lecture_description, lecture_time, price, start_time, menti_in
 
     axios.post('http://localhost:3001/lecture/newLecture', {
-      user_id : sessionStorage.getItem('login-token'),
+      user_id : sessionStorage.getItem('user_id'),
       title : lecture_title,
       lecture_description : lecture_info,
       mento_description : mento_info,

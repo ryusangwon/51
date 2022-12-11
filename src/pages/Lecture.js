@@ -282,11 +282,6 @@ const Lecture = () => {
       alert("로그인 후 이용가능합니다.");
       return;
     }
-
-    if(sessionStorage.getItem('mento')!='0'){
-      alert("강의는 멘토만 등록할 수 있습니다.");
-      return;
-    }
     //if(sessionStorage.setItem('mento', id)){
 
   //}
