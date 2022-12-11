@@ -74,7 +74,7 @@ const Signup = () => {
             <form action="javascript:signup();">
                 <input type="text" id="id" className="text-field" placeholder="아이디" onChange={(event) => setId(event.target.value)}></input>
                 <input type="password" id="password" className="text-field" placeholder="비밀번호" onChange={(e) => pw_change(e.target.value)}></input>
-                <input type="password" id="password" className="text-field" placeholder="비밀번호 확인" onChange={(e) => setCheck_Pw(e.target.value)}></input>
+                <input type="password" id="password_check" className="text-field" placeholder="비밀번호 확인" onChange={(e) => setCheck_Pw(e.target.value)}></input>
                 <input type="text" id="name" className="text-field" placeholder="이름" onChange={(event) => setName(event.target.value)}></input>
                 <input type="text" id="email" className="text-field" placeholder="이메일" onChange={(e) => email_change(e.target.value)}></input>
             </form>

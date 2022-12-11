@@ -41,6 +41,8 @@ const Mypage_course_list = () => {
           setLecture_list(res.data);
           setServer_flag(true);
 
+          console.log(res.data);
+
       } catch(e) {
           console.error(e.message)
       }
