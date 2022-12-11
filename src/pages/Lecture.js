@@ -27,7 +27,10 @@ const Lecture = () => {
 
   const [server_flag, setServer_flag] = useState(false);
 
-  const [selected, setSelected] = useState('');
+  const [selected_line, setSelected_line] = useState('');
+  const [selected_tier, setSelected_tier] = useState('');
+  const [selected_sort, setSelected_sort] = useState('');
+
 
   const [select_title, setSelect_title] = useState('');
   const [select_lecture_time, setSelect_lecture_time] = useState('');
@@ -35,6 +38,8 @@ const Lecture = () => {
   const [select_lecture_description, setSelect_lecture_description] = useState('');
   const [select_mento_description, setSelect_mento_description] = useState('');
   const [select_start_time, setSelect_start_time] = useState('');
+
+  const [sort_state, setSort_state] = useState(0);
   //let img_count = 1;
   //const [img , setImg] = useState('jpg_1');
 
@@ -149,8 +154,10 @@ const Lecture = () => {
         setResult_total(res.data);
         setServer_flag(true);
 
+        console.log(res.data);
+
     } catch(e) {
-        console.error(e.message)
+        console.error(e.message);
     }
     };
 
@@ -209,16 +216,64 @@ const Lecture = () => {
       setData(search_array);
     }
     */
-
+    /*
     const search_array = [];
 
     for(let i=0; i<result_total.length; i++){
-      if((result_total[i]['title']+"").includes(search) || (result_total[i]['gosok_id']+"").includes(search)){
+      if((result_total[i]['title']+"").includes(search) || (result_total[i]['gosok_id']+"").includes(search) || (result_total[i]['summonerName']+"").includes(search)){
         search_array.push(result_total[i]);
       }
     }
+    */
 
-    setResult(search_array);
+    console.log(selected_line);
+    console.log(selected_tier);
+
+    const search_array = [];
+    if(selected_line!=""){
+      for(let i=0; i<result_total.length; i++){
+        if((result_total[i]['position']+"").includes(selected_line)){
+          search_array.push(result_total[i]);
+        }
+      }
+    }else{
+      for(let i=0; i<result_total.length; i++){
+        search_array.push(result_total[i]);
+      }
+      //search_array = result_total;
+    }
+
+    const search_array1 = [];
+    if(selected_tier!=""){
+      for(let i=0; i<search_array.length; i++){
+        if((search_array[i]['tier']+"").includes(selected_tier)){
+          search_array1.push(search_array[i]);
+        }
+      }
+    }else{
+      for(let i=0; i<search_array.length; i++){
+          search_array1.push(search_array[i]);
+      }
+      //search_array1 = search_array;
+    }
+
+    const search_array2 = [];
+    if(search!=""){
+      for(let i=0; i<search_array1.length; i++){
+        if((search_array1[i]['title']+"").includes(search) || (search_array1[i]['gosok_id']+"").includes(search) || (search_array1[i]['summonerName']+"").includes(search)){
+          search_array2.push(search_array1[i]);
+        }
+      }
+    }else{
+      for(let i=0; i<search_array1.length; i++){
+          search_array2.push(search_array1[i]);
+      }
+      //search_array2 = search_array1;
+    }
+
+    setResult(search_array2);
+
+    //setResult(search_array);
   }
 
   const regist_btn = () => {
@@ -234,8 +289,197 @@ const Lecture = () => {
     //navigate("/lecture_regist");
   }
 
-  const handleSelect = (e) => {
-    setSelected(e.target.value);
+  const sort_btn = () => {
+    //const sort_array = [];
+
+    /*
+    for(var i=9; i<result.length; i++){
+        sort_array.push(result[i]);
+    }
+
+    sort_array.sort()
+    */
+    var sort_array = [];
+
+    if(sort_state != 1){
+      setSort_state(1);
+      sort_array = result.sort(function (a, b) {
+      	return b.average - a.average;
+      });
+
+      //setResult(sort_array);
+    }else{
+      setSort_state(2);
+      sort_array = result.sort(function (a, b) {
+        return a.average - b.average;
+      });
+
+      //setResult(sort_array);
+    }
+
+    console.log(sort_array);
+
+    setResult(sort_array);
+
+  }
+
+
+  const handleSelect_line = (e) => {
+    setSelected_line(e.target.value);
+
+    const search_array = [];
+
+    if(e.target.value==""){
+      //setResult(result_total);
+
+      const search_array1 = [];
+      if(selected_tier!=""){
+        for(let i=0; i<result_total.length; i++){
+          if((result_total[i]['tier']+"").includes(selected_tier)){
+            search_array1.push(result_total[i]);
+          }
+        }
+      }else{
+        for(let i=0; i<result_total.length; i++){
+            search_array1.push(result_total[i]);
+        }
+        //search_array1 = search_array;
+      }
+
+      const search_array2 = [];
+      if(search!=""){
+        for(let i=0; i<search_array1.length; i++){
+          if((search_array1[i]['title']+"").includes(search) || (search_array1[i]['gosok_id']+"").includes(search) || (search_array1[i]['summonerName']+"").includes(search)){
+            search_array2.push(search_array1[i]);
+          }
+        }
+      }else{
+        for(let i=0; i<search_array1.length; i++){
+            search_array2.push(search_array1[i]);
+
+        }
+        //search_array2 = search_array1;
+      }
+
+      setResult(search_array2);
+    }else{
+      for(let i=0; i<result_total.length; i++){
+        if((result_total[i]['position']+"").includes(e.target.value)){
+          search_array.push(result_total[i]);
+        }
+      }
+
+      const search_array1 = [];
+      if(selected_tier!=""){
+        for(let i=0; i<search_array.length; i++){
+          if((search_array[i]['tier']+"").includes(selected_tier)){
+            search_array1.push(search_array[i]);
+          }
+        }
+      }else{
+        for(let i=0; i<search_array.length; i++){
+            search_array1.push(search_array[i]);
+        }
+        //search_array1 = search_array;
+      }
+
+      const search_array2 = [];
+      if(search!=""){
+        for(let i=0; i<search_array1.length; i++){
+          if((search_array1[i]['title']+"").includes(search) || (search_array1[i]['gosok_id']+"").includes(search) || (search_array1[i]['summonerName']+"").includes(search)){
+            search_array2.push(search_array1[i]);
+          }
+        }
+      }else{
+        for(let i=0; i<search_array1.length; i++){
+            search_array2.push(search_array1[i]);
+
+        }
+        //search_array2 = search_array1;
+      }
+
+      setResult(search_array2);
+    }
+  };
+
+  const handleSelect_tier = (e) => {
+    setSelected_tier(e.target.value);
+
+    const search_array = [];
+
+    if(e.target.value==""){
+      //setResult(result_total);
+
+      const search_array1 = [];
+      if(selected_line!=""){
+        for(let i=0; i<result_total.length; i++){
+          if((result_total[i]['position']+"").includes(selected_line)){
+            search_array1.push(result_total[i]);
+          }
+        }
+      }else{
+        for(let i=0; i<result_total.length; i++){
+            search_array1.push(result_total[i]);
+
+        }
+        //search_array1 = search_array;
+      }
+
+      const search_array2 = [];
+      if(search!=""){
+        for(let i=0; i<search_array1.length; i++){
+          if((search_array1[i]['title']+"").includes(search) || (search_array1[i]['gosok_id']+"").includes(search) || (search_array1[i]['summonerName']+"").includes(search)){
+            search_array2.push(search_array1[i]);
+          }
+        }
+      }else{
+        for(let i=0; i<search_array1.length; i++){
+            search_array2.push(search_array1[i]);
+
+        }
+        //search_array2 = search_array1;
+      }
+
+      setResult(search_array2);
+    }else{
+      for(let i=0; i<result_total.length; i++){
+        if((result_total[i]['tier']+"").includes(e.target.value)){
+          search_array.push(result_total[i]);
+        }
+      }
+
+      const search_array1 = [];
+      if(selected_line!=""){
+        for(let i=0; i<search_array.length; i++){
+          if((search_array[i]['position']+"").includes(selected_line)){
+            search_array1.push(search_array[i]);
+          }
+        }
+      }else{
+        for(let i=0; i<search_array.length; i++){
+            search_array1.push(search_array[i]);
+
+        }
+        //search_array1 = search_array;
+      }
+
+      const search_array2 = [];
+      if(search!=""){
+        for(let i=0; i<search_array1.length; i++){
+          if((search_array1[i]['title']+"").includes(search) || (search_array1[i]['gosok_id']+"").includes(search) || (search_array1[i]['summonerName']+"").includes(search)){
+            search_array2.push(search_array1[i]);
+          }
+        }
+      }else{
+        for(let i=0; i<search_array1.length; i++){
+            search_array2.push(search_array1[i]);
+
+        }
+        //search_array2 = search_array1;
+      }
+
+      setResult(search_array2);
+    }
   };
 
     return (
@@ -252,9 +496,36 @@ const Lecture = () => {
 
         <div className="lecture_background">
 
+        <select className="w150" onChange={handleSelect_line}>
+          <option value="">라인 전체</option>
+          <option value="탑" >탑</option>
+          <option value="정글">정글</option>
+          <option value="미드">미드</option>
+          <option value="원딜">원딜</option>
+          <option value="서포트">서포트</option>
+        </select>
+
+        <select className="w151" onChange={handleSelect_tier}>
+          <option value="">티어 전체</option>
+          <option value="IRON" >아이언</option>
+          <option value="BRONZE">브론즈</option>
+          <option value="SILVER">실버</option>
+          <option value="GOLD">골드</option>
+          <option value="PLATINUM">플래티넘</option>
+          <option value="DIAMOND">다이아몬드</option>
+          <option value="MASTER">마스터</option>
+          <option value="GRAND">그랜드마스터</option>
+          <option value="CHALLENGER">챌린저</option>
+        </select>
+
+
           <div className="lecture_search_div">
             <input className = "lecture_search_input" type="text" name="search" placeholder="검색" onChange={(event) => setSearch(event.target.value)}/>
             <button className = "lecture_search_btn" type="button" onClick={() => search_btn()}>검색</button>
+          </div>
+
+          <div className="lecture_sort_btn_div">
+            <button className = "lecture_sort_btn" type="button" onClick={() => sort_btn()}>평점 정렬</button>
           </div>
 
           <div className="lecture_regist_btn_div">
@@ -276,6 +547,22 @@ const Lecture = () => {
                 </div>
                 <div className="box_init_div_time">
                   {list.lecture_time} {list.price}point
+                </div>
+
+                <div className="box_init_div_title">
+                  소환사 명 : {list.summonerName}
+                </div>
+
+                <div className="box_init_div_title">
+                  티어 : {list.tier}
+                </div>
+
+                <div className="box_init_div_title">
+                  라인 : {list.position}
+                </div>
+
+                <div className="box_init_div_title">
+                  평점 : {list.average}
                 </div>
 
                 {

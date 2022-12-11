@@ -1,3 +1,11 @@
+game/getData POST
+소환사명, 라인 입력하면 모든정보(소환사명, 라인, 승률, 챔피언5개) 보낸다.
+
+game/saveData POST
+확인버튼 받으면
+모든 정보 db에 저장
+
+************************************
 user/signup POST
 (id, name, password, email, mento)
 
@@ -6,51 +14,82 @@ user/login POST
 
 user/logout GET
 
+************************************
+
 mento/register POST
 (mento_id)
 사용자 id 가져와서 멘토로 등록
 
-game/getData POST
-소환사명, 라인 입력하면 모든정보(소환사명, 라인, 승률, 챔피언5개) 보낸다.
+************************************
 
-game/saveData POST
-확인버튼 받으면
-모든 정보 db에 저장
+lecture/newLecture
+강의 테이블 정보(id,title,...,mento_id) 받아서 새 강의 추가
+(lecture, user_lecture 두개 테이블에 추가)
+
 
 lecture/finishLecture POST
 강의종료 버튼 받으면 in_progress 값 0으로 변환
 
-lecture/newLecture POST
-멘토인지 확인하고 강의 생성 (id, title, mento_description, lecture_time, price, start_time,  mento_id 필요
 
 lecture/getLecture
-리뷰 평점 업데이트
+리뷰 평점 업데이트 
 
-lecture/existMenti
+lecture/applyLecture 
+멘티가 강의신청 
+
 
 lecture/getLectureByPosition
-포지션 별로 강의 목차 보기
+포지션 별로 강의 목차 보기 
 
 lecture/getLectureByStar
-평점 별로 강의 목차 보기
+평점 별로 강의 목차 보기 
 
 lecture/existMenti
 멘티가 존재하는지 확인
 
+************************************
+
 mento/register
 유저를 멘토로 등록  (user table에 mento column 값 0->1로 변환)
 
+************************************
+
 lecture_room/room
-lecture_room DB table 추가
+lecture_room DB table 추가 
 
 review_star/create
-review_star DB table 추가 (강의ID, 별점)
+review_star DB table 추가 (user_id, 별점)
 
 review_star/
+
 
 
 /////////////////////////////////////
 DB_Table 정리
 
-user_rmc : id, gosok_id, rmc_id, vote   //롤문철 찬반기능 투표
+
+****************************************
+user : id, gosok_id, name, password, email, mento, game_id, point
+
+lecture : id, title, mento_description, lecture_description, lecture_time, price, start_time, menti_in(?? 멘티가 신청한 강의인지 아닌지??), room_id, average
+
+user_lecture : id, user_id, menti_id, lec
+
+lecture_room : id, session_id, token_id 
+
+review_star : id, star, mento_id(user의 id의 외래키), create_date
+
+*****************************************
+rmc : id, title, content, video_src, create_date, gosok_id, good, bad
+
+rmc_board : id, comment(댓글), create_date(작성날짜), rmc_id, gosok_id(유저id)
+
+user_rmc : id, gosok_id, rmc_id, vote   //롤문철 찬반기능 투표 
+
+******************************************
+
+game : id, summonerName(롤닉넴), tier, win, loss, win_rate
+
+game_champ : id,champion,game_id 테이블 추가되는건지?
+
 
