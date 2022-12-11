@@ -14,6 +14,7 @@ const Mypage_course_list = () => {
   const [ mento_lecture_list, setMento_lecture_list ] = React.useState([]);
   const [ mento_lecture_end_list, setMento_lecture_end_list ] = React.useState([]);
   const [server_flag, setServer_flag] = useState(false);
+  const [point, setPoint] = useState('');
   var interval = null;
 
   /*
@@ -325,6 +326,16 @@ const Mypage_course_list = () => {
     }
   }
 
+  const charge_point = () => {
+    axios.post('http://localhost:3001/user/chargePoint', {
+      point : point,
+      gosok_id : sessionStorage.getItem('login-token'),
+
+    }).then((result)=>{
+      alert("충전이 완료되었습니다.");
+    })
+  }
+
     return (
 
       <div className="height_100_class">
@@ -335,6 +346,9 @@ const Mypage_course_list = () => {
             <div className="mypage_side_account">
               {sessionStorage.getItem('login-token')}
               <br/>포인트 : {sessionStorage.getItem('point')}
+              <br/>
+              <input type="text" className="point_value" placeholder="포인트를 입력하세요" onChange={(event) => setPoint(event.target.value)} />
+              <button onClick={()=>charge_point()}>포인트 등록</button>
             </div>
             <div className="mypage_side_divide">
 
