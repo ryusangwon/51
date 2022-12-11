@@ -111,4 +111,13 @@ router.post('/getLecture', async (req, res) => {
     }
 });
 
+router.post('/chargePoint', async (req, res) => {
+    const id = req.body.gosok_id;
+    const point = req.body.point;
+
+    await User.update({point: point}, {where: {gosok_id: gosok_id}});
+
+    return res.send(point, "point 충전 되었습니다");
+});
+
 module.exports = router;

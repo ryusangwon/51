@@ -135,6 +135,8 @@ router.post('applyLecture', async (req, res, next) =>{
     const user_id = req.body.user_id;
     const lecture_id = req.body.lecture_id;
 
+        
+
     await User_lecture.update({
         lecture_id: id,
         menti_id: mento_id,

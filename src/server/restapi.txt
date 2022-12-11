@@ -15,3 +15,7 @@ user_id(멘토) 받으면 그 user_id가 가르치는 중인 강좌 보낸다
 
 lecture/edLectureMento 멘토가 다 가르친 강좌
 user_id(멘토) 받으면 그 user_id가 다 가르친 강좌를 보낸다.
+
+user/chargePoint 포인트 충전
+gosok_id, point 받으면 해당 포인트만큼 충전
+
