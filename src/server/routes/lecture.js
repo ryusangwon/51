@@ -49,7 +49,7 @@ router.post('/newLecture', async (req, res, next) => {
 
         await User_lecture.create({
             lecture_id: id,
-            mento_id: mento_id,
+            user_id: mento_id,
         });
 
         return res.redirect('/');
@@ -112,8 +112,45 @@ router.get('/getLecture', async (req, res, next) => {
     }
 });
 
-router.post('ingLecture', async (req, res, next) => {
-    const user_id = req.body.user;
+// 멘티가 강의신청
+router.post('applyLecture', async (req, res, next) =>{
+    const user_id = req.body.user_id;
+    const lecture_id = req.body.lecture_id;
+
+    await User_lecture.update({
+        lecture_id: id,
+        menti_id: mento_id,
+    });
+
+    res.send("강의 신청 완료");
+})
+
+// 멘티의 수강중인 강좌
+router.post('ingLectureMenti', async (req, res, next) => {
+    const user_id = req.body.user_id;
+
+    let query = `select * from user_lecture left join lecture on user_lecture.lecture_id=lecture.id where menti_id=? and in_progess=1`;
+    const result = await sequelize.query(query, {
+        type: QueryTypes.SELECT,
+        replacements: [user_id]
+    });
+    res.send(result);
+})
+// 멘티의 수강완료 강좌
+router.post('edLectureMenti', async (req, res, next) => {
+    const user_id = req.body.user_id;
+
+    let query = `select * from user_lecture left join lecture on user_lecture.lecture_id=lecture.id where menti_id=? and in_progess=0`;
+    const result = await sequelize.query(query, {
+        type: QueryTypes.SELECT,
+        replacements: [user_id]
+    });
+    res.send(result);
+})
+
+// 멘토의 수강중인 강좌
+router.post('ingLectureMento', async (req, res, next) => {
+    const user_id = req.body.user_id;
 
     let query = `select * from user_lecture left join lecture on user_lecture.lecture_id=lecture.id where user_id=? and in_progess=1`;
     const result = await sequelize.query(query, {
@@ -123,9 +160,9 @@ router.post('ingLecture', async (req, res, next) => {
     res.send(result);
 })
 
-
-router.post('edLecture', async (req, res, next) => {
-    const user_id = req.body.user;
+// 멘토의 수강완료 강좌
+router.post('edLectureMento', async (req, res, next) => {
+    const user_id = req.body.user_id;
 
     let query = `select * from user_lecture left join lecture on user_lecture.lecture_id=lecture.id where user_id=? and in_progess=0`;
     const result = await sequelize.query(query, {
