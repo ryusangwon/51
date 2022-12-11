@@ -105,8 +105,8 @@ router.get('/getLecture', async (req, res, next) => {
     const reviewStar = await sequelize.query(query, {
       type: QueryTypes.SELECT,
     });
-    console.log(reviewStar);
-    console.log('length:', reviewStar.length);
+//    console.log(reviewStar);
+//    console.log('length:', reviewStar.length);
     //    console.log('user_id:', reviewStar[0]['user_id']);
       console.log('reviewStar:', reviewStar[0]['avg']);
     for (let i = 0; i < reviewStar.length; i++) {
@@ -131,7 +131,7 @@ router.get('/getLecture', async (req, res, next) => {
       type: QueryTypes.SELECT,
     });
 
-    console.log(results);
+//    console.log(results);
     return res.send(results);
   } catch (err) {
     console.error(err);
