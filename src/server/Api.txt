@@ -22,3 +22,35 @@ lecture/finishLecture POST
 
 lecture/newLecture POST
 멘토인지 확인하고 강의 생성 (id, title, mento_description, lecture_time, price, start_time,  mento_id 필요
+
+lecture/getLecture
+리뷰 평점 업데이트
+
+lecture/existMenti
+
+lecture/getLectureByPosition
+포지션 별로 강의 목차 보기
+
+lecture/getLectureByStar
+평점 별로 강의 목차 보기
+
+lecture/existMenti
+멘티가 존재하는지 확인
+
+mento/register
+유저를 멘토로 등록  (user table에 mento column 값 0->1로 변환)
+
+lecture_room/room
+lecture_room DB table 추가
+
+review_star/create
+review_star DB table 추가 (강의ID, 별점)
+
+review_star/
+
+
+/////////////////////////////////////
+DB_Table 정리
+
+user_rmc : id, gosok_id, rmc_id, vote   //롤문철 찬반기능 투표
+

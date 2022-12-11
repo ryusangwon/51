@@ -1,0 +1,17 @@
+lecture/getLecture GET
+리뷰 업데이트를 진행하고 모든 강의 정보 보낸다.
+
+lecture/applyLecture 멘티 입장
+user_id(멘티), lecture_id 받으면 강의 신청 완료
+
+lecture/ingLectureMenti 멘티가 수강중인 강좌
+user_id(멘티) 받으면 그 user_id가 수강중인 강좌 보낸다
+
+lecture/edLectureMenti 멘티가 수강완료한 강좌
+user_id(멘티) 받으면 그 user_id가 수강완료한 강좌 보낸다
+
+lecture/ingLectureMento 멘토가 가르치는 중인 강좌
+user_id(멘토) 받으면 그 user_id가 가르치는 중인 강좌 보낸다
+
+lecture/edLectureMento 멘토가 다 가르친 강좌
+user_id(멘토) 받으면 그 user_id가 다 가르친 강좌를 보낸다.
