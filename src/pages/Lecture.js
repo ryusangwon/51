@@ -83,6 +83,10 @@ const Lecture = () => {
   };
 
   const select_modal = (id) => {
+    if(!sessionStorage.getItem('login-token')){
+      alert("로그인 후 이용가능합니다.");
+      return;
+    }
     //setSelect_id(id);
     for(var i=0; i< result.length; i++){
       if(id == result[i].id){
@@ -219,6 +223,10 @@ const Lecture = () => {
 
   const regist_btn = () => {
 
+    if(!sessionStorage.getItem('login-token')){
+      alert("로그인 후 이용가능합니다.");
+      return;
+    }
     //if(sessionStorage.setItem('mento', id)){
 
   //}
