@@ -79,6 +79,7 @@ router.post('/finishLecture', async (req, res, next) => {
   const lecture_id = req.body.lecture_id;
   const user_id = req.body.user_id;
   const star = req.body.star;
+  console.log("lecture: ", lecture_id);
 
   try {
     console.log('[LECTURE_DELETE]');
@@ -115,7 +116,7 @@ router.get('/getLecture', async (req, res, next) => {
     console.log(reviewStar);
     console.log('length:', reviewStar.length);
     //    console.log('user_id:', reviewStar[0]['user_id']);
-    console.log('reviewStar:', reviewStar['avg']);
+      console.log('reviewStar:', reviewStar[0]['avg']);
     for (let i = 0; i < reviewStar.length; i++) {
       console.log(reviewStar[i]['user_id'], ':', reviewStar[i]['avg']);
 
@@ -163,7 +164,7 @@ router.post('applyLecture', async (req, res, next) => {
 router.post('ingLectureMenti', async (req, res, next) => {
   const user_id = req.body.user_id;
 
-  let query = `select * from user_lecture left join lecture on user_lecture.lecture_id=lecture.id where menti_id=? and in_progess=1`;
+  let query = `select * from user_lecture left join lecture on user_lecture.lecture_id=lecture.id where menti_id=? and in_progress=1`;
   const result = await sequelize.query(query, {
     type: QueryTypes.SELECT,
     replacements: [user_id],
@@ -174,7 +175,7 @@ router.post('ingLectureMenti', async (req, res, next) => {
 router.post('edLectureMenti', async (req, res, next) => {
   const user_id = req.body.user_id;
 
-  let query = `select * from user_lecture left join lecture on user_lecture.lecture_id=lecture.id where menti_id=? and in_progess=0`;
+  let query = `select * from user_lecture left join lecture on user_lecture.lecture_id=lecture.id where menti_id=? and in_progress=0`;
   const result = await sequelize.query(query, {
     type: QueryTypes.SELECT,
     replacements: [user_id],
@@ -186,7 +187,7 @@ router.post('edLectureMenti', async (req, res, next) => {
 router.post('ingLectureMento', async (req, res, next) => {
   const user_id = req.body.user_id;
 
-  let query = `select * from user_lecture left join lecture on user_lecture.lecture_id=lecture.id where user_id=? and in_progess=1`;
+  let query = `select * from user_lecture left join lecture on user_lecture.lecture_id=lecture.id where user_id=? and in_progress=1`;
   const result = await sequelize.query(query, {
     type: QueryTypes.SELECT,
     replacements: [user_id],
@@ -198,7 +199,7 @@ router.post('ingLectureMento', async (req, res, next) => {
 router.post('edLectureMento', async (req, res, next) => {
   const user_id = req.body.user_id;
 
-  let query = `select * from user_lecture left join lecture on user_lecture.lecture_id=lecture.id where menti_id=? and in_progess=1`;
+  let query = `select * from user_lecture left join lecture on user_lecture.lecture_id=lecture.id where menti_id=? and in_progress=1`;
   const result = await sequelize.query(query, {
     type: QueryTypes.SELECT,
     replacements: [user_id],
