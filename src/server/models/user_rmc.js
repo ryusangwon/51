@@ -5,11 +5,11 @@ module.exports = class User_rmc extends Sequelize.Model {
         return super.init({
             gosok_id: {
                 type: Sequelize.STRING(20),
-                allowNull: true,
+                allowNull: false,
             },
             rmc_id: {
                 type: Sequelize.INTEGER,
-                allowNull: true,
+                allowNull: false,
             },
             vote: {
                 type: Sequelize.BOOLEAN,

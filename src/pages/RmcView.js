@@ -92,6 +92,10 @@ function RmcView() {
   }, []);
 
   const send_comment = () => {
+    if(!sessionStorage.getItem('login-token')){
+      alert("로그인 후 이용가능합니다.");
+      return;
+    }
 
     console.log(id);
     console.log(sessionStorage.getItem('login-token'));
@@ -114,6 +118,11 @@ function RmcView() {
   }
 
   const send_vote = (flag) => {
+    if(!sessionStorage.getItem('login-token')){
+      alert("로그인 후 이용가능합니다.");
+      return;
+    }
+
     console.log(flag);
 
     axios.post('http://localhost:3001/rmc/vote', {

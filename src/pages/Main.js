@@ -8,6 +8,15 @@ import rmc_img from './img/main_rmc_img.jpg';
 import mypage_img from './img/main_mypage_img.png';
 
 const Main = () => {
+
+  const goto_mypage = () => {
+    if(!sessionStorage.getItem('login-token')){
+      alert("로그인 후 이용가능합니다.");
+      return;
+    }
+    window.location.href = "/mypage_course_list"
+  }
+
   return (
     <div>
       <Header/>
@@ -29,10 +38,11 @@ const Main = () => {
           <div>자신의 영상을 게시하여 한문철TV처럼 여러 사람들에게 평가를 받을 수 있습니다.</div>
         </div>
 
+
         <div className="mypage">
-          <Link to="./Mypage_course_list">
-          <img className="main_mypage_div" src={mypage_img} />
-          </Link>
+          <div onClick={()=>goto_mypage()}>
+            <img className="main_mypage_div" src={mypage_img} />
+          </div>
           <label className="main_title">마이페이지</label>
           <div>자신의 수강내역, 멘토 등록, lol 정보를 확인할 수 있습니다.</div>
         </div>

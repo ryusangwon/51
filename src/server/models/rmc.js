@@ -9,7 +9,7 @@ module.exports = class Rmc extends Sequelize.Model {
             },
             content: {
                 type: Sequelize.TEXT,
-                allowNull: true,
+                allowNull: false,
             },
             video_src: {
                 type: Sequelize.STRING(45),

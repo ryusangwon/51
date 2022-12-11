@@ -21,7 +21,7 @@ const Login = () => {
 
       console.log(result);
       /*
-      console.log(result.data);
+      onsole.log(result.data);c
 
       if(result.data.length != 0){
         sessionStorage.setItem('login-token', id);
@@ -31,6 +31,8 @@ const Login = () => {
         alert('로그인 실패');
       }
       */
+
+      console.log(result.data);
 
       login_success();
 

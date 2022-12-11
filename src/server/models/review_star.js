@@ -7,7 +7,7 @@ module.exports = class Review_star extends Sequelize.Model {
                 type: Sequelize.INTEGER,
                 allowNull: false,
             },
-            lecture_id: {
+            user_id: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
             },

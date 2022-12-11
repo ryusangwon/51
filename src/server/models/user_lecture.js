@@ -7,10 +7,19 @@ module.exports = class User_lecture extends Sequelize.Model {
                 type: Sequelize.INTEGER,
                 allowNull: false,
             },
+            menti_id: {
+                type: Sequelize.INTEGER,
+                allowNull: true,
+            },
             lecture_id: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
             },
+            in_progress: {
+                type: Sequelize.BOOLEAN,
+                allowNull: true,
+                defaultValue: '1',
+            }
         }, {
             sequelize,
             timestamps: false,
