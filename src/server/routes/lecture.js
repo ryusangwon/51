@@ -148,7 +148,7 @@ router.get('/getLecture', async (req, res, next) => {
 });
 
 // 멘티가 강의신청
-router.post('applyLecture', async (req, res, next) => {
+router.post('/applyLecture', async (req, res, next) => {
   const user_id = req.body.user_id;
   const lecture_id = req.body.lecture_id;
 
@@ -161,7 +161,7 @@ router.post('applyLecture', async (req, res, next) => {
 });
 
 // 멘티의 수강중인 강좌
-router.post('ingLectureMenti', async (req, res, next) => {
+router.post('/ingLectureMenti', async (req, res, next) => {
   const user_id = req.body.user_id;
 
   let query = `select * from user_lecture left join lecture on user_lecture.lecture_id=lecture.id where menti_id=? and in_progress=1`;
@@ -172,7 +172,7 @@ router.post('ingLectureMenti', async (req, res, next) => {
   res.send(result);
 });
 // 멘티의 수강완료 강좌
-router.post('edLectureMenti', async (req, res, next) => {
+router.post('/edLectureMenti', async (req, res, next) => {
   const user_id = req.body.user_id;
 
   let query = `select * from user_lecture left join lecture on user_lecture.lecture_id=lecture.id where menti_id=? and in_progress=0`;
@@ -184,7 +184,7 @@ router.post('edLectureMenti', async (req, res, next) => {
 });
 
 // 멘토의 수강중인 강좌
-router.post('ingLectureMento', async (req, res, next) => {
+router.post('/ingLectureMento', async (req, res, next) => {
   const user_id = req.body.user_id;
 
   let query = `select * from user_lecture left join lecture on user_lecture.lecture_id=lecture.id where user_id=? and in_progress=1`;
@@ -196,7 +196,7 @@ router.post('ingLectureMento', async (req, res, next) => {
 });
 
 // 멘토의 수강완료 강좌
-router.post('edLectureMento', async (req, res, next) => {
+router.post('/edLectureMento', async (req, res, next) => {
   const user_id = req.body.user_id;
 
   let query = `select * from user_lecture left join lecture on user_lecture.lecture_id=lecture.id where menti_id=? and in_progress=1`;
