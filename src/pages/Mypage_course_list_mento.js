@@ -38,11 +38,9 @@ const Mypage_course_list = () => {
 
           //const res = await axios.get('http://localhost:3001/lecture/ingLectureMenti')
 
-          console.log(sessionStorage.getItem('user_id'));
           axios.post('http://localhost:3001/lecture/ingLectureMenti', {
             user_id : sessionStorage.getItem('user_id'),
             }).then((result)=>{
-              console.log(result);
               //window.location.href = "/lecture"
               const lecture = [];
               const lecture_end = [];
@@ -105,7 +103,6 @@ const Mypage_course_list = () => {
           axios.post('http://localhost:3001/lecture/edLectureMenti', {
             user_id : sessionStorage.getItem('user_id'),
             }).then((result)=>{
-              console.log(result);
               //window.location.href = "/lecture"
               const lecture = [];
               const lecture_end = [];
@@ -137,7 +134,6 @@ const Mypage_course_list = () => {
           axios.post('http://localhost:3001/lecture/ingLectureMento', {
             user_id : sessionStorage.getItem('user_id'),
             }).then((result)=>{
-              console.log(result);
               //window.location.href = "/lecture"
               const lecture = [];
               const lecture_end = [];
@@ -169,7 +165,6 @@ const Mypage_course_list = () => {
           axios.post('http://localhost:3001/lecture/edLectureMento', {
             user_id : sessionStorage.getItem('user_id'),
             }).then((result)=>{
-              console.log(result);
               //window.location.href = "/lecture"
               const lecture = [];
               const lecture_end = [];
@@ -238,7 +233,7 @@ const Mypage_course_list = () => {
 
         if(change_flag){
           setLecture_list(test_array);
-          setLecture_list(test_array2);
+          setMento_lecture_list(test_array2);
         }
 
 
