@@ -21,7 +21,7 @@ import Record from './pages/Record';
 
 const App = () => {
   return (
-    <Routes>
+    <Routes basename={process.env.PUBLIC_URL}>
       <Route path="/" element={<Main />} />
       <Route path="/mypage" element={<Mypage />} />
       <Route path="/mypage_course_list" element={<Mypage_course_list />} />
