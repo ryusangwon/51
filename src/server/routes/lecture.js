@@ -153,6 +153,7 @@ router.post('/applyLecture', async (req, res, next) => {
   }
 
   await User_lecture.update({menti_id: user_id}, {where: {lecture_id: lecture_id}});
+  await User.update({point: money}, {where: {id: user_id}});
 
   res.send(String(money));
 });
