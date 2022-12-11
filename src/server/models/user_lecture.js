@@ -9,7 +9,7 @@ module.exports = class User_lecture extends Sequelize.Model {
             },
             menti_id: {
                 type: Sequelize.INTEGER,
-                allowNull: false,
+                allowNull: true,
             },
             lecture_id: {
                 type: Sequelize.INTEGER,

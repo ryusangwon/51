@@ -61,7 +61,7 @@ router.post('/login', isNotLoggedIn, (req, res, next) => {
                 console.error(loginError);
                 return next(loginError);
             }
-            return res.send(user);
+            return res.send(info);
         });
     })(req, res, next);
 });

@@ -28,7 +28,7 @@ router.get('/', async (req, res, next) => {
 
 router.post('/newLecture', async (req, res, next) => {
   const {
-    id,
+    user_id,
     title,
     mento_description,
     lecture_description,
@@ -36,18 +36,17 @@ router.post('/newLecture', async (req, res, next) => {
     price,
     start_time,
     menti_in,
-    mento_id,
   } = req.body;
-
-  const exMento = await User.findOne({ where: { id: mento_id } });
+  console.log("TTTTTTTTt");
+  const exMento = await User.findOne({ where: { gosok_id: user_id } });
+  console.log(exMento);
   if (exMento['mento'] === 0) {
     return res.send('멘토 등록이 필요합니다.');
   }
 
     try{
-        console.log("[LECTURE_DESCRIPTION]");
+        console.log("[NEW_LECTURE]");
         await Lecture.create({
-            id,
             title,
             mento_description,
             lecture_description,
@@ -56,9 +55,11 @@ router.post('/newLecture', async (req, res, next) => {
             start_time,
         });
 
+        const lecture = await Lecture.findOne({where: {title: title, mento_description:mento_description, lecture_description: lecture_description}});
+
         await User_lecture.create({
-            lecture_id: id,
-            user_id: mento_id,
+            lecture_id: lecture['id'],
+            user_id: user_id,
         });
 
         return res.redirect('/');
