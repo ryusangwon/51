@@ -226,9 +226,6 @@ const Lecture = () => {
     }
     */
 
-    console.log(selected_line);
-    console.log(selected_tier);
-
     const search_array = [];
     if(selected_line!=""){
       for(let i=0; i<result_total.length; i++){
