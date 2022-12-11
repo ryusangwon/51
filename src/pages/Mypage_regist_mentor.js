@@ -57,7 +57,7 @@ const Mypage_regist_mentor = () => {
               <br/>포인트 : {sessionStorage.getItem('point')}
               <br/>
               <input type="text" className="point_value" placeholder="포인트를 입력하세요" onChange={(event) => setPoint(event.target.value)} />
-              <button onClick={()=>charge_point()}>포인트 등록</button>
+              <button onClick={()=>charge_point()}>포인트 충전</button>
             </div>
             <div className="mypage_side_divide">
 
