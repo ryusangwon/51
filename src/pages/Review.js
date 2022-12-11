@@ -12,13 +12,14 @@ function Review() {
   let star = 0;
   const params = new URLSearchParams(window.location.search);
   const [id, setId] = useState(params.get("id"));
+  const [lecture_id, setLecture_id] = useState(params.get("lecture_id"));
 
   const handleStarClick = index => {
     let clickStates = [...count];
     for (let i = 0; i < 5; i++) {
       clickStates[i] = i <= index ? 1 : 0;
     }
-    
+
     setCount(clickStates);
   };
 
@@ -49,18 +50,45 @@ function Review() {
       }
     }
 
+    console.log(lecture_id);
     console.log(star);
     console.log(id);
-
+    /*
     axios.post('http://localhost:3001/reviewStar/create', {
       star : star,
       user_id : id,
       //lecture_id : lecture_id
       }).then((result)=>{
         console.log(result);
-        window.location.href = "/mypage_course_list"
+        //window.location.href = "/mypage_course_list"
+        sendfinish();
+      })
+      */
+      axios.post('http://localhost:3001/lecture/finishLecture', {
+        lecture_id : lecture_id,
+        star : star,
+        user_id : id,
+        //lecture_id : lecture_id
+        }).then((result)=>{
+          console.log(result);
+          window.location.href = "/mypage_course_list"
+        })
+  }
+
+/*
+  const sendfinish = () => {
+
+    axios.post('http://localhost:3001/lecture/finishLecture', {
+      lecture_id : lecture_id,
+      star : star,
+      user_id : id,
+      //lecture_id : lecture_id
+      }).then((result)=>{
+        console.log(result);
+        //window.location.href = "/mypage_course_list"
       })
   }
+  */
 
   return (
     <div className="height_100_class">
