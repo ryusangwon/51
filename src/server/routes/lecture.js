@@ -83,8 +83,14 @@ router.post('/finishLecture', async (req, res, next) => {
   try {
     console.log('[LECTURE_DELETE]');
     await Lecture.update(
-      {in_progress: 0,},
-      {where: { lecture_id: lecture_id },}
+      {
+          in_progress: '0',
+      },
+      {
+          where: {
+              lecture_id: lecture_id,
+          },
+      }
     );
 
     await ReviewStar.create({
