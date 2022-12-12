@@ -25,6 +25,7 @@ const Mypage_lol_info = () => {
 
   const info_req_btn = () => {
     axios.post('http://localhost:3001/game/getData', {
+            gosok_id : sessionStorage.getItem('login-token'),
             name : name,
             //tier : tier,
             position : position,
