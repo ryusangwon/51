@@ -28,6 +28,7 @@ router.post('/getData', async (req, res, next) => {
 //        let position = "미드";
         const name = req.body.name;
         const position = req.body.position;
+        const gosok_id = req.body.gosok_id;
         let encodedName = urlencode(name);
         console.log(encodedName);
         let url = `https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/${encodedName}?api_key=${api_key}`;
@@ -69,6 +70,18 @@ router.post('/getData', async (req, res, next) => {
             win_rates: summonerDict['win_rates'],
             position: summonerDict['position']
         });
+
+        const gameId = await Game.findOne({
+            where: {
+                summonerName: summonerDict['summonerName']
+            }
+        });
+        console.log("gameID:", gameId['dataValues']['id']);
+        await User.update({
+            game_id: gameId['dataValues']['id']
+        }, {where: {
+            gosok_id: gosok_id
+        }});
 
         return res.json(summonerDict);
         
