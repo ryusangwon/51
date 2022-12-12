@@ -1,7 +1,7 @@
 .modal_back{
   position: absolute;
-  width: 500px;
-  height: 500px;
+  width: 600px;
+  height: 700px;
   background: #FFFFFF;
   border: 2px solid #000000;
   top: calc(50% - 200px);
@@ -138,7 +138,7 @@
 .modal_text_div{
   margin-left: 20px;
   margin-bottom : 15px;
-  width: 250px;
+  width: 400px;
   border: 1px solid #DBDBDB;
   border-radius: 5px;
   padding:5px;
