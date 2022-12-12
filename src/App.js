@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes} from 'react-router-dom';
+import { HashRouter as Route, Routes} from 'react-router-dom';
 import Main from './pages/Main';
 import Mypage from './pages/Mypage';
 import Mypage_course_list from './pages/Mypage_course_list';
@@ -21,7 +21,7 @@ import Record from './pages/Record';
 
 const App = () => {
   return (
-    <Routes basename={process.env.PUBLIC_URL}>
+    <Routes>
       <Route path="/" element={<Main />} />
       <Route path="/mypage" element={<Mypage />} />
       <Route path="/mypage_course_list" element={<Mypage_course_list />} />
